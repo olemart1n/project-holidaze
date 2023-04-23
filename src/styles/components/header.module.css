@@ -1,0 +1,9 @@
+@import url("../index.css");
+header {
+}
+.logo_link {
+    fill: var(--color-logo);
+}
+.p_tag {
+    color: #45bcec;
+}
