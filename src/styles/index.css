@@ -1,11 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Coda&family=Farro:wght@300&family=Open+Sans:wght@300&family=Poppins:ital,wght@1,200&display=swap");
 :root {
-    --color-background: rgb(241, 241, 224);
+    --color-background: rgba(75, 75, 76, 0.15);
     --color-logo: #40c8ff;
-    --color-zilla: #76d4d9;
+    --color-black: #172b4d;
     --color-yellow: #efef92;
-    --color-icon: #4c4c4a;
-    --color-grey: #b5b4b4;
+    --color-border: rgba(220, 220, 221, 0.2);
     --break-medium: 450px;
     --break-large: 650px;
     --icon-small: 1.5rem;
@@ -20,6 +19,7 @@
     --search-big: 2.3rem;
     --logo-big: 3.5rem;
     --logo-small: 1.2rem;
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 #root {
     max-width: 1400px;
