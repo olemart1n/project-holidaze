@@ -1,24 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import styles from "../../styles/components/Home.module.css";
-import { setVenues, venues, filter, setFilter } from "../../states/state-functions";
+import VenueCard from "../../components/VenueCard";
+import { filter, setFilter, setVenues, venues } from "../../states/state-functions";
 import { useFetch } from "../../features/useFetch";
-import url from "../../url";
-
-const Venues = (props) => {
-    const initial = venues();
-    const setInitial = setVenues();
-    console.log(initial);
-    return (
-        <div>
-            <h2>Venues</h2>
-            <div>
-                {initial.map(({ name, id }) => {
-                    return <p key={id}>{name}</p>;
-                })}
-            </div>
-        </div>
-    );
-};
+import url from "../../url/index";
 
 const FilterInput = () => {
     const initial = filter();
@@ -32,18 +17,32 @@ const FilterInput = () => {
 };
 
 function Home() {
-    const { data } = useFetch("https://api.noroff.dev/api/v1/holidaze/venues");
     const setInitial = setVenues();
-    useEffect(() => {
-        if (data) {
-            setInitial(data);
-        }
-    }, []);
-    return (
+    const initial = venues();
+    useFetch(url.venues, setInitial);
+    // VenueCards is displaying the initial state, instead of state provided by the fetch function!!
+    return !initial ? (
+        <div>loading</div>
+    ) : (
         <div className={styles.home_div}>
+            <h1>Venues</h1>
             <FilterInput />
-            <Venues />
+            <VenueCard json={initial} />
         </div>
     );
+    // const { data } = useFetch(url.venues);
+    // const setInitial = setVenues();
+    // useEffect(() => {
+    //     setInitial(data);
+    // }, [data]);
+    // return !data ? (
+    //     <div>loading</div>
+    // ) : (
+    //     <div className={styles.home_div}>
+    //         <h1>Venues</h1>
+    //         <FilterInput />
+    //         <VenueCard json={data} />
+    //     </div>
+    // );
 }
 export default Home;

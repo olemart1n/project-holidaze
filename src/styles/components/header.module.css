@@ -53,3 +53,9 @@ nav {
 .p_tag {
     color: #45bcec;
 }
+
+@media (max-width: 550px) {
+    .search_div {
+        display: none;
+    }
+}

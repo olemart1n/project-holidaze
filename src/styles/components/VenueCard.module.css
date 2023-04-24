@@ -1,0 +1,29 @@
+@import url("../index.css");
+.venue_cards_wrapper {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.venue_card {
+    height: 160px;
+    margin: 10px 0;
+    border: 2px solid var(--color-border);
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--color-black);
+    box-shadow: rgba(0, 0, 0, 0.05) 0 6px 24px, rgba(0, 0, 0, 0.08) 0 0 0 1px;
+}
+
+.venue_card_img {
+    border-radius: 20px;
+    height: 100%;
+    object-fit: cover;
+    width: 200px;
+}
+.venue_card_info {
+    width: 100%;
+}
