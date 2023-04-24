@@ -16,7 +16,7 @@ nav {
     flex-wrap: wrap;
 }
 
-input {
+.search_input {
     border: none;
     writing-mode: horizontal-tb !important;
     font-size: 1.2rem;
@@ -25,7 +25,7 @@ input {
     background-color: transparent;
     width: 100%;
 }
-input:focus {
+.search_input :focus {
     outline: none !important;
 }
 

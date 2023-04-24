@@ -1,5 +1,5 @@
 import { BsFillPersonFill, BsPerson } from "react-icons/bs";
-import styles from "../../styles/components/header.module.css";
+import styles from "../../styles/components/Header.module.css";
 function Header() {
     return (
         <header>
