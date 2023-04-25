@@ -1,7 +1,9 @@
 import styles from "../../styles/components/Venue.module.css";
 import { lazy } from "react";
-// import ImageSlide from "../../components/ImageSlide";
-const LazyImageSlide = lazy(() => import("../../components/ImageSlide"));
+import ImageSlide from "../../components/ImageSlide";
+import Book from "../../components/Book";
+import VenueMeta from "../../components/VenueMeta";
+import VenueDescription from "../../components/VenueDescription";
 import { useParams } from "react-router-dom";
 import { useFetch } from "../../features/useFetch";
 import { specificVenue, setSpecificVenue } from "../../states/state-functions";
@@ -16,8 +18,12 @@ function Venue() {
         <p>no venue</p>
     ) : (
         <main className={styles.venue_wrapper}>
-            <h1>{venue.name}</h1>
-            <LazyImageSlide data={venue} />
+            <h1 className={styles.venue_heading}>{venue.name}</h1>
+            <ImageSlide data={venue} />
+            <Book />
+
+            <VenueMeta meta={venue.meta} />
+            <VenueDescription description={venue.description} />
         </main>
     );
 }

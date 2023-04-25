@@ -3,5 +3,11 @@
 .venue_wrapper {
     display: flex;
     flex-direction: column;
-    align-items: center;
+}
+
+.venue_heading {
+    font-weight: 100;
+    color: var(--color-black);
+    margin: 5px 0px;
+    font-size: 1.4rem;
 }

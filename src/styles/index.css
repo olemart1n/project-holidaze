@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Coda&family=Farro:wght@300&family=Open+Sans:wght@300&family=Poppins:ital,wght@1,200&family=Source+Sans+3&display=swap");
 
 :root {
-    --color-background: rgba(75, 75, 76, 0.15);
+    --color-background: rgba(166, 166, 189, 0.15);
     --color-logo: #40c8ff;
+    --color-logoTheme: rgba(64, 200, 255, 0.5);
     --color-black: #172b4d;
     --color-yellow: #efef92;
     --color-border: rgba(220, 220, 221, 0.2);

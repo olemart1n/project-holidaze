@@ -1,0 +1,35 @@
+@import url("../index.css");
+
+.description_wrapper {
+    font-family: var(--font-primary);
+    width: 90%;
+    border-radius: 2px;
+    border: 1px solid var(--color-border);
+    margin: 7px auto;
+}
+.description_header {
+    margin: 0 auto;
+}
+.description_container {
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    overflow: hidden;
+    padding: 5px;
+}
+.description_container_expanded {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+.description_expand {
+    width: 100%;
+    display: flex;
+    place-content: center;
+    background-color: var(--color-background);
+}
+.expand_icon {
+    font-size: 1.2rem;
+
+    margin: 5px;
+}
