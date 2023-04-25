@@ -1,6 +1,8 @@
 import { useEffect } from "react";
+import { isLoading, setIsLoading } from "../states/state-functions";
 
 export const useFetch = (options, setChosenState) => {
+    setIsLoading(true);
     useEffect(() => {
         console.log("custom useFetch function");
         if (options) {
@@ -19,5 +21,6 @@ export const useFetch = (options, setChosenState) => {
                 isCancelled = true;
             };
         }
+        setIsLoading(false);
     }, [options]);
 };

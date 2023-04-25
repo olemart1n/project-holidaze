@@ -1,4 +1,7 @@
 import styles from "../../styles/components/Venue.module.css";
+import { lazy } from "react";
+// import ImageSlide from "../../components/ImageSlide";
+const LazyImageSlide = lazy(() => import("../../components/ImageSlide"));
 import { useParams } from "react-router-dom";
 import { useFetch } from "../../features/useFetch";
 import { specificVenue, setSpecificVenue } from "../../states/state-functions";
@@ -9,12 +12,12 @@ function Venue() {
     const venue = specificVenue();
     const { id } = useParams();
     useFetch(url.venues + id + url.ownerAndBookings, setVenue);
-    console.log(id);
     return !venue ? (
-        <div>loading</div>
+        <p>no venue</p>
     ) : (
         <main className={styles.venue_wrapper}>
             <h1>{venue.name}</h1>
+            <LazyImageSlide data={venue} />
         </main>
     );
 }

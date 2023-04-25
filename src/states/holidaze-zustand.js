@@ -1,9 +1,11 @@
 import { create } from "zustand";
 import { mountStoreDevtool } from "simple-zustand-devtools";
 const useHolidaze = create((set) => ({
+    isLoading: false,
     venues: [],
     filter: "",
-    specificVenue: [],
+    specificVenue: {},
+    setIsLoading: (data) => set((state) => ({ isLoading: (state.isLoading = data) })),
     setSpecificVenue: (data) => {
         set((state) => ({ venues: (state.specificVenue = data) }));
     },

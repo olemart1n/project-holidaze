@@ -1,0 +1,56 @@
+@import url("../index.css");
+
+.slide_container {
+    margin: 0 auto;
+    width: 97%;
+    height: 280px;
+    position: relative;
+}
+
+.slide_image {
+    height: 100%;
+    width: 100%;
+    object-position: center;
+    object-fit: cover;
+    border-radius: 20px;
+
+    box-shadow: var(--shadow-1);
+}
+
+.right_arrow {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 26px;
+    z-index: 1;
+    cursor: pointer;
+    font-size: 1.8rem;
+    color: var(--color-logo);
+    opacity: 0.8;
+}
+.left_arrow {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 26px;
+    z-index: 1;
+    cursor: pointer;
+    font-size: 1.8rem;
+    color: var(--color-logo);
+    opacity: 0.8;
+}
+
+.image_index_dot_container {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translate(-50%, 0);
+}
+.index_dot {
+    color: var(--color-black);
+    cursor: pointer;
+}
+
+.active_dot {
+    color: var(--color-logo);
+}

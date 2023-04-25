@@ -7,3 +7,5 @@ export const specificVenue = () => useHolidaze((state) => state.specificVenue);
 export const setSpecificVenue = () => useHolidaze((state) => state.setSpecificVenue);
 export const filter = () => useHolidaze((state) => state.filter);
 export const setFilter = () => useHolidaze((state) => state.setFilter);
+export const isLoading = () => useHolidaze((state) => state.isLoading);
+export const setIsLoading = () => useHolidaze((state) => state.setIsLoading);
