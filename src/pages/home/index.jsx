@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import styles from "../../styles/components/Home.module.css";
 import VenueCard from "../../components/VenueCard";
 import { filter, setFilter, setVenues, venues } from "../../states/state-functions";
@@ -24,25 +23,11 @@ function Home() {
     return !initial ? (
         <div>loading</div>
     ) : (
-        <div className={styles.home_div}>
+        <main className={styles.home_div}>
             <h1>Venues</h1>
             <FilterInput />
             <VenueCard json={initial} />
-        </div>
+        </main>
     );
-    // const { data } = useFetch(url.venues);
-    // const setInitial = setVenues();
-    // useEffect(() => {
-    //     setInitial(data);
-    // }, [data]);
-    // return !data ? (
-    //     <div>loading</div>
-    // ) : (
-    //     <div className={styles.home_div}>
-    //         <h1>Venues</h1>
-    //         <FilterInput />
-    //         <VenueCard json={data} />
-    //     </div>
-    // );
 }
 export default Home;

@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/home";
+import Venue from "./pages/Venue";
 import wrapper from "./wrappers";
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
         <Routes>
             <Route path="/" element={<UserWrapper />}>
                 <Route index element={<Home />} />
+                <Route path="venue/:id" index element={<Venue />} />
             </Route>
             <Route path="host" element={<HostWrapper />}>
                 <Route index element={<Home />} />
