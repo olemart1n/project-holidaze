@@ -1,8 +1,7 @@
+import React from "react";
 import styles from "../../styles/components/Home.module.css";
 import VenueCard from "../../components/VenueCard";
-import { filter, setFilter, setVenues, venues } from "../../states/state-functions";
-import { useFetch } from "../../features/useFetch";
-import url from "../../url/index";
+import { filter, setFilter, venues } from "../../states/state-functions";
 
 const FilterInput = () => {
     const initial = filter();
@@ -16,9 +15,7 @@ const FilterInput = () => {
 };
 
 function Home() {
-    const setInitial = setVenues();
     const initial = venues();
-    useFetch(url.venues, setInitial);
     // VenueCards is displaying the initial state, instead of state provided by the fetch function!!
     return !initial ? (
         <div>loading</div>

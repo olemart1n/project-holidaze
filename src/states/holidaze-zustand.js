@@ -7,7 +7,7 @@ const useHolidaze = create((set) => ({
     specificVenue: {},
     setIsLoading: (data) => set((state) => ({ isLoading: (state.isLoading = data) })),
     setSpecificVenue: (data) => {
-        set((state) => ({ venues: (state.specificVenue = data) }));
+        set((state) => ({ specificVenue: (state.specificVenue = data) }));
     },
     setVenues: (data) => {
         set((state) => ({ venues: (state.venues = data) }));
