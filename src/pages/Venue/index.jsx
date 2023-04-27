@@ -4,7 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import ImageSlide from "../../components/ImageSlide";
 import Book from "../../components/Book";
 import VenueDescription from "../../components/VenueDescription";
-import VenueInfo from "../../components/VenueInfo";
+import VenueMeta from "../../components/VenueMeta";
+import VenueLocation from "../../components/VenueLocation";
 import { useParams } from "react-router-dom";
 import { useFetch } from "../../features/useFetch";
 import { specificVenue, setSpecificVenue } from "../../states/state-functions";
@@ -27,7 +28,10 @@ function Venue() {
             <h1 className={styles.venue_heading}>{venue.name}</h1>
             <ImageSlide data={venue} />
             <Book />
-            <VenueInfo info={venue} />
+            <div className={styles.info_layout}>
+                <VenueMeta info={venue} />
+                <VenueLocation location={venue.location} />
+            </div>
             <VenueDescription description={venue.description} />
         </main>
     );

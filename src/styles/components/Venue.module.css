@@ -18,3 +18,8 @@
     font-size: 1.4rem;
     color: var(--color-black);
 }
+
+.info_layout {
+    display: flex;
+    gap: 10px;
+}
