@@ -23,9 +23,11 @@ function VenueInfo({ info }) {
                     </div>
                 ))}
             </div>
-            <div className={styles.info_data}>
-                <h5>{info.price} NOK /day</h5>
-            </div>
+            {/* <div className={styles.info_data}>
+                <p>{info.location.city}</p>
+                <p>Room for {info.maxGuests}</p>
+                <h5 className={styles.info_price}>{info.price} NOK /day</h5>
+            </div> */}
         </div>
     );
 }

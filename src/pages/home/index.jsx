@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../../styles/components/Home.module.css";
-import VenueCard from "../../components/VenueCard";
+import VenueCards from "../../components/VenueCards";
 import { filter, setFilter, venues } from "../../states/state-functions";
 
 const FilterInput = () => {
@@ -23,7 +23,7 @@ function Home() {
         <main className={styles.home_div}>
             <h1>Venues</h1>
             <FilterInput />
-            <VenueCard json={initial} />
+            <VenueCards json={initial} />
         </main>
     );
 }

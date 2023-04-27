@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import ImageSlide from "../../components/ImageSlide";
 import Book from "../../components/Book";
 import VenueDescription from "../../components/VenueDescription";
-import VenueInfo from "../../components/VenuePrice";
+import VenueInfo from "../../components/VenueInfo";
 import { useParams } from "react-router-dom";
 import { useFetch } from "../../features/useFetch";
 import { specificVenue, setSpecificVenue } from "../../states/state-functions";

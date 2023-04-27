@@ -21,9 +21,22 @@
 }
 .info_data {
     border: 1px solid var(--color-border);
-    width: fit-content;
+    width: 50%;
     margin-left: 10px;
     background-color: var(--color-logoTheme2);
     padding: 15px;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.info_price {
+    padding: 5px;
+    text-decoration: underline;
+    color: black;
+    font-size: 1rem;
+    background-color: white;
+    text-align: center;
+    width: 100%;
 }
