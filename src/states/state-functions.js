@@ -9,3 +9,5 @@ export const filter = () => useHolidaze((state) => state.filter);
 export const setFilter = () => useHolidaze((state) => state.setFilter);
 export const isLoading = () => useHolidaze((state) => state.isLoading);
 export const setIsLoading = () => useHolidaze((state) => state.setIsLoading);
+export const isModalOpen = () => useHolidaze((state) => state.isModalOpen);
+export const setIsModalOpen = () => useHolidaze((state) => state.setIsModalOpen);

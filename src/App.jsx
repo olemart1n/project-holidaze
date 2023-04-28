@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import React from "react";
-import url from "./url";
 import Home from "./pages/home";
 import Venue from "./pages/Venue";
 import UserWrapper from "./wrappers/UserWrapper";
