@@ -27,10 +27,12 @@ function Venue() {
 
             <h1 className={styles.venue_heading}>{venue.name}</h1>
             <ImageSlide data={venue} />
-            <Book />
-            <div className={styles.info_layout}>
-                <VenueMeta info={venue} />
-                <VenueLocation location={venue.location} />
+            <div className={styles.big_screen_info}>
+                <Book />
+                <div className={styles.info_layout}>
+                    <VenueMeta info={venue} />
+                    <VenueLocation location={venue.location} />
+                </div>
             </div>
             <VenueDescription description={venue.description} />
         </main>

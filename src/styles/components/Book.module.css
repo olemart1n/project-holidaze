@@ -3,6 +3,7 @@
 .booking_container {
     background-color: var(--color-logoTheme);
     width: 90%;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -14,4 +15,9 @@
 .calendar_icon {
     color: var(--color-black);
     font-size: 1.5rem;
+}
+
+@media (min-width: 650px) {
+    .booking_container {
+    }
 }

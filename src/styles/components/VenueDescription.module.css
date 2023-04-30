@@ -33,3 +33,10 @@
 
     margin: 5px;
 }
+
+@media (min-width: 650px) {
+    .description_wrapper {
+        width: 100%;
+        margin: 0 auto;
+    }
+}
