@@ -3,6 +3,7 @@
 .venue_wrapper {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .venue_heading {

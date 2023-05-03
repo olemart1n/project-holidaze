@@ -1,0 +1,8 @@
+@import url("../index.css");
+
+.form_login {
+    margin: auto;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}

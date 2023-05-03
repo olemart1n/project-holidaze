@@ -8,7 +8,7 @@ function Modal({ isOpen, children, close }) {
     }
     return createPortal(
         <>
-            <div className={styles.modal_overlay} onClick={close}>
+            <div className={styles.modal_overlay}>
                 <div className={styles.modal_styles}>
                     <div className={styles.modal_close_div}>
                         <VscChromeClose className={styles.modal_close_button} onClick={close} />

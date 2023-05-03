@@ -1,10 +1,19 @@
 import styles from "../../styles/components/ImageSlide.module.css";
+import { useState } from "react";
 import { TbSquareRoundedArrowRightFilled, TbSquareRoundedArrowLeftFilled } from "react-icons/tb";
 import { GoPrimitiveDot } from "react-icons/go";
 import { BiFullscreen } from "react-icons/bi";
 import { CiShare1 } from "react-icons/ci";
-import { useState } from "react";
 function ImageSlide({ data }) {
+    const [isFullScreen, setIsFullScreen] = useState(false);
+    const toggleFullScreen = () => {
+        if (isFullScreen) {
+            setIsFullScreen(false);
+        } else {
+            setIsFullScreen(true);
+        }
+    };
+
     let isSafari = false;
     if (navigator.share) {
         isSafari = true;
@@ -37,12 +46,9 @@ function ImageSlide({ data }) {
     };
 
     return data.media ? (
-        <div className={styles.slide_container}>
+        <div className={isFullScreen ? styles.slide_container_fullscreen : styles.slide_container}>
             {!isSafari ? "" : <CiShare1 className={styles.share_icon} onClick={share} />}
-            <BiFullscreen
-                className={styles.fullscreen_button}
-                onClick={() => console.log("modal with the imageslider should be shown")}
-            />
+            <BiFullscreen className={styles.fullscreen_button} onClick={toggleFullScreen} />
             <TbSquareRoundedArrowLeftFilled className={styles.left_arrow} onClick={previousImage} />
             <TbSquareRoundedArrowRightFilled className={styles.right_arrow} onClick={nextImage} />
             <img
