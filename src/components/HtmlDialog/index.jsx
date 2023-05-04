@@ -1,6 +1,7 @@
 import styles from "../../styles/components/HtmlDialog.module.css";
 import { closeDialog, extraCloseFunctionality } from "../../features/dialogs";
 import { VscChromeClose } from "react-icons/vsc";
+import { BsUiRadios } from "react-icons/bs";
 
 function HtmlDialog({ children, type }) {
     let styling;
@@ -19,7 +20,14 @@ function HtmlDialog({ children, type }) {
         >
             <div className={styles.modal_wrapper}>
                 <div className={styles.modal_close_div}>
-                    <VscChromeClose className={styles.modal_close_button} onClick={closeDialog} />
+                    <button
+                        type="button"
+                        formMethod="dialog"
+                        onClick={closeDialog}
+                        className={styles.modal_close_button}
+                    >
+                        <VscChromeClose className={styles.modal_close_button_icon} />
+                    </button>
                 </div>
                 <div className={styles.modal_content_children}>{children}</div>
             </div>
