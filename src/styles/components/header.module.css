@@ -18,6 +18,11 @@ nav {
 .logo_link {
     fill: var(--color-logo);
 }
+
+.header_nav_icon_button {
+    border: none;
+    background-color: transparent;
+}
 .header_nav_icon {
     fill: var(--color-black);
     height: 40px;

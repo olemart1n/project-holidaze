@@ -1,17 +1,15 @@
 import styles from "../../styles/components/Venue.module.css";
-import { lazy } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ImageSlide from "../../components/ImageSlide";
 import Book from "../../components/Book";
 import VenueDescription from "../../components/VenueDescription";
 import VenueMeta from "../../components/VenueMeta";
 import VenueLocation from "../../components/VenueLocation";
 import { useParams } from "react-router-dom";
-import { useFetch } from "../../features/useFetch";
+import { useFetch } from "../../api/useFetch";
 import { specificVenue, setSpecificVenue } from "../../states/state-functions";
 import { BiArrowBack } from "react-icons/bi";
-
-import url from "../../url";
+import url from "../../api/url";
 
 function Venue() {
     const navigate = useNavigate();

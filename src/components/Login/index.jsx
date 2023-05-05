@@ -1,7 +1,9 @@
 import styles from "../../styles/components/Login.module.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { login } from "../../api/login";
 import * as yup from "yup";
+import { validateFieldsNatively } from "@hookform/resolvers";
 
 function Login() {
     const studNoroff = /@stud\.noroff\.no/i;
@@ -22,12 +24,12 @@ function Login() {
         resolver: yupResolver(loginSchema),
     });
 
-    function onSubmit(data, e) {
-        e.preventDefault();
-        console.log(e);
-        console.log(data);
-    }
-
+    const onSubmit = (data, e) => {
+        login(data);
+    };
+    const preventDialogClose = (e) => {
+        e.stopPropagation();
+    };
     return (
         <form className={styles.form_login} onSubmit={handleSubmit(onSubmit)}>
             <h2 className={styles.form_login_h2}>Login</h2>
@@ -45,7 +47,9 @@ function Login() {
                 <input className={styles.form_login_input} {...register("password")} />
                 <p className={styles.form_login_error}>{errors.password?.message}</p>
             </div>
-            <button className={styles.form_login_submit}>Submit</button>
+            <button onClick={(e) => preventDialogClose(e)} className={styles.form_login_submit}>
+                Submit
+            </button>
         </form>
     );
 }

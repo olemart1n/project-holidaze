@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { isLoading, setIsLoading } from "../states/state-functions";
+import { setIsLoading } from "../../states/state-functions";
 
 export const useFetch = (options, setChosenState) => {
     setIsLoading(true);

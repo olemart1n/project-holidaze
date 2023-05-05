@@ -2,8 +2,8 @@ import React from "react";
 import styles from "../../styles/components/Home.module.css";
 import VenueCards from "../../components/VenueCards";
 import { filter, setFilter, venues, setVenues } from "../../states/state-functions";
-import { useFetch } from "../../features/useFetch";
-import url from "../../url";
+import { useFetch } from "../../api/useFetch";
+import url from "../../api/url";
 
 const FilterInput = () => {
     const initial = filter();
