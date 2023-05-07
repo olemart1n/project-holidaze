@@ -40,3 +40,7 @@
 .form_login_error {
     color: rgb(232, 118, 118);
 }
+.form_register_button {
+    padding: 7px;
+    color: var(--color-black);
+}

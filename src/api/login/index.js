@@ -1,15 +1,17 @@
 import url from "../url";
 
+const header = {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+    },
+    body: {},
+};
 export const login = async (data) => {
-    const payload = JSON.stringify(data);
-    const request = await fetch(url.login, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: { payload },
-    });
-    const response = await request.json();
-    console.log(response);
-    return response;
+    const { email, password } = data;
+    header.body = JSON.stringify({ email, password });
+    header.body = fetch(url.login, header)
+        .then((data) => data.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.log(error));
 };
