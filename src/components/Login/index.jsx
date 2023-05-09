@@ -51,7 +51,11 @@ function Login() {
                 <label className={styles.form_login_label} htmlFor="email">
                     Password
                 </label>
-                <input className={styles.form_login_input} {...register("password")} />
+                <input
+                    type="password"
+                    className={styles.form_login_input}
+                    {...register("password")}
+                />
                 <p className={styles.form_login_error}>{errors.password?.message}</p>
             </div>
             <p className={styles.form_login_error}>{isError}</p>

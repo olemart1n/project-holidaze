@@ -1,3 +1,67 @@
+@import url("../index.css");
 .form_register {
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.form_register_h1 {
+    font-size: 1.5rem;
+    margin: 20px;
+}
+
+.form_register_submit {
+    background-color: var(--color-logoTheme);
+    border: 1px solid var(--color-border);
+    width: fit-content;
+    box-shadow: var(--shadow-1);
+    padding: 5px 3rem;
+    margin: 1rem auto;
+}
+
+.form_register_section {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.form_register_input {
+    padding-inline-start: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid var(--color-border);
+    box-shadow: var(--shadow-1);
+}
+
+.form_register_error {
+    color: var(--color-black);
+    background-color: var(--color-backgroundWarning);
+    width: fit-content;
+    margin: 5px auto;
+    padding: 3px;
+}
+
+.form_p_block {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.form_radio_div {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    margin: 5px auto;
+}
+
+.form_register_error {
+    color: var(--color-black);
+    background-color: var(--color-backgroundWarning);
     margin: auto;
+}
+
+.form_register_success {
+    background-color: var(--color-backgroundSuccess);
+    margin: auto;
+    padding: 4px;
 }

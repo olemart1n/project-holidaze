@@ -11,7 +11,7 @@ const header = {
 };
 export const login = async (data, setErr, setUser) => {
     header.body = JSON.stringify(data);
-    header.body = fetch(url.login, header)
+    fetch(url.login, header)
         .then((data) => data.json())
         .then((data) => {
             if (data.errors) {
@@ -20,7 +20,6 @@ export const login = async (data, setErr, setUser) => {
             }
             setUser(data);
             save("user", data);
-            console.log("hello");
             setTimeout(() => {
                 closeDialog();
             }, 1500);
