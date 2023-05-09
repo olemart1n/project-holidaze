@@ -38,9 +38,22 @@
     margin: 1rem auto;
 }
 .form_login_error {
-    color: rgb(232, 118, 118);
+    color: var(--color-black);
+    background-color: var(--color-backgroundWarning);
+    width: fit-content;
+    margin: auto;
+    padding: 3px;
+}
+
+.form_login_success {
+    background-color: var(--color-backgroundSuccess);
+    margin: auto;
+    padding: 4px;
 }
 .form_register_button {
     padding: 7px;
     color: var(--color-black);
+}
+
+@media (min-width: 650px) {
 }

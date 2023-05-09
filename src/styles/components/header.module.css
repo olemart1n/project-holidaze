@@ -22,10 +22,17 @@ nav {
 .header_nav_icon_button {
     border: none;
     background-color: transparent;
+    margin: 5px;
 }
+
 .header_nav_icon {
     fill: var(--color-black);
     height: 40px;
+    width: auto;
+}
+.header_nav_icon_bar {
+    fill: var(--color-black);
+    height: 33px;
     width: auto;
 }
 .p_tag {

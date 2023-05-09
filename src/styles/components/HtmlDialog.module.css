@@ -1,6 +1,6 @@
 @import url("../index.css");
 
-.html_modal {
+.html_modal_login {
     max-width: 1400px;
     margin: auto;
     top: 50%;
@@ -40,4 +40,10 @@
     font-size: 1.3rem;
     color: var(--color-black);
     border-radius: 5px;
+}
+
+@media (min-width: 650px) {
+    .html_modal_login {
+        width: 50%;
+    }
 }

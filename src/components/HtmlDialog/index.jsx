@@ -12,12 +12,7 @@ function HtmlDialog({ children, type }) {
     }
 
     return (
-        <dialog
-            data-modal
-            id="html_modal"
-            className={styles.html_modal}
-            onClick={extraCloseFunctionality}
-        >
+        <dialog data-modal id="html_modal" className={styling} onClick={extraCloseFunctionality}>
             <div className={styles.modal_wrapper}>
                 <div className={styles.modal_close_div}>
                     <button

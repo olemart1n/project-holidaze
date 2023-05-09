@@ -3,6 +3,7 @@ import { useState } from "react";
 import { TbSquareRoundedArrowRightFilled, TbSquareRoundedArrowLeftFilled } from "react-icons/tb";
 import { GoPrimitiveDot } from "react-icons/go";
 import { BiFullscreen } from "react-icons/bi";
+import { RxCross1 } from "react-icons/rx";
 import { CiShare1 } from "react-icons/ci";
 function ImageSlide({ data }) {
     const [isFullScreen, setIsFullScreen] = useState(false);
@@ -48,9 +49,27 @@ function ImageSlide({ data }) {
     return data.media ? (
         <div className={isFullScreen ? styles.slide_container_fullscreen : styles.slide_container}>
             {!isSafari ? "" : <CiShare1 className={styles.share_icon} onClick={share} />}
-            <BiFullscreen className={styles.fullscreen_button} onClick={toggleFullScreen} />
-            <TbSquareRoundedArrowLeftFilled className={styles.left_arrow} onClick={previousImage} />
-            <TbSquareRoundedArrowRightFilled className={styles.right_arrow} onClick={nextImage} />
+            {isFullScreen ? (
+                <RxCross1 className={styles.fullscreen_button} onClick={toggleFullScreen} />
+            ) : (
+                <BiFullscreen className={styles.fullscreen_button} onClick={toggleFullScreen} />
+            )}
+            {data.media.length > 1 ? (
+                <TbSquareRoundedArrowLeftFilled
+                    className={styles.left_arrow}
+                    onClick={previousImage}
+                />
+            ) : (
+                ""
+            )}
+            {data.media.length > 1 ? (
+                <TbSquareRoundedArrowRightFilled
+                    className={styles.right_arrow}
+                    onClick={nextImage}
+                />
+            ) : (
+                ""
+            )}
             <img
                 className={styles.slide_image}
                 src={data.media[currentIndex]}

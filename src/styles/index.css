@@ -2,6 +2,8 @@
 
 :root {
     --color-background: rgba(166, 166, 189, 0.15);
+    --color-backgroundWarning: rgba(229, 80, 80, 0.15);
+    --color-backgroundSuccess: rgba(60, 246, 44, 0.15);
     --color-logo: #40c8ff;
     --color-logoTheme: rgba(64, 200, 255, 0.5);
     --color-logoTheme2: rgba(64, 200, 255, 0.15);

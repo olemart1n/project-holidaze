@@ -4,6 +4,7 @@ function HostWrapper() {
     return (
         <div className="host-wrapper">
             <Outlet />
+            HELLLLLLO
             <Footer />
         </div>
     );

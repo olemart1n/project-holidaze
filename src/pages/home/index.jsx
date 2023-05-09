@@ -1,20 +1,9 @@
 import React from "react";
 import styles from "../../styles/components/Home.module.css";
 import VenueCards from "../../components/VenueCards";
-import { filter, setFilter, venues, setVenues } from "../../states/state-functions";
+import { venues, setVenues } from "../../states/state-functions";
 import { useFetch } from "../../api/useFetch";
 import url from "../../api/url";
-
-const FilterInput = () => {
-    const initial = filter();
-    const setInitial = setFilter();
-    return (
-        <div>
-            <input value={initial} onChange={(e) => setInitial(e.target.value)}></input>
-            <div>{initial}</div>
-        </div>
-    );
-};
 
 function Home() {
     const setInitial = setVenues();
@@ -26,7 +15,6 @@ function Home() {
     ) : (
         <main className={styles.home_div}>
             <h1>Venues</h1>
-            <FilterInput />
             <VenueCards json={initial} />
         </main>
     );
