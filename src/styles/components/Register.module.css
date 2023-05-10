@@ -34,6 +34,14 @@
     box-shadow: var(--shadow-1);
 }
 
+.form_register_section_image {
+    width: 100px;
+    margin-left: 50%;
+    transform: translate(-50%);
+    border-radius: 5px;
+    display: none;
+}
+
 .form_register_error {
     color: var(--color-black);
     background-color: var(--color-backgroundWarning);

@@ -3,10 +3,15 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerUser } from "../../api/registerUser";
 import { user, setUser } from "../../states/state-functions";
+import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { useState } from "react";
 
 function Register() {
+    const navigateUser = useNavigate();
+    const avatarImageInput = document.querySelector("#avatar-image-input");
+    const [avatarImage, setAvatarImage] = useState();
+
     const setLoggedInUser = setUser();
     const loggedInUser = user();
     const [isError, setIsError] = useState("");
@@ -30,10 +35,25 @@ function Register() {
         resolver: yupResolver(registerSchema),
     });
 
+    const removeImg = (e) => {
+        e.currentTarget.style.display = "none";
+        const errorMessage = document.querySelector("#invalid-url-message");
+        errorMessage.innerHTML = "please use a valid image url";
+        setTimeout(() => {
+            errorMessage.innerHTML = "";
+        }, 4000);
+    };
+    const displayImg = (e) => {
+        e.currentTarget.style.display = "block";
+        e.currentTarget.innerHTML = "error";
+    };
+
     return (
         <form
             className={styles.form_register}
-            onSubmit={handleSubmit((data, e) => registerUser(data, setIsError, setLoggedInUser))}
+            onSubmit={handleSubmit((data, e) =>
+                registerUser(data, setIsError, setLoggedInUser, navigateUser)
+            )}
         >
             <h1 className={styles.form_register_h1}>Create a Holidaze account</h1>
             <div className={styles.form_register_section}>
@@ -57,14 +77,6 @@ function Register() {
             </div>
 
             <div className={styles.form_register_section}>
-                <label className={styles.form_register_label} htmlFor="avatar">
-                    Profile Image
-                </label>
-                <input type="url" className={styles.form_register_input} {...register("avatar")} />
-                <p className={styles.form_register_error}>{errors.avatar?.message}</p>
-            </div>
-
-            <div className={styles.form_register_section}>
                 <label className={styles.form_register_label} htmlFor="password">
                     Password
                 </label>
@@ -74,6 +86,31 @@ function Register() {
                     {...register("password")}
                 />
                 <p className={styles.form_register_error}>{errors.password?.message}</p>
+            </div>
+
+            <div className={styles.form_register_section}>
+                <label className={styles.form_register_label} htmlFor="avatar">
+                    Profile Image
+                </label>
+                <input
+                    id="avatar-image-input"
+                    type="url"
+                    className={styles.form_register_input}
+                    {...register("avatar")}
+                    onChange={(e) => setAvatarImage(e.currentTarget.value)}
+                />
+                <p id="invalid-url-message" className={styles.form_register_error}>
+                    {errors.avatar?.message}
+                </p>
+            </div>
+            <div>
+                <img
+                    alt="Your profile avatar"
+                    onError={removeImg}
+                    onLoad={displayImg}
+                    className={styles.form_register_section_image}
+                    src={avatarImage}
+                ></img>
             </div>
 
             <div>
