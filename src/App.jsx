@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import Home from "./pages/home";
 import Venue from "./pages/Venue";
 import Profile from "./pages/profile";
+import HostVenue from "./pages/hostVenue";
 import UserWrapper from "./wrappers/UserWrapper";
 import Register from "./pages/register";
 const HostWrapper = React.lazy(() => import("./wrappers/HostWrapper"));
@@ -26,6 +27,7 @@ function App() {
             </Route>
             <Route path="host" element={<HostWrapper />}>
                 <Route index element={<Profile />} />
+                <Route path="venue" element={<HostVenue />} />
             </Route>
         </Routes>
     );

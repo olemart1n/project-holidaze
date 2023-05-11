@@ -1,17 +1,24 @@
 import { useEffect } from "react";
-import { setIsLoading } from "../../states/state-functions";
+import { user } from "../../states/state-functions";
 
-export const useFetch = (options, setChosenState) => {
-    setIsLoading(true);
+export const useFetch = (url) => {
+    const auth = user();
+
     useEffect(() => {
-        console.log("custom useFetch function");
-        if (options) {
+        console.log("fetch function");
+        if (url) {
             let isCancelled = false;
-            fetch(options)
+            fetch(url, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${auth.accessToken}`,
+                },
+            })
                 .then((response) => response.json())
                 .then((json) => {
                     if (!isCancelled) {
-                        setChosenState(json);
+                        console.log(json);
+                        return json;
                     }
                 })
                 .catch((error) => {
@@ -21,6 +28,5 @@ export const useFetch = (options, setChosenState) => {
                 isCancelled = true;
             };
         }
-        setIsLoading(false);
-    }, [options]);
+    }, [url]);
 };

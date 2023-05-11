@@ -2,12 +2,12 @@ import React from "react";
 import styles from "../../styles/components/Home.module.css";
 import VenueCards from "../../components/VenueCards";
 import { venues, setVenues } from "../../states/state-functions";
-import { useFetch } from "../../api/useFetch";
+import { fetchSetState } from "../../api/fetchSetState";
 import url from "../../api/url";
 
 function Home() {
     const setInitial = setVenues();
-    useFetch(url.venues, setInitial);
+    fetchSetState(url.venues, setInitial);
     const initial = venues();
     // VenueCards is displaying the initial state, instead of state provided by the fetch function!!
     return !initial ? (

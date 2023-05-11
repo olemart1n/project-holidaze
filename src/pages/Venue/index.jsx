@@ -6,7 +6,7 @@ import VenueDescription from "../../components/VenueDescription";
 import VenueMeta from "../../components/VenueMeta";
 import VenueLocation from "../../components/VenueLocation";
 import { useParams } from "react-router-dom";
-import { useFetch } from "../../api/useFetch";
+import { fetchSetState } from "../../api/fetchSetState";
 import { specificVenue, setSpecificVenue } from "../../states/state-functions";
 import { BiArrowBack } from "react-icons/bi";
 import url from "../../api/url";
@@ -16,7 +16,7 @@ function Venue() {
     const setVenue = setSpecificVenue();
     const venue = specificVenue();
     const { id } = useParams();
-    useFetch(url.venues + id + url.ownerAndBookings, setVenue);
+    fetchSetState(url.venues + id + url.ownerAndBookings, setVenue);
     return !venue ? (
         <p>no venue</p>
     ) : (
