@@ -1,7 +1,21 @@
+import styles from "../../styles/components/HostVenue.module.css";
+import HtmlDialog from "../../components/HtmlDialog";
+import RegisterVenue from "../../components/RegisterVenue";
+import { openDialog } from "../../features/dialogs";
 import { user } from "../../states/state-functions";
 
 function HostVenue() {
-    return <main>What is going to be on thos page</main>;
+    return (
+        <main className={styles.host_venue}>
+            <h1 className={styles.host_venue_h1}>Your Venues</h1>
+            <button className={styles.host_venue_addButton} onClick={openDialog}>
+                Host new venue
+            </button>
+            <HtmlDialog type="register">
+                <RegisterVenue />
+            </HtmlDialog>
+        </main>
+    );
 }
 
 export default HostVenue;

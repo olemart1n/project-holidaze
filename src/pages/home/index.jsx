@@ -7,7 +7,7 @@ import url from "../../api/url";
 
 function Home() {
     const setInitial = setVenues();
-    fetchSetState(url.venues, setInitial);
+    fetchSetState(url.venues, url.getMethod, setInitial);
     const initial = venues();
     // VenueCards is displaying the initial state, instead of state provided by the fetch function!!
     return !initial ? (

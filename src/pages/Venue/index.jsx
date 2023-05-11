@@ -16,7 +16,7 @@ function Venue() {
     const setVenue = setSpecificVenue();
     const venue = specificVenue();
     const { id } = useParams();
-    fetchSetState(url.venues + id + url.ownerAndBookings, setVenue);
+    fetchSetState(url.venues + id + url.ownerAndBookings, url.getMethod, setVenue);
     return !venue ? (
         <p>no venue</p>
     ) : (

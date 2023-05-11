@@ -1,18 +1,21 @@
 import { useEffect } from "react";
 import { setIsLoading, setError } from "../../states/state-functions";
 
-export const fetchSetState = (options, setChosenState) => {
+export const fetchSetState = (url, options, setChosenState) => {
     const setErrorState = setError();
-    setIsLoading(true);
+    const setLoading = setIsLoading();
+    // setLoading(true);
     useEffect(() => {
         console.log("custom useFetch function");
-        if (options) {
+        if (url) {
             let isCancelled = false;
-            fetch(options)
+            fetch(url, options)
                 .then((response) => response.json())
                 .then((json) => {
                     if (!isCancelled) {
-                        json?.errors ? setErrorState(json.errors) : setChosenState(json);
+                        json?.errors
+                            ? setErrorState(json.errors) & console.log(json.errors)
+                            : setChosenState(json);
                     }
                 })
                 .catch((error) => {
@@ -22,6 +25,6 @@ export const fetchSetState = (options, setChosenState) => {
                 isCancelled = true;
             };
         }
-        setIsLoading(false);
-    }, [options]);
+        // setLoading(false);
+    }, [url]);
 };

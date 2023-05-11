@@ -1,0 +1,19 @@
+@import url("../index.css");
+.host_venue {
+    display: flex;
+    flex-direction: column;
+}
+.host_venue_h1 {
+    text-align: center;
+    margin: 10px auto;
+}
+
+.host_venue_addButton {
+    background-color: var(--color-logoTheme);
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-1);
+    font-size: 1rem;
+    margin: auto;
+}

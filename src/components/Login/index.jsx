@@ -7,7 +7,7 @@ import * as yup from "yup";
 import { Link } from "react-router-dom";
 import { closeDialog } from "../../features/dialogs";
 import { user, setUser } from "../../states/state-functions";
-import { useNavigate } from "react-router-dom";
+import YupInput from "../YupInput";
 
 function Login() {
     const setLoggedInUser = setUser();
@@ -40,24 +40,8 @@ function Login() {
             onSubmit={handleSubmit((data) => login(data, setIsError, setLoggedInUser))}
         >
             <h2 className={styles.form_login_h2}>Login</h2>
-            <div className={styles.form_login_section}>
-                <label className={styles.form_login_label} htmlFor="email">
-                    Email
-                </label>
-                <input className={styles.form_login_input} {...register("email")} />
-                <p className={styles.form_login_error}>{errors.email?.message}</p>
-            </div>
-            <div className={styles.form_login_section}>
-                <label className={styles.form_login_label} htmlFor="email">
-                    Password
-                </label>
-                <input
-                    type="password"
-                    className={styles.form_login_input}
-                    {...register("password")}
-                />
-                <p className={styles.form_login_error}>{errors.password?.message}</p>
-            </div>
+            <YupInput errors={errors} register={register} inputName={"email"} />
+            <YupInput errors={errors} register={register} inputName={"password"} type="password" />
             <p className={styles.form_login_error}>{isError}</p>
             {loggedInUser?.name ? (
                 <p className={styles.form_login_success}>Login Successful</p>

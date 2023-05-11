@@ -5,10 +5,10 @@ import { BsUiRadios } from "react-icons/bs";
 
 function HtmlDialog({ children, type }) {
     let styling;
-    if (type === "image") {
-        styling = styles.html_modal_image;
-    } else if (type === "login") {
+    if (type === "login") {
         styling = styles.html_modal_login;
+    } else if (type === "register") {
+        styling = styles.html_modal_register;
     }
 
     return (
