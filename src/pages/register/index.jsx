@@ -9,7 +9,7 @@ import { useState } from "react";
 
 function Register() {
     const navigateUser = useNavigate();
-    const avatarImageInput = document.querySelector("#avatar-image-input");
+
     const [avatarImage, setAvatarImage] = useState();
 
     const setLoggedInUser = setUser();

@@ -21,6 +21,7 @@ function RegisterVenue() {
     });
 
     const onSubmit = (data) => {
+        data.zip = "hello";
         console.log(data);
     };
     return (
@@ -32,6 +33,9 @@ function RegisterVenue() {
                 inputName={"name"}
             />
             <YupInput errors={errors} register={register} inputName={"zip"} />
+            <YupInput errors={errors} register={register} inputName={"zip"} />
+            <div>Image Section</div>
+            <YupInput errors={errors} register={register} inputName={"address"} />
             <button>submit</button>
         </form>
     );
