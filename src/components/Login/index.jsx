@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { login } from "../../api/login";
 import * as yup from "yup";
 import { Link } from "react-router-dom";
-import { closeDialog } from "../../features/dialogs";
+import { closeDialog, preventDialogClose } from "../../features/dialogs";
 import { user, setUser } from "../../states/state-functions";
 import YupInput from "../YupInput";
 
@@ -30,10 +30,6 @@ function Login() {
     } = useForm({
         resolver: yupResolver(loginSchema),
     });
-
-    const preventDialogClose = (e) => {
-        e.stopPropagation();
-    };
     return (
         <form
             className={styles.form_login}

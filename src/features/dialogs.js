@@ -20,3 +20,7 @@ export const extraCloseFunctionality = (e) => {
         dialogModal.close();
     }
 };
+
+export const preventDialogClose = (e) => {
+    e.stopPropagation();
+};

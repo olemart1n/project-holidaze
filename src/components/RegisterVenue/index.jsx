@@ -11,11 +11,11 @@ function RegisterVenue() {
     const [imageArray, setImageArray] = useState([]);
     const venueSchema = yup.object({
         name: yup.string().min(2).max(33),
-        image: yup.array().required(),
+        image: yup.string(),
         perk: yup.boolean(),
         address: yup.string(),
         city: yup.string(),
-        zip: yup.string().min(4),
+        zip: yup.string().min(3),
     });
 
     const {
@@ -27,8 +27,7 @@ function RegisterVenue() {
     });
 
     const onSubmit = (data) => {
-        let imageArray = [];
-        imageArray.push(data.image);
+        data.image = imageArray;
         console.log(data);
     };
 
@@ -48,7 +47,7 @@ function RegisterVenue() {
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit((e) => onSubmit(e))}>
             <YupInput
                 placeholder="give your venue a name"
                 errors={errors}
@@ -56,6 +55,14 @@ function RegisterVenue() {
                 inputName={"name"}
             />
             <YupInput errors={errors} register={register} inputName={"zip"} />
+            {/* <YupInput errors={errors} register={register} inputName={"image"} /> */}
+            {/* <input
+                className={styles.yup_input}
+                {...register('image')}
+                value
+                
+            ></input> */}
+            {/* just for clarity */}
             <YupInput
                 errors={errors}
                 register={register}
