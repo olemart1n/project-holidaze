@@ -1,0 +1,49 @@
+@import url("../index.css");
+
+.register_venue_hiddenImg {
+    display: none;
+}
+
+.register_venue_images_section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.register_venue_image_div {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    margin: 1rem;
+}
+
+.register_venue_image_image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 7px;
+}
+
+.register_venue_image_delete_button {
+    position: absolute;
+    background-color: fff;
+    pad: 0.5rem;
+    cursor: pointer;
+    border-radius: 100%;
+    border: 1px solid var(--border-color);
+    right: 7px;
+    top: 7px;
+}
+
+.register_venue_image_delete_button_icon {
+    font-size: 1.5rem;
+}
+
+@media (min-width: 650px) {
+    .register_venue_image_div {
+        width: 180px;
+        height: 180px;
+        position: relative;
+        margin: 1rem;
+    }
+}

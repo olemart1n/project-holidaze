@@ -1,6 +1,6 @@
 import styles from "../../styles/components/YupInput.module.css";
 
-function YupInput({ register, errors, inputName, type, placeholder }) {
+function YupInput({ register, errors, inputName, type, placeholder, onChange, id, inputId }) {
     return (
         <div className={styles.yup_section}>
             <label className={styles.yup_label} htmlFor={inputName}>
@@ -11,8 +11,12 @@ function YupInput({ register, errors, inputName, type, placeholder }) {
                 type={type}
                 className={styles.yup_input}
                 {...register(inputName)}
+                onChange={onChange}
+                id={inputId}
             ></input>
-            <p className={styles.yup_input_error}>{errors[inputName]?.message}</p>
+            <p id={id} className={styles.yup_input_error}>
+                {errors[inputName]?.message}
+            </p>
         </div>
     );
 }
