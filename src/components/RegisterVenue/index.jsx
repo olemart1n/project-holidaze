@@ -1,25 +1,23 @@
 import styles from "../../styles/components/RegisterVenue.module.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { MdOutlineDelete } from "react-icons/md";
 import { LoadScript } from "@react-google-maps/api";
 import LocationSearchInput from "../LocationSearchInput";
-
-import * as yup from "yup";
 import YupInput from "../YupInput";
+import venueSchema from "../../features/schema/venueschema";
+import googleApiLibraries from "../../constants/googleApiLibraries";
+
 function RegisterVenue() {
     const [hiddenImage, setHiddenImage] = useState();
     const [imageArray, setImageArray] = useState([]);
-    const venueSchema = yup.object({
-        name: yup.string().min(2).max(33),
-        image: yup.string(),
-        perk: yup.boolean(),
-        address: yup.string(),
-        city: yup.string(),
-        zip: yup.string().min(3),
-    });
 
+    const [city, setCity] = useState("");
+    const [zip, setZip] = useState("");
+    const [country, setCountry] = useState("");
+    const [street, setStreet] = useState("");
+    const [latLng, setLatLng] = useState("");
     const {
         register,
         handleSubmit,
@@ -28,9 +26,9 @@ function RegisterVenue() {
         resolver: yupResolver(venueSchema),
     });
 
-    const onSubmit = (data) => {
-        data.image = imageArray;
-        console.log(data);
+    const onSubmit = (e) => {
+        // data.image = imageArray;
+        console.log(e);
     };
 
     const errorMessage = (e) => {
@@ -51,16 +49,15 @@ function RegisterVenue() {
     return (
         <LoadScript
             googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
-            libraries={["places"]}
+            libraries={googleApiLibraries}
         >
-            <form onSubmit={handleSubmit((e) => onSubmit(e))}>
+            <form onSubmit={handleSubmit((data) => onSubmit(data))} autoComplete="off">
                 <YupInput
                     placeholder="give your venue a name"
                     errors={errors}
                     register={register}
-                    inputName={"name"}
+                    inputName="name"
                 />
-                <YupInput errors={errors} register={register} inputName={"zip"} />
                 <YupInput
                     errors={errors}
                     register={register}
@@ -106,17 +103,45 @@ function RegisterVenue() {
                         </div>
                     ))}
                 </div>
-                <h3 onClick={() => console.log(imageArray)}>
+                <LocationSearchInput
+                    error={errors}
+                    setCity={setCity}
+                    setZip={setZip}
+                    setCountry={setCountry}
+                    setStreet={setStreet}
+                    setLatLng={setLatLng}
+                    register={register}
+                />
+                <YupInput
+                    errors={errors}
+                    register={register}
+                    inputName={"city"}
+                    onChange={(e) => setCity(e.currentTarget.value)}
+                    value={city}
+                />
+                <YupInput
+                    errors={errors}
+                    register={register}
+                    inputName={"zip"}
+                    onChange={(e) => setZip(e.currentTarget.value)}
+                    value={zip}
+                />
+
+                <YupInput
+                    errors={errors}
+                    register={register}
+                    inputName={"country"}
+                    onChange={(e) => setCountry(e.currentTarget.value)}
+                    value={country}
+                />
+                <YupInput errors={errors} register={register} inputName={"continent"} />
+                <button>submit</button>
+                <h3 onClick={() => console.log(city, country)}>
                     description. price. meta[wifi, parking, breakfast, pets]. Location[adress, city,
                     zip, country, continent, lat, lang]
                 </h3>
-
-                <YupInput errors={errors} register={register} inputName={"address"} />
-                <button>submit</button>
-                <LocationSearchInput />
             </form>
         </LoadScript>
     );
 }
-
 export default RegisterVenue;

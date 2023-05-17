@@ -4,8 +4,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { registerUser } from "../../api/registerUser";
 import { user, setUser } from "../../states/state-functions";
 import { useNavigate } from "react-router-dom";
-import * as yup from "yup";
 import { useState } from "react";
+import registerSchema from "../../features/schema/registershema";
 
 function Register() {
     const navigateUser = useNavigate();
@@ -16,17 +16,7 @@ function Register() {
     const loggedInUser = user();
     const [isError, setIsError] = useState("");
     const studNoroff = /@stud\.noroff\.no/i;
-    const registerSchema = yup.object({
-        email: yup
-            .string()
-            .email()
-            .required("Required")
-            .matches(studNoroff, "Must be a @stud.noroff.no mail"),
-        password: yup.string().min(8).required("Required"),
-        name: yup.string().min(2).max(33),
-        avatar: yup.string(),
-        venueManager: yup.boolean(),
-    });
+
     const {
         register,
         handleSubmit,

@@ -2,8 +2,8 @@ import styles from "../../styles/components/Login.module.css";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import loginSchema from "../../features/schema/loginschema";
 import { login } from "../../api/login";
-import * as yup from "yup";
 import { Link } from "react-router-dom";
 import { closeDialog, preventDialogClose } from "../../features/dialogs";
 import { user, setUser } from "../../states/state-functions";
@@ -13,15 +13,6 @@ function Login() {
     const setLoggedInUser = setUser();
     const loggedInUser = user();
     const [isError, setIsError] = useState("");
-    const studNoroff = /@stud\.noroff\.no/i;
-    const loginSchema = yup.object({
-        email: yup
-            .string()
-            .email()
-            .required("Required")
-            .matches(studNoroff, "Must be a @stud.noroff.no mail"),
-        password: yup.string().min(3).required("Required"),
-    });
 
     const {
         register,

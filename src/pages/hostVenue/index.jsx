@@ -1,6 +1,7 @@
 import styles from "../../styles/components/HostVenue.module.css";
+import React from "react";
 import HtmlDialog from "../../components/HtmlDialog";
-import RegisterVenue from "../../components/RegisterVenue";
+const RegisterVenue = React.lazy(() => import("../../components/RegisterVenue"));
 import { openDialog } from "../../features/dialogs";
 import { user } from "../../states/state-functions";
 
