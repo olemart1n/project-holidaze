@@ -1,9 +1,8 @@
-import styles from "../../../styles/components/NavUser.module.css";
+import styles from "../../../styles/components/UserButton.module.css";
 import { BsPerson } from "react-icons/bs";
 import { user } from "../../../states/state-functions";
-import { FaBars } from "react-icons/fa";
 import { openDialog } from "../../../features/dialogs";
-function HeaderPersonIcon() {
+function UserButton() {
     const loggedInUser = user();
     return loggedInUser?.name ? (
         <button className={styles.userNav_auth}>
@@ -11,10 +10,9 @@ function HeaderPersonIcon() {
         </button>
     ) : (
         <button onClick={openDialog} className={styles.userNav_auth}>
-            {/* <BsPerson className={styles.header_nav_icon} /> */}
             <p className={styles.header_nav_login}>Login</p>
         </button>
     );
 }
 
-export default HeaderPersonIcon;
+export default UserButton;

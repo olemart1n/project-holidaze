@@ -1,0 +1,27 @@
+@import url("../index.css");
+
+.header_nav_icon {
+    fill: var(--color-black);
+    height: 40px;
+    width: auto;
+}
+
+.userNav_auth {
+    display: none;
+    color: var(--color-black);
+    background-color: var(--color-logoTheme2);
+    font-size: 1.2rem;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-1);
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 0.5rem;
+}
+
+@media (max-width: 650px) {
+    .userNav_auth {
+        display: block;
+        font-size: 1.2rem;
+    }
+}
