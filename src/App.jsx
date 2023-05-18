@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { setUser, user } from "./states/state-functions";
+import { setUser, setHostUser } from "./states/state-functions";
 import React, { useEffect } from "react";
 import Home from "./pages/home";
 import Venue from "./pages/Venue";
@@ -11,11 +11,11 @@ import Register from "./pages/register";
 import * as storage from "./features/storage";
 
 function App() {
-    const setLoggedInUser = setUser();
+    const setNoHost = setUser();
+    const setHost = setHostUser();
     useEffect(() => {
-        if (storage.load("user")) {
-            setLoggedInUser(storage.load("user"));
-        }
+        storage.load("user") && setNoHost(storage.load("user"));
+        storage.load("hostUser") && setHost(storage.load("hostUser"));
     }, []);
 
     return (

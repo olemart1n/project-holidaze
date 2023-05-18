@@ -6,7 +6,6 @@ import NavHost from "./NavHost";
 function Header() {
     const authedHost = hostUser();
     const authed = user();
-    console.log(authed);
     const [mobileNav, setMobileNav] = useState(false);
     const toggleMobileNav = () => {
         if (mobileNav) {
@@ -17,7 +16,7 @@ function Header() {
     };
     return (
         <header>
-            {authed?.venueManager ? (
+            {authedHost?.venueManager ? (
                 <NavHost
                     toggleMobileNav={toggleMobileNav}
                     mobileNav={mobileNav}

@@ -1,8 +1,15 @@
 import styles from "../../styles/components/IdCard.module.css";
-import { user } from "../../states/state-functions";
+import { user, hostUser } from "../../states/state-functions";
 
 function IdCard() {
-    const profile = user();
+    let profile;
+    const loggedInUser = user();
+    const loggedInHost = hostUser();
+    if (loggedInHost.name) {
+        profile = loggedInHost;
+    } else {
+        profile = loggedInUser;
+    }
     return (
         <div className={styles.idCard}>
             <div className={styles.idCard_image_div}>

@@ -12,6 +12,7 @@ function YupInput({
     value,
     onKeyDown,
     onKeyUp,
+    required,
 }) {
     return (
         <div className={styles.yup_section}>
@@ -28,6 +29,7 @@ function YupInput({
                 value={value}
                 onKeyDown={onKeyDown}
                 onKeyUp={onKeyUp}
+                required={required}
             ></input>
             <p id={id} className={styles.yup_input_error}>
                 {errors[inputName]?.message}

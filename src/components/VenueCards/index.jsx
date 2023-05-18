@@ -1,4 +1,4 @@
-import styles from "../../styles/components/VenueCard.module.css";
+import styles from "../../styles/components/VenueCards.module.css";
 import { Link } from "react-router-dom";
 
 const VenueCards = (props) => {

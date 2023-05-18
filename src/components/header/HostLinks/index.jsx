@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import styles from "../../../styles/components/HostHeaderLinks.module.css";
+import styles from "../../../styles/components/HostLinks.module.css";
 import { setUser, user, setHostUser } from "../../../states/state-functions";
 import { remove } from "../../../features/storage";
 import { useNavigate } from "react-router-dom";
+
 function HostLinks({ toggleNav }) {
     const navigate = useNavigate();
     const hostUser = setUser();

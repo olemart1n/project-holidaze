@@ -2,13 +2,19 @@ import React, { useState, useRef } from "react";
 import { BiSearch } from "react-icons/bi";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 
-const LocationSearchInput = ({ setCity, setZip, setStreet, setCountry, setLatLng }) => {
+const LocationSearchInput = ({
+    setCity,
+    setZip,
+    setStreet,
+    setCountry,
+    setLatLng,
+    setContinent,
+}) => {
     const [initialState, setInitialState] = useState("");
     const listItem = useRef(null);
     const handleChange = (initialState) => {
         setInitialState(initialState);
     };
-
     const handleSelect = async (initialState) => {
         const req = await geocodeByAddress(initialState);
         const latLng = await getLatLng(req[0]);
@@ -28,26 +34,42 @@ const LocationSearchInput = ({ setCity, setZip, setStreet, setCountry, setLatLng
         setStreet(street);
         setCountry(country);
         setLatLng(latLng);
-    };
-
-    const changeFocus = (e) => {
-        if (e.keyCode === 38 || e.keyCode === 40) {
-            listItem.current.focus();
-        } else return;
+        try {
+            fetch("https://ulcxpfjjujtdnmvvzzuz.supabase.co/rest/v1/continents?select=*", {
+                method: "GET",
+                headers: {
+                    apiKey: import.meta.env.VITE_SUPABASE_API_KEY,
+                    Authorization: "Bearer " + import.meta.env.VITE_SUPABASE_AUTHORIZATION,
+                },
+            })
+                .then((data) => data.json())
+                .then((result) => {
+                    const match = result.filter((element) => {
+                        return element.country === addressComponents.country;
+                    });
+                    setContinent(match[0].continent);
+                })
+                .catch((error) => console.log(error));
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const inputDivStyling = {
         display: "flex",
         alignItems: "center",
-        placeContent: "center",
     };
 
     const inputStyling = {
         paddingInlineStart: "10px",
-        padding: "5px 5px",
+        padding: ".4rem 1rem",
         fontSize: "1rem",
         border: "2px solid rgba(220, 220, 221, 0.5)",
         margin: "5px 10px",
+    };
+
+    const searchIcon = {
+        fontSize: "1.3rem",
     };
 
     const inactiveStyle = { backgroundColor: "#ffffff", cursor: "pointer" };
@@ -58,11 +80,11 @@ const LocationSearchInput = ({ setCity, setZip, setStreet, setCountry, setLatLng
             {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                 <div>
                     <div style={inputDivStyling}>
-                        <BiSearch />
+                        <BiSearch style={searchIcon} />
                         <input
                             style={inputStyling}
                             {...getInputProps({
-                                placeholder: "Search Places",
+                                placeholder: "Find address",
                                 className: "location-search-input",
                             })}
                         />

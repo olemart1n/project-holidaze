@@ -1,11 +1,35 @@
 @import url("../index.css");
 
+.register_venue_form {
+    padding: 0.5rem;
+    margin: auto;
+    justify-items: center;
+}
+
+.register_venue_section_one {
+    min-width: 250px;
+}
+
+.register_venue_section_two {
+    min-width: 290px;
+
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+.register_venue_section_three {
+    min-width: 290px;
+}
+
 .register_venue_hiddenImg {
     display: none;
 }
 
 .register_venue_images_section {
     display: flex;
+
     flex-wrap: wrap;
 }
 
@@ -39,9 +63,20 @@
     font-size: 1.5rem;
 }
 
-.register_venue_description_div {
+.register_venue_address_header {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.register_venue_location_search {
+    margin-top: 1rem;
+    border: 1px solid var(--color-border);
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-logoTheme2);
+    padding: 0.5rem;
+    border-radius: 10px;
+    width: max-content;
 }
 
 .register_venue_description_label {
@@ -49,6 +84,7 @@
     text-transform: capitalize;
 }
 .register_venue_description_input {
+    min-height: 50%;
     padding-inline-start: 10px;
     padding: 10px;
     font-size: 1rem;
@@ -57,10 +93,16 @@
 }
 
 .register_venue_information {
+    max-width: 800px;
+    margin: 1rem;
+    width: auto;
     border-radius: 10px;
     border: 1px solid var(--border-color);
     background-color: var(--color-logoTheme2);
     padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .register_venue_information_1 {
@@ -68,9 +110,12 @@
     justify-content: space-around;
     position: relative;
 }
+.register_venue_information_1_input {
+    width: 70px;
+}
 .register_venue_information_1_kroner {
     position: absolute;
-    right: 30px;
+    right: 10px;
     top: 3px;
 }
 
@@ -80,9 +125,10 @@
 }
 
 .register_venue_information_boolean {
-    width: 80%;
+    width: 90%;
     margin: 5px auto;
     display: flex;
+    align-items: center;
 }
 .register_venue_information_boolean_header {
     text-align: center;
@@ -95,7 +141,36 @@
     margin: 0 10px;
 }
 
+.register_venue_div_submit {
+    min-width: 100%;
+    text-align: center;
+}
+
+.register_venue_submit {
+    background-color: var(--color-logoTheme);
+    padding: 1rem 3rem;
+    box-shadow: var(--shadow-1);
+    height: 3rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+}
+
 @media (min-width: 650px) {
+    .register_venue_information {
+        margin: 0;
+    }
+    .register_venue_form {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+        gap: 1rem;
+        padding: 0.5rem;
+        margin: auto;
+        justify-items: center;
+    }
+    .register_venue_location_search {
+        margin-left: 0;
+    }
     .register_venue_image_div {
         width: 180px;
         height: 180px;

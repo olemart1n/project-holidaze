@@ -9,8 +9,7 @@ const header = {
     },
     body: {},
 };
-export const login = async (data, setErr, setSuccess, setUser, setHostUser) => {
-    let host = false;
+export const registerVenue = async (data) => {
     header.body = JSON.stringify(data);
     fetch(url.login, header)
         .then((data) => data.json())
