@@ -1,15 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
+import { BiSearch } from "react-icons/bi";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from "react-places-autocomplete";
-import YupInput from "../YupInput";
-const LocationSearchInput = ({
-    register,
-    error,
-    setCity,
-    setZip,
-    setStreet,
-    setCountry,
-    setLatLng,
-}) => {
+
+const LocationSearchInput = ({ setCity, setZip, setStreet, setCountry, setLatLng }) => {
     const [initialState, setInitialState] = useState("");
     const listItem = useRef(null);
     const handleChange = (initialState) => {
@@ -43,65 +36,57 @@ const LocationSearchInput = ({
         } else return;
     };
 
-    const keyAccessibility = (e) => {
-        let currentItem = e.currentTarget;
-        if (e.keyCode === 40 && currentItem.nextElementSibling) {
-            currentItem.tabIndex = 0;
-            currentItem.nextElementSibling.setAttribute("tabIndex", 1);
-            currentItem.nextElementSibling.focus();
-        }
-        if (e.keyCode === 38 && !currentItem.previousElementSibling) {
-            const parent = currentItem.parentNode;
-            const parentSibling = parent.previousElementSibling;
-            parentSibling.children[1].focus();
-        }
-        if (e.keyCode === 38 && currentItem.previousElementSibling) {
-            currentItem.tabIndex = 0;
-            currentItem.previousElementSibling.setAttribute("tabIndex", 1);
-            currentItem.previousElementSibling.focus();
-        }
-        if (e.keyCode === 13) {
-            currentItem.click();
-        }
+    const inputDivStyling = {
+        display: "flex",
+        alignItems: "center",
+        placeContent: "center",
     };
+
     const inputStyling = {
         paddingInlineStart: "10px",
-        padding: "10px",
+        padding: "5px 5px",
         fontSize: "1rem",
         border: "2px solid rgba(220, 220, 221, 0.5)",
-        margin: "auto",
+        margin: "5px 10px",
     };
+
+    const inactiveStyle = { backgroundColor: "#ffffff", cursor: "pointer" };
+    const activeStyle = { backgroundColor: "rgba(64, 200, 255, 0.15)", cursor: "pointer" };
 
     return (
         <PlacesAutocomplete value={initialState} onChange={handleChange} onSelect={handleSelect}>
             {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                 <div>
-                    <YupInput
-                        register={register}
-                        inputName={"street"}
-                        errors={error}
-                        {...getInputProps({})}
-                        onKeyDown={(e) => changeFocus(e)}
-                        inputId="place-search-input"
-                    />
-                    <ul className="autocomplete-dropdown-container">
+                    <div style={inputDivStyling}>
+                        <BiSearch />
+                        <input
+                            style={inputStyling}
+                            {...getInputProps({
+                                placeholder: "Search Places",
+                                className: "location-search-input",
+                            })}
+                        />
+                    </div>
+                    <div className="autocomplete-dropdown-container">
                         {loading && <div>Loading...</div>}
                         {suggestions.map((suggestion) => {
+                            const className = suggestion.active
+                                ? "suggestion-item--active"
+                                : "suggestion-item";
+                            const style = suggestion.active ? activeStyle : inactiveStyle;
                             return (
                                 <div
-                                    tabIndex={suggestion.index === 0 ? "1" : null}
-                                    ref={suggestion.index === 0 ? listItem : null}
-                                    onKeyDown={(e) => keyAccessibility(e)}
                                     key={suggestion.index}
-                                    // className={className}
-
-                                    {...getSuggestionItemProps(suggestion, {})}
+                                    {...getSuggestionItemProps(suggestion, {
+                                        className,
+                                        style,
+                                    })}
                                 >
                                     <span>{suggestion.description}</span>
                                 </div>
                             );
                         })}
-                    </ul>
+                    </div>
                 </div>
             )}
         </PlacesAutocomplete>

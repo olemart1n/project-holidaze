@@ -1,40 +1,4 @@
 @import url("../index.css");
 header {
-    height: auto;
     width: 100%;
-}
-nav {
-    margin: auto;
-    height: 100%;
-    width: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    padding: 0.5rem 0rem;
-    flex-wrap: wrap;
-}
-
-.logo_link {
-    fill: var(--color-logo);
-}
-
-.header_nav_icon_button {
-    border: none;
-    background-color: transparent;
-    margin: 5px;
-}
-
-.header_nav_icon {
-    fill: var(--color-black);
-    height: 40px;
-    width: auto;
-}
-.header_nav_icon_bar {
-    fill: var(--color-black);
-    height: 33px;
-    width: auto;
-}
-.p_tag {
-    color: #45bcec;
 }

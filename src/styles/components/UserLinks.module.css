@@ -1,0 +1,6 @@
+@import url("../index.css");
+
+.user_link {
+    text-decoration: none;
+    color: var(--color-black);
+}

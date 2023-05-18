@@ -6,9 +6,16 @@ const venueSchema = yup.object({
     // perk: yup.boolean(),
     street: yup.string(),
     city: yup.string(),
-    zip: yup.string().min(3),
+    zip: yup.string(),
     country: yup.string(),
     continent: yup.string(),
+    description: yup.string().required(),
+    wifi: yup.boolean(),
+    parking: yup.boolean(),
+    breakfast: yup.boolean(),
+    pets: yup.boolean(),
+    maxGuests: yup.number(),
+    price: yup.number(),
 });
 
 export default venueSchema;

@@ -1,11 +1,11 @@
 @import url("../index.css");
 
-.host_header_link {
+.header_link {
     text-decoration: none;
     color: var(--color-black);
 }
 
-.host_header_button {
+.header_button {
     background-color: var(--color-logoTheme2);
     border: 1px solid var(--color-border);
     border-radius: 4px;
@@ -15,7 +15,7 @@
 }
 
 @media (max-width: 650px) {
-    .host_header_link {
+    .header_link {
         margin: 5px auto;
     }
 }

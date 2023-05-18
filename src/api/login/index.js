@@ -24,5 +24,14 @@ export const login = async (data, setErr, setUser) => {
                 closeDialog();
             }, 1500);
         })
-        .catch((error) => console.log(error));
+        .catch((error) => console.log(error))
+        .finally(() => {
+            setTimeout(() => {
+                if (data.venueManager) {
+                    navigate("/host");
+                } else {
+                    navigate("/");
+                }
+            }, 1500);
+        });
 };

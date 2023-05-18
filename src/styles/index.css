@@ -36,17 +36,7 @@
     box-sizing: border-box;
 }
 
-.user-wrapper {
-    height: 100dvh;
-    height: 100vh;
-    display: grid;
-    font-family: "Coda", cursive;
-    grid-template-rows:
-        auto
-        1fr
-        auto;
-}
-.host-wrapper {
+.wrapper {
     height: 100dvh;
     height: 100vh;
     display: grid;

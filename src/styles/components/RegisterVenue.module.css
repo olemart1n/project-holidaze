@@ -39,6 +39,62 @@
     font-size: 1.5rem;
 }
 
+.register_venue_description_div {
+    display: flex;
+    flex-direction: column;
+}
+
+.register_venue_description_label {
+    padding: 0.2rem;
+    text-transform: capitalize;
+}
+.register_venue_description_input {
+    padding-inline-start: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-1);
+}
+
+.register_venue_information {
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    background-color: var(--color-logoTheme2);
+    padding: 0.8rem;
+}
+
+.register_venue_information_1 {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+}
+.register_venue_information_1_kroner {
+    position: absolute;
+    right: 30px;
+    top: 3px;
+}
+
+.register_venue_information_2 {
+    display: flex;
+    justify-content: space-around;
+}
+
+.register_venue_information_boolean {
+    width: 80%;
+    margin: 5px auto;
+    display: flex;
+}
+.register_venue_information_boolean_header {
+    text-align: center;
+    padding: 1rem;
+}
+.register_venue_information_boolean h4 {
+    margin-right: auto;
+}
+.register_venue_information_boolean label {
+    margin: 0 10px;
+}
+
 @media (min-width: 650px) {
     .register_venue_image_div {
         width: 180px;

@@ -1,35 +1,20 @@
-import React from "react";
+import HostLinks from "../HostLinks";
 import HeaderPersonIcon from "../HeaderPersonIcon";
 import { MdOtherHouses } from "react-icons/md";
-import HostHeaderLinks from "../HostHeaderLinks";
-import { user } from "../../states/state-functions";
-import { useState } from "react";
-import { Link } from "react-router-dom";
 
-import styles from "../../styles/components/HostHeader.module.css";
-
-function HostHeader() {
-    const loggedInUser = user();
-    const [mobileNav, setIsMobileNav] = useState(false);
-    const toggleMobileNav = () => {
-        if (mobileNav) {
-            setIsMobileNav(false);
-        } else {
-            setIsMobileNav(true);
-        }
-    };
+function NavHost({ mobileNav }) {
     return (
-        <header className={styles.host_header}>
+        <>
             <nav className={styles.host_header_nav}>
                 <Link to="/host" className={styles.logo_link}>
                     <img className={styles.host_header_avatar} src={loggedInUser.avatar} />
                 </Link>
                 <div className={styles.host_header_links_desktop}>
-                    <HostHeaderLinks />
+                    <HostLinks />
                 </div>
                 {mobileNav && (
                     <div className={styles.host_header_links_mobile}>
-                        <HostHeaderLinks />
+                        <HostLinks />
                     </div>
                 )}
             </nav>
@@ -40,9 +25,11 @@ function HostHeader() {
             >
                 <MdOtherHouses />
             </button>
-            {/* <HeaderPersonIcon /> */}
-        </header>
+        </>
     );
 }
 
-export default HostHeader;
+export default NavHost;
+{
+    /* <HeaderPersonIcon /> */
+}
