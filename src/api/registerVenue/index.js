@@ -6,29 +6,23 @@ const header = {
     method: "POST",
     headers: {
         "Content-Type": "application/json",
+        authorization: "",
     },
     body: {},
 };
-export const registerVenue = async (data) => {
+export const registerVenue = async (data, token, setError, setSuccess) => {
     header.body = JSON.stringify(data);
-    fetch(url.login, header)
+    header.headers.authorization = "Bearer " + token;
+    fetch(url.venues, header)
         .then((data) => data.json())
         .then((data) => {
             if (data.errors) {
-                setErr(data.errors[0].message);
+                setError(data.errors[0].message);
+                console.log(data.errors[0].message);
                 return;
             }
-            if (data.venueManager) {
-                save("hostUser", data);
-                setHostUser(data);
-            } else {
-                save("user", data);
-                setUser(data);
-            }
+            console.log(data);
             setSuccess(true);
-            setTimeout(() => {
-                closeDialog();
-            }, 1500);
         })
         .catch((error) => console.log(error));
 };

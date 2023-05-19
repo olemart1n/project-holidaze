@@ -1,5 +1,5 @@
 import styles from "../../styles/components/RegisterVenue.module.css";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { MdOutlineDelete } from "react-icons/md";
@@ -10,10 +10,13 @@ import YupInput from "../YupInput";
 import venueSchema from "../../features/schema/venueschema";
 import googleApiLibraries from "../../constants/googleApiLibraries";
 import { registerVenue } from "../../api/registerVenue";
+import { hostUser } from "../../states/state-functions";
 function RegisterVenue() {
+    const host = hostUser();
     const [hiddenImage, setHiddenImage] = useState();
     const [imageArray, setImageArray] = useState([]);
-
+    const [error, setError] = useState(false);
+    const [success, setSuccess] = useState(false);
     const [city, setCity] = useState("");
     const [zip, setZip] = useState("");
     const [country, setCountry] = useState("");
@@ -43,13 +46,45 @@ function RegisterVenue() {
         setImageArray(images);
     };
 
+    const onSubmit = (data, e) => {
+        e.preventDefault();
+        const submitData = {
+            name: data.name,
+            description: data.description,
+            media: imageArray,
+            maxGuests: data.maxGuests,
+            rating: 5,
+            price: data.price,
+            meta: {
+                wifi: data.wifi,
+                parking: data.parking,
+                pets: data.pets,
+                breakfast: data.breakfast,
+            },
+            location: {
+                address: street,
+                city: city,
+                zip: zip,
+                country: country,
+                continent: continent,
+                lat: latLng.lat,
+                lng: latLng.lng,
+            },
+        };
+        registerVenue(submitData, host.accessToken, setError, setSuccess);
+        success &&
+            setTimeout(() => {
+                window.location.reload();
+            }, 2500);
+    };
+
     return (
         <LoadScript
             googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
             libraries={googleApiLibraries}
         >
             <form
-                onSubmit={handleSubmit((data) => registerVenue(data))}
+                onSubmit={handleSubmit((data, e) => onSubmit(data, e))}
                 autoComplete="off"
                 className={styles.register_venue_form}
             >
@@ -63,7 +98,7 @@ function RegisterVenue() {
                     <YupInput
                         errors={errors}
                         register={register}
-                        inputName={"image"}
+                        inputName={"media"}
                         onChange={(e) => setHiddenImage(e.currentTarget.value)}
                         type="url"
                         id="register_venue_images_error_message"
@@ -183,6 +218,7 @@ function RegisterVenue() {
                         <input
                             type="number"
                             name="price"
+                            {...register("price")}
                             className={styles.register_venue_information_1_input}
                         ></input>
 
@@ -267,7 +303,16 @@ function RegisterVenue() {
                     </div>
                 </div>
                 <div className={styles.register_venue_div_submit}>
-                    <button className={styles.register_venue_submit}>submit</button>
+                    {success ? (
+                        <p className={styles.register_venue_div_submit_success}>
+                            You have setSuccessfully submitted a venue
+                        </p>
+                    ) : (
+                        <button className={styles.register_venue_submit_button}>submit</button>
+                    )}
+                    {error && !success && (
+                        <p className={styles.register_venue_div_submit_error}>{error}</p>
+                    )}
                 </div>
             </form>
         </LoadScript>

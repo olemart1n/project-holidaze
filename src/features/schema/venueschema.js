@@ -2,8 +2,7 @@ import * as yup from "yup";
 
 const venueSchema = yup.object({
     name: yup.string().min(2).max(33),
-    image: yup.string(),
-    // perk: yup.boolean(),
+    media: yup.string(),
     street: yup.string(),
     city: yup.string(),
     zip: yup.string(),

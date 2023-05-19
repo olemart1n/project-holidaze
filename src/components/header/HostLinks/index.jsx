@@ -6,12 +6,13 @@ import { useNavigate } from "react-router-dom";
 
 function HostLinks({ toggleNav }) {
     const navigate = useNavigate();
-    const hostUser = setUser();
+    const hostUser = setHostUser();
     const notHostUser = setUser();
     const logOut = () => {
         hostUser({});
         notHostUser({});
         remove("user");
+        remove("hostUser");
         setTimeout(() => {
             navigate("/");
             document.location.reload();

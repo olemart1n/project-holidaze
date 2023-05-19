@@ -1,5 +1,4 @@
 import { save, load } from "../../features/storage";
-
 const venues = "https://api.noroff.dev/api/v1/holidaze/venues/";
 const bookings = "https://api.noroff.dev/api/v1/holidaze/bookings";
 const ownerAndBookings = "?_owner=true&_bookings=true";
@@ -18,6 +17,14 @@ const getFetchHeader = {
 const getMethod = {
     method: "GET",
 };
+const postMethod = {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        Authorization: "",
+    },
+    body: {},
+};
 const url = {
     venues,
     bookings,
@@ -25,7 +32,7 @@ const url = {
     login,
     register,
     getFetchHeader,
-    hostData,
     getMethod,
+    postMethod,
 };
 export default url;

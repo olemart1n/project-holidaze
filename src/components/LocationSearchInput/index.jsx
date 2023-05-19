@@ -17,7 +17,9 @@ const LocationSearchInput = ({
     };
     const handleSelect = async (initialState) => {
         const req = await geocodeByAddress(initialState);
+
         const latLng = await getLatLng(req[0]);
+        console.log(latLng);
         const place = req[0];
         const addressComponents = place.address_components.reduce((acc, component) => {
             const componentType = component.types[0];
