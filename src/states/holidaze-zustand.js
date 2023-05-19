@@ -8,6 +8,8 @@ const useHolidaze = create((set) => ({
     hostUser: {},
     venues: [],
     specificVenue: {},
+    hostedVenues: [],
+    setHostedVenues: (data) => set((state) => ({ hostedVenues: (state.hostedVenues = data) })),
     setHostUser: (data) => set((state) => ({ hostUser: (state.hostUser = data) })),
     setUser: (data) => set((state) => ({ user: (state.user = data) })),
     setIsModalOpen: (data) => set((state) => ({ isModalOpen: (state.isModalOpen = data) })),

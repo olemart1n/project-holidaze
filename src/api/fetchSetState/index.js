@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { setIsLoading, setError } from "../../states/state-functions";
 
-export const fetchSetState = (url, options, setChosenState) => {
+export const fetchSetState = (url, options, setChosenState, optionalQuery) => {
     const setErrorState = setError();
     const setLoading = setIsLoading();
     // setLoading(true);
@@ -15,7 +15,7 @@ export const fetchSetState = (url, options, setChosenState) => {
                     if (!isCancelled) {
                         json?.errors
                             ? setErrorState(json.errors) & console.log(json.errors)
-                            : setChosenState(json);
+                            : setChosenState(optionalQuery ? json[optionalQuery] : json);
                     }
                 })
                 .catch((error) => {

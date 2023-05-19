@@ -6,8 +6,8 @@ const login = "https://api.noroff.dev/api/v1/holidaze/auth/login";
 const register = "https://api.noroff.dev/api/v1/holidaze/auth/register";
 const hostData =
     "https://api.noroff.dev/api/v1/holidaze/profiles/Brousard?_bookings=true&_venues=true";
-const user = load("user");
-const auth = user?.accessToken;
+let auth;
+load("user") ? (auth = load("user").accessToken) : (auth = load("hostUser").accessToken);
 const getFetchHeader = {
     method: "GET",
     headers: {

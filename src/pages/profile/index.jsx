@@ -1,13 +1,21 @@
+import { useEffect, useState } from "react";
+import { fetchSetState } from "../../api/fetchSetState";
 import IdCard from "../../components/IdCard";
 import YourBookings from "../../components/MadeBookings";
-import { setHostUser } from "../../states/state-functions";
-import { fetchSetState } from "../../api/fetchSetState";
+import { setHostedVenues } from "../../states/state-functions";
 import url from "../../api/url";
+import { load } from "../../features/storage";
 
 function Profile() {
-    const setHostData = setHostUser();
-
-    fetchSetState(url.hostData, url.getFetchHeader, setHostData);
+    const setVenues = setHostedVenues();
+    fetchSetState(
+        `https://api.noroff.dev/api/v1/holidaze/profiles/${
+            load("hostUser").name
+        }?_bookings=true&_venues=true`,
+        url.getFetchHeader,
+        setVenues,
+        "venues"
+    );
     return (
         <main>
             <IdCard />

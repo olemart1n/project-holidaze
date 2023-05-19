@@ -21,7 +21,7 @@ function HostLinks({ toggleNav }) {
     return (
         <>
             <Link className={styles.header_link} to="host/venue" onClick={toggleNav}>
-                Your Venue
+                Your Venues
             </Link>
             <Link className={styles.header_link} to="/host/bookings" onClick={toggleNav}>
                 Bookings

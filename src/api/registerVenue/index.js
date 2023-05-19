@@ -1,6 +1,4 @@
 import url from "../url";
-import { closeDialog } from "../../features/dialogs";
-import { save } from "../../features/storage";
 
 const header = {
     method: "POST",
@@ -23,6 +21,9 @@ export const registerVenue = async (data, token, setError, setSuccess) => {
             }
             console.log(data);
             setSuccess(true);
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
         })
         .catch((error) => console.log(error));
 };

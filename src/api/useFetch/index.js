@@ -1,9 +1,11 @@
 import { useEffect } from "react";
-import { user } from "../../states/state-functions";
+import { user, hostUser } from "../../states/state-functions";
 
-export const useFetch = (url) => {
-    const auth = user();
-
+export const useFetch = (url, options) => {
+    const x = user();
+    const y = hostUser();
+    let auth;
+    x.name ? (auth = x) : (auth = y);
     useEffect(() => {
         console.log("fetch function");
         if (url) {
@@ -28,5 +30,6 @@ export const useFetch = (url) => {
                 isCancelled = true;
             };
         }
-    }, [url]);
+        return data;
+    }, [url, options]);
 };

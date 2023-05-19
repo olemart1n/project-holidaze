@@ -28,7 +28,7 @@ export const login = async (data, setErr, setSuccess, setUser, setHostUser) => {
             }
             setSuccess(true);
             setTimeout(() => {
-                closeDialog();
+                // closeDialog();
             }, 1500);
         })
         .catch((error) => console.log(error));

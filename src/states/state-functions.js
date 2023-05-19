@@ -3,6 +3,8 @@ import useHolidaze from "./holidaze-zustand";
 
 export const venues = () => useHolidaze((state) => state.venues);
 export const setVenues = () => useHolidaze((state) => state.setVenues);
+export const hostedVenues = () => useHolidaze((state) => state.hostedVenues);
+export const setHostedVenues = () => useHolidaze((state) => state.setHostedVenues);
 export const error = () => useHolidaze((state) => state.error);
 export const setError = () => useHolidaze((state) => state.setError);
 export const specificVenue = () => useHolidaze((state) => state.specificVenue);
