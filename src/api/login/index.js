@@ -1,6 +1,8 @@
 import url from "../url";
 import { closeDialog } from "../../features/dialogs";
 import { save } from "../../features/storage";
+import { fetchSetState } from "../fetchSetState";
+import ifHostSetVenues from "../setHostedVenues";
 
 const header = {
     method: "POST",
@@ -9,7 +11,7 @@ const header = {
     },
     body: {},
 };
-export const login = async (data, setErr, setSuccess, setUser, setHostUser) => {
+export const login = async (data, setErr, setSuccess, setUser, setHostUser, setHostVenues) => {
     let host = false;
     header.body = JSON.stringify(data);
     fetch(url.login, header)
@@ -22,9 +24,11 @@ export const login = async (data, setErr, setSuccess, setUser, setHostUser) => {
             if (data.venueManager) {
                 save("hostUser", data);
                 setHostUser(data);
+                ifHostSetVenues(data.name, data.accessToken, setHostVenues, "venues");
             } else {
                 save("user", data);
                 setUser(data);
+                //set hosted venues state
             }
             setSuccess(true);
             setTimeout(() => {

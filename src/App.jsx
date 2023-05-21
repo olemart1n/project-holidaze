@@ -3,8 +3,8 @@ import { setUser, setHostUser } from "./states/state-functions";
 import React, { useEffect } from "react";
 import Home from "./pages/home";
 import Venue from "./pages/Venue";
-import Profile from "./pages/profile";
-import HostVenue from "./pages/hostVenue";
+import Host from "./pages/host";
+import HostVenues from "./pages/hostVenues";
 import UserWrapper from "./wrappers";
 import Register from "./pages/register";
 
@@ -24,8 +24,8 @@ function App() {
                 <Route index element={<Home />} />
                 <Route path="venue/:id" element={<Venue />} />
                 <Route path="register" element={<Register />} />
-                <Route path="host" element={<Profile />} />
-                <Route path="host/venue" element={<HostVenue />} />
+                <Route path="host" element={<Host />} />
+                <Route path="host/venue" element={<HostVenues />} />
             </Route>
         </Routes>
     );

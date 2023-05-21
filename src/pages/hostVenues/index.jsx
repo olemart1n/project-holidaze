@@ -5,7 +5,7 @@ import RegisterVenue from "../../components/RegisterVenue";
 import { openDialog } from "../../features/dialogs";
 import Loader from "../../components/Loader";
 import HostedVenue from "../../components/HostedVenue";
-function HostVenue() {
+function HostVenues() {
     return (
         <main className={styles.host_venue}>
             <h1 className={styles.host_venue_h1}>Your Venues</h1>
@@ -23,4 +23,4 @@ function HostVenue() {
     );
 }
 
-export default HostVenue;
+export default HostVenues;

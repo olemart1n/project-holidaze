@@ -7,13 +7,20 @@ import loginSchema from "../../features/schema/loginschema";
 import { login } from "../../api/login";
 import { Link } from "react-router-dom";
 import { closeDialog, preventDialogClose } from "../../features/dialogs";
-import { user, setUser, hostUser, setHostUser } from "../../states/state-functions";
+import {
+    user,
+    setUser,
+    hostUser,
+    setHostUser,
+    setHostedVenues,
+} from "../../states/state-functions";
 import YupInput from "../YupInput";
 
 function Login() {
     const navigate = useNavigate();
     const setHost = setHostUser();
     const setLoggedInUser = setUser();
+    const setHostVenues = setHostedVenues();
 
     const loggedInUser = user();
     const loggedInHost = hostUser();
@@ -25,7 +32,7 @@ function Login() {
             setTimeout(() => {
                 loggedInHost?.name && navigate("/host");
                 loggedInUser?.name && navigate("/");
-            }, 1500);
+            }, 2000);
         }
     }, [success]);
 
@@ -40,7 +47,7 @@ function Login() {
         <form
             className={styles.form_login}
             onSubmit={handleSubmit((data) =>
-                login(data, setIsError, setSuccess, setLoggedInUser, setHost)
+                login(data, setIsError, setSuccess, setLoggedInUser, setHost, setHostVenues)
             )}
         >
             <h2 className={styles.form_login_h2}>Login</h2>
