@@ -22,5 +22,6 @@ export const extraCloseFunctionality = (e) => {
 };
 
 export const preventDialogClose = (e) => {
+    // e.preventDefault();
     e.stopPropagation();
 };

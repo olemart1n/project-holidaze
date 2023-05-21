@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { user, hostUser } from "../../states/state-functions";
+import { user, hostUser, isLoading } from "../../states/state-functions";
 import NavUser from "./NavUser";
 import NavHost from "./NavHost";
 
 function Header() {
     const authedHost = hostUser();
     const authed = user();
+    const loading = isLoading();
     const [mobileNav, setMobileNav] = useState(false);
     const toggleMobileNav = () => {
         if (mobileNav) {
@@ -16,7 +17,7 @@ function Header() {
     };
     return (
         <header>
-            {authedHost?.venueManager ? (
+            {authedHost?.venueManager && !loading ? (
                 <NavHost
                     toggleMobileNav={toggleMobileNav}
                     mobileNav={mobileNav}

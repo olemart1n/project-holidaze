@@ -11,8 +11,7 @@ function HostLinks({ toggleNav }) {
     const logOut = () => {
         hostUser({});
         notHostUser({});
-        remove("user");
-        remove("hostUser");
+        localStorage.clear();
         setTimeout(() => {
             navigate("/");
             document.location.reload();

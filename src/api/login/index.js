@@ -1,7 +1,7 @@
 import url from "../url";
-import { closeDialog } from "../../features/dialogs";
+
 import { save } from "../../features/storage";
-import { fetchSetState } from "../fetchSetState";
+import setBookingsByUser from "../setBookingsByUser";
 import ifHostSetVenues from "../setHostedVenues";
 
 const header = {
@@ -11,8 +11,18 @@ const header = {
     },
     body: {},
 };
-export const login = async (data, setErr, setSuccess, setUser, setHostUser, setHostVenues) => {
-    let host = false;
+export const login = async (
+    data,
+    setErr,
+    setSuccess,
+    setLoading,
+
+    setUser,
+    setHostUser,
+    setHostVenues,
+    setUserBookings
+) => {
+    setLoading(true);
     header.body = JSON.stringify(data);
     fetch(url.login, header)
         .then((data) => data.json())
@@ -24,16 +34,17 @@ export const login = async (data, setErr, setSuccess, setUser, setHostUser, setH
             if (data.venueManager) {
                 save("hostUser", data);
                 setHostUser(data);
-                ifHostSetVenues(data.name, data.accessToken, setHostVenues, "venues");
+                ifHostSetVenues(data.name, data.accessToken, setHostVenues);
+                setSuccess(true);
+                setErr(false);
+                setBookingsByUser(data.name, data.accessToken, setUserBookings);
             } else {
+                setErr(false);
                 save("user", data);
                 setUser(data);
-                //set hosted venues state
+                setBookingsByUser(data.name, data.accessToken, setUserBookings);
+                setSuccess(true);
             }
-            setSuccess(true);
-            setTimeout(() => {
-                // closeDialog();
-            }, 1500);
         })
         .catch((error) => console.log(error));
 };

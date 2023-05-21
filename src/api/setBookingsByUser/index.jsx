@@ -1,8 +1,7 @@
 import * as storage from "../../features/storage";
-
-const ifHostSetVenues = async (name, token, setState) => {
+export const setBookingsByUser = async (name, token, setState) => {
     const req = await fetch(
-        `https://api.noroff.dev/api/v1/holidaze/profiles/${name}/venues?_bookings=true`,
+        `https://api.noroff.dev/api/v1/holidaze/profiles/${name}/bookings?_venue=true`,
         {
             method: "GET",
             headers: {
@@ -12,7 +11,7 @@ const ifHostSetVenues = async (name, token, setState) => {
     );
     const res = await req.json();
     setState(res);
-    storage.save("hostedVenues", res);
+    storage.save("bookedByUser", res);
 };
 
-export default ifHostSetVenues;
+export default setBookingsByUser;

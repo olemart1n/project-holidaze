@@ -15,5 +15,5 @@ export const hostUser = () => useHolidaze((state) => state.hostUser);
 export const setHostUser = () => useHolidaze((state) => state.setHostUser);
 export const isLoading = () => useHolidaze((state) => state.isLoading);
 export const setIsLoading = () => useHolidaze((state) => state.setIsLoading);
-export const isModalOpen = () => useHolidaze((state) => state.isModalOpen);
-export const setIsModalOpen = () => useHolidaze((state) => state.setIsModalOpen);
+export const bookedByUser = () => useHolidaze((state) => state.bookedByUser);
+export const setBookedByUser = () => useHolidaze((state) => state.setBookedByUser);

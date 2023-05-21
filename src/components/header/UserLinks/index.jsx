@@ -9,7 +9,7 @@ function UserLinks({ toggleNav }) {
     const setUserState = setUser();
     const logOut = () => {
         setUserState({});
-        remove("user");
+        localStorage.clear();
         setTimeout(() => {
             navigate("/");
             document.location.reload();

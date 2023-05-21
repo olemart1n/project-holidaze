@@ -6,8 +6,10 @@ import UserButton from "../UserButton";
 import styles from "../../../styles/components/NavUser.module.css";
 import UserLinks from "../UserLinks";
 import { openDialog } from "../../../features/dialogs";
+import { isLoading } from "../../../states/state-functions";
 
 function NavUser({ toggleMobileNav, mobileNav, user }) {
+    const loading = isLoading();
     return (
         <nav>
             <Link to="/" className={styles.logo_link}>
@@ -16,7 +18,7 @@ function NavUser({ toggleMobileNav, mobileNav, user }) {
                 </svg>
             </Link>
 
-            {user?.name ? (
+            {user?.name && !loading ? (
                 <div className={styles.user_links_desktop}>
                     <UserLinks />
                 </div>

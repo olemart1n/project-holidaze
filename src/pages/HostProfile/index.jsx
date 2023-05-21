@@ -1,7 +1,7 @@
 import IdCard from "../../components/IdCard";
 import YourBookings from "../../components/MadeBookings";
 
-function Host() {
+function HostProfile() {
     return (
         <main>
             <IdCard />
@@ -10,4 +10,4 @@ function Host() {
     );
 }
 
-export default Host;
+export default HostProfile;
