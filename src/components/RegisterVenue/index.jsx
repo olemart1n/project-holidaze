@@ -11,6 +11,7 @@ import venueSchema from "../../features/schema/venueschema";
 import googleApiLibraries from "../../constants/googleApiLibraries";
 import { registerVenue } from "../../api/registerVenue";
 import { hostUser } from "../../states/state-functions";
+import HtmlDialog from "../HtmlDialog";
 function RegisterVenue() {
     const host = hostUser();
     const [hiddenImage, setHiddenImage] = useState();

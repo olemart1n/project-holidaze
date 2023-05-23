@@ -15,7 +15,12 @@ function Home() {
     ) : (
         <main className={styles.home_div}>
             <h1>Venues</h1>
-            <VenueCards json={initial} />
+
+            <div className={styles.venue_cards_wrapper}>
+                {initial.map((venue) => {
+                    return <VenueCards key={venue.id} data={venue} />;
+                })}
+            </div>
         </main>
     );
 }

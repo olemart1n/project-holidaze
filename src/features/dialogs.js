@@ -1,6 +1,14 @@
-export const openDialog = () => {
+export const openDialog = (type) => {
     const dialogModal = document.querySelector("[data-modal]");
-    dialogModal.showModal();
+    if (dialogModal.getAttribute("type") === type) {
+        dialogModal.showModal();
+    }
+};
+export const openDialogSmall = (type) => {
+    const dialogModal = document.querySelector("[data-modal]");
+    if (dialogModal.getAttribute("type") === type) {
+        dialogModal.show();
+    }
 };
 
 export const closeDialog = () => {

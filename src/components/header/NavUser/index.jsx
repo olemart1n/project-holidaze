@@ -23,7 +23,7 @@ function NavUser({ toggleMobileNav, mobileNav, user }) {
                     <UserLinks />
                 </div>
             ) : (
-                <div className={styles.user_auth_desktop} onClick={openDialog}>
+                <div className={styles.user_auth_desktop} onClick={() => openDialog("login")}>
                     <p>Login</p>
                 </div>
             )}

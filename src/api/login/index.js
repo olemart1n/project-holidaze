@@ -16,7 +16,6 @@ export const login = async (
     setErr,
     setSuccess,
     setLoading,
-
     setUser,
     setHostUser,
     setHostVenues,
@@ -35,15 +34,16 @@ export const login = async (
                 save("hostUser", data);
                 setHostUser(data);
                 ifHostSetVenues(data.name, data.accessToken, setHostVenues);
+                setBookingsByUser(data.name, data.accessToken, setUserBookings);
                 setSuccess(true);
                 setErr(false);
-                setBookingsByUser(data.name, data.accessToken, setUserBookings);
             } else {
                 setErr(false);
                 save("user", data);
                 setUser(data);
                 setBookingsByUser(data.name, data.accessToken, setUserBookings);
                 setSuccess(true);
+                setErr(false);
             }
         })
         .catch((error) => console.log(error));

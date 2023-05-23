@@ -1,10 +1,4 @@
 @import url("../index.css");
-.venue_cards_wrapper {
-    width: 100%;
-    padding: 0.7rem;
-    display: flex;
-    flex-direction: column;
-}
 /* selve kortet */
 .venue_card {
     display: flex;
@@ -55,14 +49,6 @@
 }
 
 @media (min-width: 640px) {
-    .venue_cards_wrapper {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 1.5rem;
-        padding: 0.5rem;
-        margin: auto;
-        justify-items: center;
-    }
     .venue_card {
         height: 300px;
         flex-direction: column;

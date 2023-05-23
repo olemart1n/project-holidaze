@@ -30,6 +30,6 @@ export const registerUser = (data, setErr, setUser, navigate) => {
                 } else {
                     navigate("/");
                 }
-            }, 1500);
+            }, 2500);
         });
 };

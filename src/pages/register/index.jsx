@@ -6,16 +6,14 @@ import { user, setUser } from "../../states/state-functions";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import registerSchema from "../../features/schema/registershema";
+import Loader from "../../components/Loader";
 
 function Register() {
     const navigateUser = useNavigate();
-
     const [avatarImage, setAvatarImage] = useState();
-
     const setLoggedInUser = setUser();
     const loggedInUser = user();
     const [isError, setIsError] = useState("");
-    const studNoroff = /@stud\.noroff\.no/i;
 
     const {
         register,
@@ -124,7 +122,10 @@ function Register() {
             </div>
             <p className={styles.form_register_error}>{isError}</p>
             {loggedInUser?.name ? (
-                <p className={styles.form_register_success}>Sign up successful</p>
+                <div>
+                    <Loader />
+                    <p className={styles.form_register_success}>Sign up successful</p>
+                </div>
             ) : (
                 ""
             )}

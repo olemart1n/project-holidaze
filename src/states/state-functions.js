@@ -17,3 +17,5 @@ export const isLoading = () => useHolidaze((state) => state.isLoading);
 export const setIsLoading = () => useHolidaze((state) => state.setIsLoading);
 export const bookedByUser = () => useHolidaze((state) => state.bookedByUser);
 export const setBookedByUser = () => useHolidaze((state) => state.setBookedByUser);
+export const customer = () => useHolidaze((state) => state.customer);
+export const setCustomer = () => useHolidaze((state) => state.setCustomer);

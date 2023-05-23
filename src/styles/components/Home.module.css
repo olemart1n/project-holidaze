@@ -1,3 +1,21 @@
 .home_div {
     max-width: 100%;
 }
+
+.venue_cards_wrapper {
+    width: 100%;
+    padding: 0.7rem;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 640px) {
+    .venue_cards_wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+        padding: 0.5rem;
+        margin: auto;
+        justify-items: center;
+    }
+}

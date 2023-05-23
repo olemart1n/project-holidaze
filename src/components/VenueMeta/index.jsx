@@ -2,7 +2,7 @@ import styles from "../../styles/components/VenueInfo.module.css";
 import { FcCheckmark } from "react-icons/fc";
 import { RxCrossCircled } from "react-icons/rx";
 function VenueMeta({ info }) {
-    const meta = info.meta;
+    const meta = info;
     const newArr = [];
     for (const property in meta) {
         const innerObject = {};

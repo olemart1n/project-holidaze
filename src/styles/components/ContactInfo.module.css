@@ -1,0 +1,11 @@
+.contactInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contactInfo_img {
+    height: 200px;
+    border-radius: 10px;
+}

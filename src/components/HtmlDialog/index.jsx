@@ -9,10 +9,17 @@ function HtmlDialog({ children, type }) {
         styling = styles.html_modal_login;
     } else if (type === "register") {
         styling = styles.html_modal_register;
+    } else if (type === "contactInfo") {
+        styling = styles.html_modal_login;
     }
-
     return (
-        <dialog data-modal id="html_modal" className={styling} onClick={extraCloseFunctionality}>
+        <dialog
+            data-modal
+            type={type}
+            id="html_modal"
+            className={styling}
+            onClick={extraCloseFunctionality}
+        >
             <div className={styles.modal_wrapper}>
                 <div className={styles.modal_close_div}>
                     <button

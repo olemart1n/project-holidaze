@@ -1,11 +1,11 @@
 import IdCard from "../../components/IdCard";
-import YourBookings from "../../components/MadeBookings";
+import UserMadeBookings from "../../components/UserMadeBookings";
 
 function HostProfile() {
     return (
         <main>
             <IdCard />
-            <YourBookings />
+            <UserMadeBookings />
         </main>
     );
 }

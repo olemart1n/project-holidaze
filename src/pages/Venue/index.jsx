@@ -9,7 +9,9 @@ import { useParams } from "react-router-dom";
 import { fetchSetState } from "../../api/fetchSetState";
 import { specificVenue, setSpecificVenue } from "../../states/state-functions";
 import { BiArrowBack } from "react-icons/bi";
+import Loader from "../../components/Loader";
 import url from "../../api/url";
+import { useEffect } from "react";
 
 function Venue() {
     const navigate = useNavigate();
@@ -17,18 +19,23 @@ function Venue() {
     const venue = specificVenue();
     const { id } = useParams();
     fetchSetState(url.venues + id + url.ownerAndBookings, url.getMethod, setVenue);
-    return !venue ? (
-        <p>no venue</p>
+    return !(venue.id === id) ? (
+        <main className={styles.venue_wrapper_deleted}>
+            <BiArrowBack onClick={() => navigate(-1)} className={styles.back_arrow} />
+            <Loader />
+        </main>
     ) : (
         <main className={styles.venue_wrapper}>
             <BiArrowBack onClick={() => navigate(-1)} className={styles.back_arrow} />
 
             <h1 className={styles.venue_heading}>{venue.name}</h1>
-            <ImageSlide data={venue} />
+            <div className={styles.venue_imageSlide}>
+                <ImageSlide data={venue} />
+            </div>
             <div className={styles.big_screen_info}>
                 <Book />
                 <div className={styles.info_layout}>
-                    <VenueMeta info={venue} />
+                    <VenueMeta info={venue.meta} />
                     <VenueLocation location={venue.location} />
                 </div>
             </div>

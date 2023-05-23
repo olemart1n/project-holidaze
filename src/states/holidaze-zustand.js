@@ -9,6 +9,8 @@ const useHolidaze = create((set) => ({
     specificVenue: {},
     hostedVenues: [],
     bookedByUser: [],
+    customer: {},
+    setCustomer: (data) => set((state) => ({ customer: (state.customer = data) })),
     setHostedVenues: (data) => set((state) => ({ hostedVenues: (state.hostedVenues = data) })),
     setBookedByUser: (data) => set((state) => ({ bookedByUser: (state.bookedByUser = data) })),
     setHostUser: (data) => set((state) => ({ hostUser: (state.hostUser = data) })),
