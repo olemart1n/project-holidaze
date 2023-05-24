@@ -1,7 +1,8 @@
 @import url("../index.css");
-.host_venue {
+.host_venue_wrapper {
     display: flex;
     flex-direction: column;
+    margin: 0.5rem;
 }
 .host_venue_h1 {
     text-align: center;
@@ -17,60 +18,32 @@
     font-size: 1rem;
     margin: 3rem auto;
 }
-
+/* ---------- */
 .host_venue_section {
     display: flex;
     align-items: center;
     justify-content: space-around;
     border: 1px solid var(--color-border);
-    padding: 1rem;
+    padding: 0.5rem;
     box-shadow: var(--shadow-1);
-    flex-wrap: wrap;
+    margin: 1rem;
 }
 .host_venue_section h4 {
     text-align: center;
+    width: 100%;
 }
 
 .host_venue_section_div {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 100%;
-}
-.host_venue_section_dates {
-    display: flex;
-    align-items: center;
-    border-radius: 15px;
-    border: 1px solid var(--color-border);
-    height: fit-content;
-    background-color: var(--color-logoTheme2);
-    position: relative;
-}
-.host_venue_section_disabled {
-    display: flex;
-    align-items: center;
-    border-radius: 15px;
-    border: 1px solid var(--color-border);
-    height: fit-content;
-    background-color: var(--color-background);
-    position: relative;
-}
-.host_venue_section_div_item {
-    margin: 0 10px;
-}
-.host_venue_section_contact i {
-    font-size: 10px;
-}
-.host_venue_section_contact {
-    border: 1px solid var(--color-border);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 5px;
+    width: 50%;
 }
 
-.host_venue_section_contact_hide {
+.host_venue_section_div_buttons {
+    width: 100%;
 }
+
 .host_venue_section_delete {
     background-color: var(--color-backgroundWarning);
     padding: 5px;
@@ -88,4 +61,13 @@
     box-shadow: var(--shadow-1);
     font-size: 1rem;
     margin: 3rem auto;
+}
+
+@media (max-width: 650px) {
+    .host_venue_section {
+        flex-direction: column;
+    }
+    .host_venue_section_div {
+        width: 100%;
+    }
 }

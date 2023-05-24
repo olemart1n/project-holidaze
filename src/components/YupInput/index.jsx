@@ -13,7 +13,29 @@ function YupInput({
     onKeyDown,
     onKeyUp,
     required,
+    onClick,
 }) {
+    if (!register && !errors) {
+        return (
+            <div className={styles.yup_section}>
+                <label className={styles.yup_label} htmlFor={inputName}>
+                    {inputName}
+                </label>
+                <input
+                    placeholder={placeholder}
+                    type={type}
+                    className={styles.yup_input}
+                    onChange={onChange}
+                    id={inputId}
+                    value={value}
+                    onKeyDown={onKeyDown}
+                    onKeyUp={onKeyUp}
+                    required={required}
+                    onClick={onClick}
+                ></input>
+            </div>
+        );
+    }
     return (
         <div className={styles.yup_section}>
             <label className={styles.yup_label} htmlFor={inputName}>

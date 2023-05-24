@@ -5,7 +5,8 @@ import VenueMeta from "../VenueMeta";
 import { bookedByUser, setBookedByUser } from "../../states/state-functions";
 import { timeGap, returnDate, returnDay, returnMonth } from "../../features/dateAndTime/index";
 import { Link } from "react-router-dom";
-import { cancelBooking } from "../../api/cancelBooking";
+import { deleteItem } from "../../api/deleteItem";
+import url from "../../api/url";
 function UserMadeBookings() {
     const bookings = bookedByUser();
     const setBookings = setBookedByUser();
@@ -50,7 +51,15 @@ function UserMadeBookings() {
                         {timeGap(now, booking.dateTo) > 0 ? (
                             <button
                                 className={styles.madeBookings_cancel}
-                                onClick={() => cancelBooking(bookings, booking.id, setBookings)}
+                                onClick={() =>
+                                    deleteItem(
+                                        url.bookings,
+                                        bookings,
+                                        booking.id,
+                                        setBookings,
+                                        "bookedByUser"
+                                    )
+                                }
                             >
                                 Cancel booking
                             </button>

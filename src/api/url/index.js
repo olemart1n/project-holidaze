@@ -1,6 +1,6 @@
 import { load } from "../../features/storage";
 const venues = "https://api.noroff.dev/api/v1/holidaze/venues/";
-const bookings = "https://api.noroff.dev/api/v1/holidaze/bookings";
+const bookings = "https://api.noroff.dev/api/v1/holidaze/bookings/";
 const ownerAndBookings = "?_owner=true&_bookings=true";
 const login = "https://api.noroff.dev/api/v1/holidaze/auth/login";
 const register = "https://api.noroff.dev/api/v1/holidaze/auth/register";
@@ -15,7 +15,8 @@ const getFetchHeader = {
         Authorization: `Bearer ${auth}`,
     },
 };
-const deleteFetFetchHeader = {
+const Authorization = `Bearer ${auth}`;
+const deleteFetchHeader = {
     method: "DELETE",
     headers: {
         Authorization: `Bearer ${auth}`,
@@ -41,6 +42,7 @@ const url = {
     getFetchHeader,
     getMethod,
     postMethod,
-    deleteFetFetchHeader,
+    deleteFetchHeader,
+    Authorization,
 };
 export default url;

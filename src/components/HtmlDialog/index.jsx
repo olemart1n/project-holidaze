@@ -9,7 +9,9 @@ function HtmlDialog({ children, type }) {
         styling = styles.html_modal_login;
     } else if (type === "register") {
         styling = styles.html_modal_register;
-    } else if (type === "contactInfo") {
+    } else if (type === "update") {
+        styling = styles.html_modal_register;
+    } else {
         styling = styles.html_modal_login;
     }
     return (

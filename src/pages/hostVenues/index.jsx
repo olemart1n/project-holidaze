@@ -3,25 +3,59 @@ import React from "react";
 import HtmlDialog from "../../components/HtmlDialog";
 import RegisterVenue from "../../components/RegisterVenue";
 // const RegisterVenue = React.lazy(() => import("../../components/RegisterVenue"));
-import { openDialog } from "../../features/dialogs";
+import { closeDialog, openDialog } from "../../features/dialogs";
 import Loader from "../../components/Loader";
-import { hostedVenues, setCustomer } from "../../states/state-functions";
+import { deleteItem } from "../../api/deleteItem";
+import url from "../../api/url";
+import { hostedVenues, setCustomer, setHostedVenues } from "../../states/state-functions";
 import VenueCards from "../../components/VenueCards";
-import { timeGap, returnDate, returnDay, returnMonth } from "../../features/dateAndTime";
-import { useState, useRef } from "react";
-import { BsFilePerson } from "react-icons/bs";
+import HostedVenueBookings from "../../components/HostedVenueBookings";
+import { timeGap } from "../../features/dateAndTime";
+import UpdateVenue from "../../components/UpdateVenue";
+import { useState } from "react";
+
 import ContactInfo from "../../components/ContactInfo";
-import fetchCustomer from "../../api/setCustomer";
-import { load } from "../../features/storage";
+
 function HostVenues() {
     const venues = hostedVenues();
-    const setBookingId = setCustomer();
-    const [state, setState] = useState(0);
+    const setVenues = setHostedVenues();
+    const [updateId, setUpdateId] = useState();
     const [dialogType, setDialogType] = useState("register");
-    const now = new Date();
+    const [deleteId, setDeleteId] = useState("");
+    function Delete() {
+        const style = {
+            textAlign: "center",
+        };
+        return (
+            <div style={style}>
+                <h3>It will no longer be possible to book this venue</h3>
+                <button
+                    className={styles.host_venue_section_delete}
+                    onClick={() => {
+                        deleteItem(url.venues, venues, deleteId, setVenues, "hostedVenues");
+                        closeDialog();
+                    }}
+                >
+                    Stop hosting
+                </button>
+            </div>
+        );
+    }
 
+    const countActiveBookings = (array) => {
+        let count = 0;
+        if (array) {
+            array.forEach((element) => {
+                const now = new Date();
+                const date = new Date(element.dateTo);
+                timeGap(now, date) > 0 && count++;
+            });
+        }
+
+        return count;
+    };
     return (
-        <main className={styles.host_venue}>
+        <main className={styles.host_venue_wrapper}>
             <h1 className={styles.host_venue_h1}>Your Venues</h1>
             <button
                 className={styles.host_venue_addButton}
@@ -30,78 +64,71 @@ function HostVenues() {
                     openDialog("register");
                     setTimeout(() => {
                         openDialog("register");
-                    }, 500);
+                    }, 100);
                 }}
             >
                 Host new venue
             </button>
-            {/* <Loader /> */}
-            <div>
-                {venues.map((venue) => {
-                    return (
-                        <div key={venue.id} className={styles.host_venue_section}>
-                            <div>
-                                <h4>You have {state} upcoming bookings for this venue</h4>
-                                <VenueCards data={venue} />
-                            </div>
-                            <div className={styles.host_venue_section_div}>
-                                {venue.bookings.map((info) => {
-                                    timeGap(now, info.dateTo) > 0 && setState((data) => data + 1);
-                                    return (
-                                        <div
-                                            key={info.id}
-                                            className={
-                                                state > 0
-                                                    ? styles.host_venue_section_dates
-                                                    : styles.host_venue_section_disabled
-                                            }
-                                        >
-                                            <h4 className={styles.host_venue_section_div_item}>
-                                                {info.guests} people booked this venue from{" "}
-                                            </h4>
-                                            <p className={styles.host_venue_section_div_item}>
-                                                {returnDate(info.dateFrom)}{" "}
-                                                {returnMonth(info.dateFrom)}
-                                            </p>
-                                            <p className={styles.host_venue_section_div_item}>/</p>
-                                            <p className={styles.host_venue_section_div_item}>
-                                                {returnDate(info.dateTo)} {returnMonth(info.dateTo)}
-                                            </p>
-                                            <div
-                                                className={styles.host_venue_section_contact}
-                                                onClick={(e) => {
-                                                    fetchCustomer(
-                                                        info.id,
-                                                        load("hostUser").accessToken,
-                                                        setBookingId
-                                                    );
-                                                    setDialogType("contactInfo");
-                                                    setTimeout(() => {
-                                                        openDialog("contactInfo");
-                                                    }, 500);
-                                                }}
-                                            >
-                                                <i>info</i>
-                                                <BsFilePerson />
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-                                <div>
-                                    <button className={styles.host_venue_section_delete}>
-                                        Stop hosting
-                                    </button>
-                                    <button className={styles.host_venue_section_update}>
-                                        Update
-                                    </button>
-                                </div>
+            {venues.map((venue, i) => {
+                return (
+                    <div key={i} className={styles.host_venue_section}>
+                        <div className={styles.host_venue_section_div}>
+                            <h4>
+                                You have {countActiveBookings(venue?.bookings)} upcoming bookings
+                                for this venue
+                            </h4>
+                            <VenueCards data={venue} />
+                            <div className={styles.host_venue_section_div_buttons}>
+                                <button
+                                    className={styles.host_venue_section_delete}
+                                    onClick={() => {
+                                        setDialogType("delete");
+                                        setDeleteId(venue.id);
+                                        setTimeout(() => {
+                                            openDialog("delete");
+                                        }, 500);
+                                    }}
+                                >
+                                    Stop hosting
+                                </button>
+                                <button
+                                    className={styles.host_venue_section_update}
+                                    onClick={() => {
+                                        setUpdateId(venue.id);
+                                        setDialogType("update");
+                                        setTimeout(() => {
+                                            openDialog("update");
+                                        }, 500);
+                                    }}
+                                >
+                                    Update
+                                </button>
                             </div>
                         </div>
-                    );
-                })}
-            </div>
+
+                        <div className={styles.host_venue_section_div}>
+                            {venue?.bookings?.length > 0 ? (
+                                venue.bookings.map((info) => {
+                                    return (
+                                        <HostedVenueBookings
+                                            info={info}
+                                            key={info.id}
+                                            setDialogType={setDialogType}
+                                        />
+                                    );
+                                })
+                            ) : (
+                                <div>No bookings</div>
+                            )}
+                        </div>
+                    </div>
+                );
+            })}
             <HtmlDialog type={dialogType}>
-                {dialogType === "register" ? <RegisterVenue /> : <ContactInfo />}
+                {dialogType === "register" && <RegisterVenue />}
+                {dialogType === "contactInfo" && <ContactInfo />}
+                {dialogType === "delete" && <Delete />}
+                {dialogType === "update" && <UpdateVenue id={updateId} />}
             </HtmlDialog>
         </main>
     );

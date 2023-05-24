@@ -1,0 +1,50 @@
+@import url("../index.css");
+
+.image_register_hidden {
+    display: none;
+}
+
+.image_register_images_section {
+    display: flex;
+
+    flex-wrap: wrap;
+}
+
+.image_register_image_div {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    margin: 1rem;
+}
+
+.image_register_image_image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 7px;
+}
+
+.image_register_image_delete_button {
+    position: absolute;
+    background-color: fff;
+    pad: 0.5rem;
+    cursor: pointer;
+    border-radius: 100%;
+    border: 1px solid var(--border-color);
+    right: 7px;
+    top: 7px;
+}
+
+.image_register_image_delete_button_icon {
+    font-size: 1.5rem;
+}
+
+@media (min-width: 650px) {
+    .image_register_image_div {
+        width: 180px;
+        height: 180px;
+        position: relative;
+        margin: 1rem;
+    }
+}
