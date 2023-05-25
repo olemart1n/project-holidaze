@@ -4,6 +4,8 @@
     text-align: center;
 }
 .madeBookings {
+    height: 100%;
+    width: 100%;
 }
 
 .madeBookings_container {
@@ -15,7 +17,6 @@
     box-shadow: var(--shadow-1);
     border-radius: 10px;
     position: relative;
-    /* justify-content: space-around; */
 }
 .madeBookings_container_top {
     width: 100%;
@@ -66,6 +67,12 @@
 .madeBookings_link {
     color: var(--color-black);
     width: 100%;
+}
+
+.madeBookings_link_to_home {
+    color: var(--color-black);
+    font-size: larger;
+    margin: 1rem;
 }
 
 @media (max-width: 650px) {

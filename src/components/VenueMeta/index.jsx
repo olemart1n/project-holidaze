@@ -1,4 +1,4 @@
-import styles from "../../styles/components/VenueInfo.module.css";
+import styles from "../../styles/components/VenueMeta.module.css";
 import { FcCheckmark } from "react-icons/fc";
 import { RxCrossCircled } from "react-icons/rx";
 function VenueMeta({ info }) {

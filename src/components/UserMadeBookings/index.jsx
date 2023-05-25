@@ -14,7 +14,6 @@ function UserMadeBookings() {
 
     return bookings[0]?.guests ? (
         <div className={styles.madeBookings_h1}>
-            <h1>Your Bookings</h1>
             <div className={styles.madeBookings}>
                 {bookings.map((booking) => (
                     <div key={booking.id} className={styles.madeBookings_container}>
@@ -78,7 +77,10 @@ function UserMadeBookings() {
         </div>
     ) : (
         <div>
-            <h1> Looks like you should book a venue !</h1>
+            <Link to="/" className={styles.madeBookings_link_to_home}>
+                {" "}
+                Looks like you should book a venue !
+            </Link>
             <Loader />
         </div>
     );

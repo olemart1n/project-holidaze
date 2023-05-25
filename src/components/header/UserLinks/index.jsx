@@ -20,7 +20,7 @@ function UserLinks({ toggleNav }) {
             <Link className={styles.user_link} to="bookings" onClick={toggleNav}>
                 Your Bookings
             </Link>
-            <Link className={styles.user_link} to="/profile" onClick={toggleNav}>
+            <Link className={styles.user_link} to="/user" onClick={toggleNav}>
                 Profile
             </Link>
             <button className={styles.header_button} onClick={logOut}>

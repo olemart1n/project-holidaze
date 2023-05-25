@@ -3,7 +3,7 @@ import { setUser, setHostUser, setHostedVenues, setBookedByUser } from "./states
 import React, { useEffect } from "react";
 import Home from "./pages/home";
 import Venue from "./pages/Venue";
-import Profile from "./pages/Profile";
+import Profile from "./pages/profile";
 import HostVenues from "./pages/hostVenues";
 import UserWrapper from "./wrappers";
 import Register from "./pages/register";

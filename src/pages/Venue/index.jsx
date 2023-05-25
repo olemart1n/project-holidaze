@@ -11,7 +11,6 @@ import { specificVenue, setSpecificVenue } from "../../states/state-functions";
 import { BiArrowBack } from "react-icons/bi";
 import Loader from "../../components/Loader";
 import url from "../../api/url";
-import { useEffect } from "react";
 
 function Venue() {
     const navigate = useNavigate();
@@ -36,10 +35,10 @@ function Venue() {
                 <Book />
                 <div className={styles.info_layout}>
                     <VenueMeta info={venue.meta} />
-                    <VenueLocation location={venue.location} />
+                    <VenueDescription description={venue.description} />
                 </div>
             </div>
-            <VenueDescription description={venue.description} />
+            <VenueLocation location={venue.location} />
         </main>
     );
 }
