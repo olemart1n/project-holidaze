@@ -3,7 +3,7 @@ import { setUser, setHostUser, setHostedVenues, setBookedByUser } from "./states
 import React, { useEffect } from "react";
 import Home from "./pages/home";
 import Venue from "./pages/Venue";
-import HostProfile from "./pages/HostProfile";
+import Profile from "./pages/Profile";
 import HostVenues from "./pages/hostVenues";
 import UserWrapper from "./wrappers";
 import Register from "./pages/register";
@@ -28,7 +28,8 @@ function App() {
                 <Route index element={<Home />} />
                 <Route path="venue/:id" element={<Venue />} />
                 <Route path="register" element={<Register />} />
-                <Route path="host" element={<HostProfile />} />
+                <Route path="host" element={<Profile />} />
+                <Route path="user" element={<Profile />} />
                 <Route path="host/venue" element={<HostVenues />} />
             </Route>
         </Routes>
