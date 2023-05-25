@@ -69,61 +69,62 @@ function HostVenues() {
             >
                 Host new venue
             </button>
-            {venues.map((venue, i) => {
-                return (
-                    <div key={i} className={styles.host_venue_section}>
-                        <div className={styles.host_venue_section_div}>
-                            <h4>
-                                You have {countActiveBookings(venue?.bookings)} upcoming bookings
-                                for this venue
-                            </h4>
-                            <VenueCards data={venue} />
-                            <div className={styles.host_venue_section_div_buttons}>
-                                <button
-                                    className={styles.host_venue_section_delete}
-                                    onClick={() => {
-                                        setDialogType("delete");
-                                        setDeleteId(venue.id);
-                                        setTimeout(() => {
-                                            openDialog("delete");
-                                        }, 500);
-                                    }}
-                                >
-                                    Stop hosting
-                                </button>
-                                <button
-                                    className={styles.host_venue_section_update}
-                                    onClick={() => {
-                                        setUpdateId(venue.id);
-                                        setDialogType("update");
-                                        setTimeout(() => {
-                                            openDialog("update");
-                                        }, 500);
-                                    }}
-                                >
-                                    Update
-                                </button>
+            {venues &&
+                venues.map((venue, i) => {
+                    return (
+                        <div key={i} className={styles.host_venue_section}>
+                            <div className={styles.host_venue_section_div}>
+                                <h4>
+                                    You have {countActiveBookings(venue?.bookings)} upcoming
+                                    bookings for this venue
+                                </h4>
+                                <VenueCards data={venue} />
+                                <div className={styles.host_venue_section_div_buttons}>
+                                    <button
+                                        className={styles.host_venue_section_delete}
+                                        onClick={() => {
+                                            setDialogType("delete");
+                                            setDeleteId(venue.id);
+                                            setTimeout(() => {
+                                                openDialog("delete");
+                                            }, 500);
+                                        }}
+                                    >
+                                        Stop hosting
+                                    </button>
+                                    <button
+                                        className={styles.host_venue_section_update}
+                                        onClick={() => {
+                                            setUpdateId(venue.id);
+                                            setDialogType("update");
+                                            setTimeout(() => {
+                                                openDialog("update");
+                                            }, 500);
+                                        }}
+                                    >
+                                        Update
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div className={styles.host_venue_section_div}>
+                                {venue?.bookings?.length > 0 ? (
+                                    venue.bookings.map((info) => {
+                                        return (
+                                            <HostedVenueBookings
+                                                info={info}
+                                                key={info.id}
+                                                setDialogType={setDialogType}
+                                            />
+                                        );
+                                    })
+                                ) : (
+                                    <div>No bookings</div>
+                                )}
                             </div>
                         </div>
-
-                        <div className={styles.host_venue_section_div}>
-                            {venue?.bookings?.length > 0 ? (
-                                venue.bookings.map((info) => {
-                                    return (
-                                        <HostedVenueBookings
-                                            info={info}
-                                            key={info.id}
-                                            setDialogType={setDialogType}
-                                        />
-                                    );
-                                })
-                            ) : (
-                                <div>No bookings</div>
-                            )}
-                        </div>
-                    </div>
-                );
-            })}
+                    );
+                })}
             <HtmlDialog type={dialogType}>
                 {dialogType === "register" && <RegisterVenue />}
                 {dialogType === "contactInfo" && <ContactInfo />}

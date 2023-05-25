@@ -14,6 +14,7 @@ function YupInput({
     onKeyUp,
     required,
     onClick,
+    onFocus,
 }) {
     if (!register && !errors) {
         return (
@@ -32,6 +33,7 @@ function YupInput({
                     onKeyUp={onKeyUp}
                     required={required}
                     onClick={onClick}
+                    onFocus={onFocus}
                 ></input>
             </div>
         );
