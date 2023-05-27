@@ -29,7 +29,7 @@ function App() {
                 <Route path="venue/:id" element={<Venue />} />
                 <Route path="register" element={<Register />} />
                 <Route path="host" element={<Profile />} />
-                <Route path="user" element={<Profile />} />
+                {/* <Route path="user" element={<Profile />} /> */}
                 <Route path="host/venue" element={<HostVenues />} />
             </Route>
         </Routes>
