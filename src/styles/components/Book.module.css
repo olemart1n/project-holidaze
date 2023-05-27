@@ -18,8 +18,10 @@
 }
 
 .dialog_book {
-    max-width: 1400px;
+    /*
     margin: auto;
+    position: fixed; */
+    max-width: 1400px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -31,6 +33,29 @@
 
 .dialog_book_venue_info {
     padding: 1rem;
+}
+.dialog_book_venue_date_input {
+}
+.dialog_book_venue_calendar {
+    display: flex;
+    place-content: center;
+}
+
+.responsive_calendar {
+    /* by setting font-size, all the elements will correspond */
+    font-size: 9px !important; /* default to 10px */
+    border: 1px solid var(--color-border) !important;
+}
+
+.dialog_book_venue_state_summary {
+    display: flex;
+    justify-content: space-around;
+}
+.dialog_book_venue_state_summary_box {
+    display: flex;
+    background-color: var(--color-logoTheme2);
+    padding: 0.4rem;
+    border-radius: 4px;
 }
 
 @media (min-width: 650px) {
