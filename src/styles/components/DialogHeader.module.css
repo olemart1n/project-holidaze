@@ -1,0 +1,28 @@
+@import url("../index.css");
+
+.dialog_header {
+    width: 100%;
+    height: 40px;
+    position: relative;
+}
+
+.dialog_header_logo {
+    fill: var(--color-logo);
+    margin-left: 0.5rem;
+}
+
+.dialog_header_close_button {
+    position: absolute;
+    right: 7px;
+    top: 7px;
+    height: 1.5rem;
+    width: 1.5rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.dialog_header_close_button_icon {
+    background-color: var(--color-logoTheme);
+    font-size: 1.3rem;
+    border-radius: 5px;
+}

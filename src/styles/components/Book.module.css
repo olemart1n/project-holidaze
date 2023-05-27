@@ -29,25 +29,8 @@
     border-radius: 10px;
 }
 
-.dialog_book_header {
-    width: 100%;
-    height: 40px;
-    position: relative;
-}
-.dialog_book_close_button {
-    position: absolute;
-    right: 7px;
-    top: 7px;
-    height: 1.5rem;
-    width: 1.5rem;
-    cursor: pointer;
-    border: 1px solid transparent;
-}
-
-.dialog_book_close_button_icon {
-    background-color: var(--color-logoTheme);
-    font-size: 1.3rem;
-    border-radius: 5px;
+.dialog_book_venue_info {
+    padding: 1rem;
 }
 
 @media (min-width: 650px) {

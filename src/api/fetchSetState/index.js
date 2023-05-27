@@ -1,9 +1,6 @@
 import { useEffect } from "react";
-import { setIsLoading, setError } from "../../states/state-functions";
 
 export const fetchSetState = (url, options, setChosenState, optionalQuery) => {
-    const setErrorState = setError();
-    const setLoading = setIsLoading();
     // setLoading(true);
     useEffect(() => {
         console.log("custom useFetch function");
@@ -14,7 +11,7 @@ export const fetchSetState = (url, options, setChosenState, optionalQuery) => {
                 .then((json) => {
                     if (!isCancelled) {
                         json?.errors
-                            ? setErrorState(json.errors) & console.log(json.errors)
+                            ? console.log(json.errors)
                             : setChosenState(optionalQuery ? json[optionalQuery] : json);
                     }
                 })
