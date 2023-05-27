@@ -15,7 +15,7 @@ const getFetchHeader = {
         Authorization: `Bearer ${auth}`,
     },
 };
-const Authorization = `Bearer ${auth}`;
+const authorization = `Bearer ${auth}`;
 const deleteFetchHeader = {
     method: "DELETE",
     headers: {
@@ -43,6 +43,6 @@ const url = {
     getMethod,
     postMethod,
     deleteFetchHeader,
-    Authorization,
+    authorization,
 };
 export default url;

@@ -1,7 +1,7 @@
 import styles from "../../styles/components/DialogHeader.module.css";
 import { VscChromeClose } from "react-icons/vsc";
 import { useRef } from "react";
-function DialogHeader({ dialogRef }) {
+function DialogHeader() {
     const dialog = useRef(null);
     return (
         <div ref={dialog} className={styles.dialog_header}>
@@ -13,7 +13,9 @@ function DialogHeader({ dialogRef }) {
             <button
                 type="button"
                 formMethod="dialog"
-                onClick={() => dialog.current.closest("dialog").close()}
+                onClick={() => {
+                    dialog.current.closest("dialog").close();
+                }}
                 className={styles.dialog_header_close_button}
             >
                 <VscChromeClose className={styles.dialog_header_close_button_icon} />

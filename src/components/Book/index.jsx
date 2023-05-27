@@ -1,13 +1,20 @@
 import styles from "../../styles/components/Book.module.css";
 import { GoCalendar } from "react-icons/go";
-import { VscChromeClose } from "react-icons/vsc";
-import { returnDay, returnMonth, months, returnDoubleIntDay } from "../../features/dateAndTime";
+import { months, returnDoubleIntDay } from "../../features/dateAndTime";
+import Loader from "../Loader";
 import { useEffect, useRef, useState } from "react";
 import DialogHeader from "../DialogHeader";
-import { setSpecificVenue, specificVenue } from "../../states/state-functions";
+import { useParams } from "react-router-dom";
+import { setIsLoading, specificVenue, user, hostUser } from "../../states/state-functions";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
-import { Calendar } from "react-modern-calendar-datepicker";
+import { Calendar } from "@hassanmojab/react-modern-calendar-datepicker";
+import bookVenue from "../../api/bookVenue";
 function Book() {
+    let auth;
+    const host = hostUser();
+    const notHost = user();
+    host?.accessToken ? (auth = host.accessToken) : (auth = notHost.accessToken);
+    const { id } = useParams();
     const bookDialog = useRef(null);
     const venue = specificVenue();
     const nowDate = new Date();
@@ -20,12 +27,25 @@ function Book() {
         to: null,
     };
     const [selectedDayRange, setSelectedDayRange] = useState(defaultRange);
+    const [guests, setGuests] = useState(1);
     const stringMonth = returnDoubleIntDay(correctMonth);
     const stringDay = returnDoubleIntDay(day);
+    const [viewCalendar, setViewCalendar] = useState(true);
     const htmlInputValue = `${selectedDayRange.from.year}-${stringMonth}-${stringDay}`;
     const [fromStateHelper, setFromStateHelper] = useState(htmlInputValue);
     const [toStateHelper, setToStateHelper] = useState(fromStateHelper);
-    const calendarStateToInput = (e) => {};
+    const [priceSummary, setPriceSummary] = useState(0);
+    useEffect(() => {
+        let xDays;
+        if (selectedDayRange.to?.day) {
+            xDays = selectedDayRange.to.day - selectedDayRange.from.day;
+        }
+        if (selectedDayRange.from?.day > selectedDayRange.to?.day) {
+            let x = selectedDayRange.from.day - selectedDayRange.to.day;
+            xDays = selectedDayRange.from.day - x;
+        }
+        setPriceSummary(xDays * venue.price);
+    }, [selectedDayRange]);
     const setFromState = (e) => {
         const newYear = Number(e.currentTarget.value.substring(0, 4));
         const newMonth = Number(e.currentTarget.value.substring(6, 7));
@@ -41,7 +61,7 @@ function Book() {
         const stringMonth = returnDoubleIntDay(object.from.month);
         const stringDay = returnDoubleIntDay(object.from.day);
         setFromStateHelper(`${object.from.year}-${stringMonth}-${stringDay}`);
-        setSelectedDayRange((data) => (data = object));
+        setSelectedDayRange(object);
     };
     const setToState = (e) => {
         const newYear = Number(e.currentTarget.value.substring(0, 4));
@@ -58,7 +78,7 @@ function Book() {
         const stringMonth = returnDoubleIntDay(object.from.month);
         const stringDay = returnDoubleIntDay(object.from.day);
         setToStateHelper(`${object.from.year}-${stringMonth}-${stringDay}`);
-        setSelectedDayRange((data) => (data = object));
+        setSelectedDayRange(object);
     };
 
     const calendarStateToInputStates = (e) => {
@@ -73,11 +93,41 @@ function Book() {
         setSelectedDayRange(e);
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (selectedDayRange.to === null) {
+            return;
+        }
+        setViewCalendar(false);
+        const dateFrom = new Date(
+            selectedDayRange.from.year,
+            selectedDayRange.from.month - 1,
+            selectedDayRange.from.day
+        );
+        const dateTo = new Date(
+            selectedDayRange.to.year,
+            selectedDayRange.to.month - 1,
+            selectedDayRange.to.day
+        );
+        const data = {
+            dateFrom: dateFrom,
+            dateTo: dateTo,
+            guests: guests,
+            venueId: id,
+        };
+
+        bookVenue(data, setViewCalendar);
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 2500);
+    };
+
     return (
         <div>
             <div
                 className={styles.booking_container}
-                onClick={() => bookDialog.current.showModal([])}
+                onClick={() => bookDialog.current.showModal()}
             >
                 <p>Book this venue</p>
                 <GoCalendar className={styles.calendar_icon} />
@@ -89,7 +139,7 @@ function Book() {
                     <h5>{venue.location.city}</h5>
                     <p>Room for {venue.maxGuests}</p>
                 </div>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className={styles.dialog_book_venue_date_input}>
                         <input
                             type="date"
@@ -103,31 +153,74 @@ function Book() {
                         ></input>
                     </div>
                     <div className={styles.dialog_book_venue_calendar}>
-                        <Calendar
-                            value={selectedDayRange}
-                            onChange={(e) => {
-                                calendarStateToInputStates(e);
-                            }}
-                            shouldHighlightWeekends
-                            calendarClassName={styles.responsive_calendar}
-                        />
+                        {viewCalendar && (
+                            <Calendar
+                                value={selectedDayRange}
+                                onChange={(e) => {
+                                    setSelectedDayRange;
+                                    calendarStateToInputStates(e);
+                                }}
+                                shouldHighlightWeekends
+                                calendarClassName={styles.responsive_calendar}
+                            />
+                        )}
+                        {!viewCalendar && (
+                            <div>
+                                <p> You have booked a venue!</p>
+                                <Loader />
+                            </div>
+                        )}
                     </div>
                     {selectedDayRange?.to?.month && (
                         <div className={styles.dialog_book_venue_state_summary}>
                             <div className={styles.dialog_book_venue_state_summary_box}>
                                 {" "}
-                                <p>{selectedDayRange.from.day}</p>
+                                <p>{selectedDayRange.from.day}-</p>
                                 <p> {months[selectedDayRange.from.month - 1]}</p>
                             </div>
+                            <p>TO</p>
                             <div className={styles.dialog_book_venue_state_summary_box}>
                                 {" "}
-                                <p>{selectedDayRange.to.day}</p>
+                                <p>{selectedDayRange.to.day}-</p>
                                 <p> {months[selectedDayRange.to.month - 1]}</p>
+                            </div>
+                            <div className={styles.dialog_book_venue_state_summary_guests}>
+                                <p>How many will you book for</p>
+                                <select
+                                    name="maxGuests"
+                                    defaultValue="1"
+                                    value={guests}
+                                    onChange={(e) => setGuests(e.currentTarget.value)}
+                                >
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                </select>
+                            </div>
+                            <div className={styles.dialog_book_venue_state_summary_price}>
+                                <h4>PRICE</h4>
+                                <p>{priceSummary},- NOK</p>
+                                <div
+                                    className={styles.dialog_book_venue_state_summary_guests_state}
+                                >
+                                    <h3>{guests}</h3>
+                                    <p>GUESTS</p>
+                                </div>
                             </div>
                         </div>
                     )}
-                    <button type="button" onClick={() => console.log(selectedDayRange)}>
-                        test button
+                    <button
+                        type="submit"
+                        className={styles.dialog_book_venue_submit}
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        Book Venue!
                     </button>
                 </form>
             </dialog>
