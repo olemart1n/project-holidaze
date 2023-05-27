@@ -8,17 +8,17 @@
     position: relative;
     margin: 0 auto;
     animation: moveLetters 2.4s infinite ease-in-out;
-    &:before {
-        content: "";
-        position: absolute;
-        width: 100px;
-        height: 3px;
-        background-color: var(--color-black);
-        bottom: 0;
-        left: 0;
-        border-radius: 10px;
-        animation: movingLine 2.4s infinite ease-in-out;
-    }
+}
+.loading_container::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 3px;
+    background-color: var(--color-black);
+    bottom: 0;
+    left: 0;
+    border-radius: 10px;
+    animation: movingLine 2.4s infinite ease-in-out;
 }
 
 @keyframes movingLine {
