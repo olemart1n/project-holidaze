@@ -1,7 +1,6 @@
 import styles from "../../styles/components/HtmlDialog.module.css";
 import { closeDialog, extraCloseFunctionality } from "../../features/dialogs";
 import { VscChromeClose } from "react-icons/vsc";
-import { BsUiRadios } from "react-icons/bs";
 
 function HtmlDialog({ children, type }) {
     let styling;
@@ -11,6 +10,8 @@ function HtmlDialog({ children, type }) {
         styling = styles.html_modal_register;
     } else if (type === "update") {
         styling = styles.html_modal_register;
+    } else if (type === "map") {
+        styling = styles.html_modal_map;
     } else {
         styling = styles.html_modal_login;
     }

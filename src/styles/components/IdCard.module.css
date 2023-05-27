@@ -8,12 +8,15 @@
 }
 .idCard_image_div {
     max-height: 225px;
+    max-width: 600px;
 }
 
 .idCard_image {
     width: 95%;
     border-radius: 5px;
     box-shadow: var(--shadow-1);
+    height: 100%;
+    object-fit: contain;
 }
 
 .idCard_info_div {
@@ -33,5 +36,13 @@
     }
     .idCard_image_div {
         padding: 0.3rem;
+    }
+
+    .idCard_image {
+        width: 95%;
+        border-radius: 5px;
+        box-shadow: var(--shadow-1);
+        height: 100%;
+        object-fit: contain;
     }
 }

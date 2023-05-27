@@ -1,15 +1,15 @@
 import styles from "../../../styles/components/UserButton.module.css";
-import { BsPerson } from "react-icons/bs";
+import { FaBars } from "react-icons/fa";
 import { user } from "../../../states/state-functions";
 import { openDialog } from "../../../features/dialogs";
-function UserButton() {
+function UserButton({ toggleMobileNav }) {
     const loggedInUser = user();
     return loggedInUser?.name ? (
-        <button className={styles.userNav_auth}>
-            <BsPerson className={styles.header_nav_icon} />
+        <button className={styles.userNav_auth} onClick={toggleMobileNav}>
+            <FaBars className={styles.header_nav_icon} />
         </button>
     ) : (
-        <button onClick={openDialog} className={styles.userNav_auth}>
+        <button onClick={() => openDialog("login")} className={styles.userNav_auth}>
             <p className={styles.header_nav_login}>Login</p>
         </button>
     );

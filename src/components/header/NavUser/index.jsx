@@ -29,13 +29,20 @@ function NavUser({ toggleMobileNav, mobileNav, user }) {
             )}
 
             {mobileNav && (
-                <div className={styles.navUser_links_mobile}>
-                    <UserButton className={styles.userNav_auth} />
+                <div className={styles.user_header_links_mobile}>
+                    {/* <UserButton className={styles.userNav_auth} /> */}
+                    <UserLinks className={styles.user_header_links_mobile} />
                 </div>
             )}
-
-            <UserButton className={styles.userNav_auth} />
+            {/* 
+            {mobileNav && (
+                <div className={styles.host_header_links_mobile}>
+                    <HostHeaderLinks toggleNav={toggleMobileNav} />
+                </div>
+            )} */}
+            <UserButton className={styles.userNav_auth} toggleMobileNav={toggleMobileNav} />
             {/* <Search /> */}
+
             <HtmlDialog type="login">
                 <Login />
             </HtmlDialog>

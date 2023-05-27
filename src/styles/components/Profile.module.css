@@ -8,11 +8,12 @@
     height: 60%;
 }
 
-@media (max-width) {
+@media (max-width: 650px) {
     .profile_id_div {
-        height: 170px;
+        height: 200px;
+        overflow: hidden;
     }
     .profile_bookings_div {
-        min-height: 60%;
+        margin-top: 1rem;
     }
 }

@@ -76,7 +76,7 @@ function UserMadeBookings() {
             </div>
         </div>
     ) : (
-        <div>
+        <div className={styles.madeBookings_link_to_home}>
             <Link to="/" className={styles.madeBookings_link_to_home}>
                 {" "}
                 Looks like you should book a venue !

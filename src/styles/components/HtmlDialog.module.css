@@ -20,6 +20,16 @@
     border: 1px solid var(--color-border);
     border-radius: 10px;
 }
+.html_modal_map {
+    position: absolute;
+    max-width: 1400px;
+    margin: auto;
+    min-width: 98%;
+    min-height: 95%;
+    background-color: red;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+}
 
 .html_modal_contactInfo {
     right: 0px;

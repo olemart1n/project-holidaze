@@ -4,7 +4,7 @@ import ImageSlide from "../../components/ImageSlide";
 import Book from "../../components/Book";
 import VenueDescription from "../../components/VenueDescription";
 import VenueMeta from "../../components/VenueMeta";
-import VenueLocation from "../../components/VenueLocation";
+import VenueMap from "../../components/VenueMap";
 import { useParams } from "react-router-dom";
 import { fetchSetState } from "../../api/fetchSetState";
 import { specificVenue, setSpecificVenue } from "../../states/state-functions";
@@ -38,7 +38,7 @@ function Venue() {
                     <VenueDescription description={venue.description} />
                 </div>
             </div>
-            <VenueLocation location={venue.location} />
+            <VenueMap location={venue.location} />
         </main>
     );
 }

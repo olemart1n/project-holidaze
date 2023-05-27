@@ -30,7 +30,7 @@ export const login = async (
                 setErr(data.errors[0].message);
                 return;
             }
-            if (data.venueManager) {
+            if (data.venueManager === true) {
                 save("hostUser", data);
                 setHostUser(data);
                 ifHostSetVenues(data.name, data.accessToken, setHostVenues);
