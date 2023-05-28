@@ -33,7 +33,8 @@ function HostVenues() {
                     className={styles.host_venue_section_delete}
                     onClick={() => {
                         deleteItem(url.venues, venues, deleteId, setVenues, "hostedVenues");
-                        deleteModal.close();
+
+                        deleteModal.current.close();
                     }}
                 >
                     Stop hosting
@@ -66,7 +67,7 @@ function HostVenues() {
                 Host new venue
             </button>
             {venues &&
-                venues.map((venue, i) => {
+                venues?.map((venue, i) => {
                     return (
                         <div key={i} className={styles.host_venue_section}>
                             <div className={styles.host_venue_section_div}>

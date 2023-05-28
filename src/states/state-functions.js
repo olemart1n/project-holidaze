@@ -19,3 +19,5 @@ export const bookedByUser = () => useHolidaze((state) => state.bookedByUser);
 export const setBookedByUser = () => useHolidaze((state) => state.setBookedByUser);
 export const customer = () => useHolidaze((state) => state.customer);
 export const setCustomer = () => useHolidaze((state) => state.setCustomer);
+export const filteredVenues = () => useHolidaze((state) => state.filteredVenues);
+export const setFilteredVenues = () => useHolidaze((state) => state.setFilteredVenues);

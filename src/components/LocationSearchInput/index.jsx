@@ -65,13 +65,14 @@ const LocationSearchInput = ({
     const inputStyling = {
         paddingInlineStart: "10px",
         padding: ".4rem 1rem",
-        fontSize: "1rem",
-        border: "2px solid rgba(220, 220, 221, 0.5)",
-        margin: "5px 10px",
+        fontSize: "1.1rem",
+        border: "2px solid rgba(220, 220, 221, 0.8)",
+        margin: "5px auto",
     };
 
     const searchIcon = {
-        fontSize: "1.3rem",
+        fontSize: "1.4rem",
+        margin: "0 5px",
     };
 
     const inactiveStyle = { backgroundColor: "#ffffff", cursor: "pointer" };

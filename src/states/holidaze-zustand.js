@@ -6,6 +6,7 @@ const useHolidaze = create((set) => ({
     isLoading: false,
     hostUser: {},
     venues: [],
+    filteredVenues: [],
     specificVenue: {},
     hostedVenues: [],
     bookedByUser: [],
@@ -21,6 +22,9 @@ const useHolidaze = create((set) => ({
     },
     setVenues: (data) => {
         set((state) => ({ venues: (state.venues = data) }));
+    },
+    setFilteredVenues: (data) => {
+        set((state) => ({ filteredVenues: (state.filteredVenues = data) }));
     },
     setError: (data) => {
         set((state) => ({ error: (state.error = data) }));

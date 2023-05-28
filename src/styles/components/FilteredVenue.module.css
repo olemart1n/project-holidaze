@@ -1,0 +1,38 @@
+@import url("../index.css");
+.filtered_venue_link {
+    display: flex;
+    max-height: 130px;
+    align-items: center;
+    width: 100%;
+    color: var(--color-black);
+    position: relative;
+    text-decoration: none;
+}
+.filtered_venue_image_div {
+    width: 200px;
+}
+
+.filtered_venue_image {
+    max-width: 100px;
+}
+
+.filtered_venue_div_info {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.filtered_venue_div_info_div {
+    width: 50%;
+}
+.filtered_venue_div_info_div_first {
+    width: 50%;
+}
+
+@media (max-width: 650px) {
+    .filtered_venue_div_info_div_first {
+        display: none;
+    }
+}

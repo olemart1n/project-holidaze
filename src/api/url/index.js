@@ -26,14 +26,6 @@ const deleteFetchHeader = {
 const getMethod = {
     method: "GET",
 };
-let postMethod = {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-        authorization: "",
-    },
-    body: {},
-};
 let put = {
     method: "PUT",
     headers: {
@@ -58,7 +50,6 @@ export const url = {
     register,
     getFetchHeader,
     getMethod,
-    postMethod,
     deleteFetchHeader,
     authorization,
     profile,

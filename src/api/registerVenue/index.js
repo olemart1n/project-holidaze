@@ -11,11 +11,7 @@ export const registerVenue = async (data, token, setError, setSuccess) => {
                 console.log(data.errors[0].message);
                 return;
             }
-            console.log(data);
             setSuccess(true);
-            setTimeout(() => {
-                window.location.reload();
-            }, 2000);
         })
         .catch((error) => console.log(error));
 };

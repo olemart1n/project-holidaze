@@ -12,11 +12,7 @@ export const deleteItem = (urlFromComponent, stateToUpdate, id, updateState, sto
     fetch(urlFromComponent + id, {
         method: "DELETE",
         headers: {
-            Authorization: url.Authorization,
+            Authorization: url.authorization,
         },
-    })
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-        });
+    }).then((res) => res.json());
 };

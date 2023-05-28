@@ -1,16 +1,18 @@
 import styles from "../../styles/components/RegisterVenue.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LocationSearchInput from "../LocationSearchInput";
 import { registerVenue } from "../../api";
 import { hostUser, setHostedVenues, hostedVenues } from "../../states/state-functions";
 import { save } from "../../features/storage";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
 import YupInput from "../YupInput";
 import venueSchema from "../../features/schema/venueschema";
 import ImageRegister from "../ImageRegister";
 import InformationRegister from "../InformationRegister";
 function RegisterVenue() {
+    const navigate = useNavigate();
     const venues = hostedVenues();
     const setVenue = setHostedVenues();
     const host = hostUser();
@@ -61,6 +63,14 @@ function RegisterVenue() {
         setVenue((data) => [...data, submitData]);
         save("hostedVenues", [...venues, submitData]);
     };
+
+    useEffect(() => {
+        if (success) {
+            setTimeout(() => {
+                navigate("/host/venue");
+            }, 2500);
+        }
+    }, [success]);
 
     return (
         <form

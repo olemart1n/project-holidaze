@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { setUser, setHostUser, setHostedVenues, setBookedByUser } from "./states/state-functions";
 import { Outlet } from "react-router-dom";
 import React, { useEffect } from "react";
-import Home from "./pages/Home";
+import StartPage from "./pages/StartPage";
 import Venue from "./pages/Venue";
 import HostVenues from "./pages/HostVenues";
 import Bookings from "./pages/Bookings";
@@ -25,7 +25,7 @@ function App() {
     return (
         <Routes>
             <Route path="/" element={<Wrapper />}>
-                <Route index element={<Home />} />
+                <Route index element={<StartPage />} />
                 <Route path="venue/:id" element={<Venue />} />
                 <Route path="register" element={<Register />} />
                 <Route path="profile" element={<UserProfile />} />
