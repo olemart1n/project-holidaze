@@ -8,7 +8,6 @@ import HostVenues from "./components/HostVenues";
 import Bookings from "./components/Bookings";
 import Register from "./components/Register";
 import UserProfile from "./components/UserProfile";
-// import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import * as storage from "./features/storage";
