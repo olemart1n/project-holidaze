@@ -5,7 +5,7 @@ import Home from "./components/Home";
 import Venue from "./components/Venue";
 import HostVenues from "./components/HostVenues";
 import Bookings from "./components/Bookings";
-import Wrapper from "./wrappers";
+import Wrapper from "./components/wrapper";
 import Register from "./components/Register";
 import UserProfile from "./components/UserProfile";
 import * as storage from "./features/storage";
