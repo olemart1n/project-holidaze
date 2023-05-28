@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-function UserWrapper() {
+function Wrapper() {
     return (
         <div className="wrapper">
             <Header />
@@ -10,4 +10,4 @@ function UserWrapper() {
         </div>
     );
 }
-export default UserWrapper;
+export default Wrapper;

@@ -1,14 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 import { setUser, setHostUser, setHostedVenues, setBookedByUser } from "./states/state-functions";
 import React, { useEffect } from "react";
-import Home from "./pages/Home";
-import Venue from "./pages/Venue";
-import HostVenues from "./pages/HostVenues";
-import Bookings from "./pages/Bookings";
-import UserWrapper from "./wrappers";
-import Register from "./pages/Register";
-import UserProfile from "./pages/UserProfile";
-
+import Home from "./components/Home";
+import Venue from "./components/Venue";
+import HostVenues from "./components/HostVenues";
+import Bookings from "./components/Bookings";
+import Wrapper from "./wrappers";
+import Register from "./components/Register";
+import UserProfile from "./components/UserProfile";
 import * as storage from "./features/storage";
 
 function App() {
@@ -25,7 +24,7 @@ function App() {
 
     return (
         <Routes>
-            <Route path="/" element={<UserWrapper />}>
+            <Route path="/" element={<Wrapper />}>
                 <Route index element={<Home />} />
                 <Route path="venue/:id" element={<Venue />} />
                 <Route path="register" element={<Register />} />
