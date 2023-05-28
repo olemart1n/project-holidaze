@@ -4,6 +4,7 @@ const bookings = "https://api.noroff.dev/api/v1/holidaze/bookings/";
 const ownerAndBookings = "?_owner=true&_bookings=true";
 const login = "https://api.noroff.dev/api/v1/holidaze/auth/login";
 const register = "https://api.noroff.dev/api/v1/holidaze/auth/register";
+const profile = "https://api.noroff.dev/api/v1/holidaze/profiles/";
 let auth;
 if (load("user") || load("hostUser")) {
     load("user") ? (auth = load("user").accessToken) : (auth = load("hostUser").accessToken);
@@ -44,5 +45,6 @@ const url = {
     postMethod,
     deleteFetchHeader,
     authorization,
+    profile,
 };
 export default url;

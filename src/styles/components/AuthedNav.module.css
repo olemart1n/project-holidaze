@@ -8,10 +8,16 @@ nav {
     flex-wrap: nowrap;
 }
 
-@media (max-width: 650px) {
-    nav {
-        flex-wrap: wrap;
-    }
+.host_header_nav_button_bar {
+    display: none;
+    color: var(--color-black);
+    background-color: var(--color-background);
+    font-size: 1.9rem;
+    border: none;
+    box-shadow: var(--shadow-1);
+    position: absolute;
+    top: 15px;
+    right: 15px;
 }
 
 .host_header_links_desktop {
@@ -42,6 +48,12 @@ nav {
     display: none;
 }
 @media (max-width: 650px) {
+    nav {
+        flex-wrap: wrap;
+    }
+    .host_header_nav_button_bar {
+        display: block;
+    }
     .host_header_avatar {
         height: 50px;
         border-radius: 4px;

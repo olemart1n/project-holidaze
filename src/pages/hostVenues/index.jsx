@@ -1,9 +1,6 @@
 import styles from "../../styles/components/HostVenues.module.css";
 import React from "react";
-import HtmlDialog from "../../components/HtmlDialog";
 import RegisterVenue from "../../components/RegisterVenue";
-// const RegisterVenue = React.lazy(() => import("../../components/RegisterVenue"));
-import { closeDialog, openDialog } from "../../features/dialogs";
 import { deleteItem } from "../../api/deleteItem";
 import url from "../../api/url";
 import { hostedVenues, setHostedVenues } from "../../states/state-functions";
@@ -11,15 +8,20 @@ import VenueCards from "../../components/VenueCards";
 import HostedVenueBookings from "../../components/HostedVenueBookings";
 import { timeGap } from "../../features/dateAndTime";
 import UpdateVenue from "../../components/UpdateVenue";
-import { useState } from "react";
-
+import { useState, useRef } from "react";
+import { closeFunctionality } from "../../features/dialogs";
 import ContactInfo from "../../components/ContactInfo";
+import DialogHeader from "../../components/DialogHeader";
 
 function HostVenues() {
+    const registerModal = useRef(null);
+    const updateModal = useRef(null);
+    const contactInfoModal = useRef(null);
+    const deleteModal = useRef(null);
     const venues = hostedVenues();
     const setVenues = setHostedVenues();
     const [updateId, setUpdateId] = useState();
-    const [dialogType, setDialogType] = useState("register");
+    const [pageHasRendered, setPageHasRendered] = useState(false);
     const [deleteId, setDeleteId] = useState("");
     function Delete() {
         const style = {
@@ -32,7 +34,7 @@ function HostVenues() {
                     className={styles.host_venue_section_delete}
                     onClick={() => {
                         deleteItem(url.venues, venues, deleteId, setVenues, "hostedVenues");
-                        closeDialog();
+                        deleteModal.close();
                     }}
                 >
                     Stop hosting
@@ -59,11 +61,7 @@ function HostVenues() {
             <button
                 className={styles.host_venue_addButton}
                 onClick={() => {
-                    setDialogType("register");
-                    openDialog("register");
-                    setTimeout(() => {
-                        openDialog("register");
-                    }, 100);
+                    registerModal.current.showModal();
                 }}
             >
                 Host new venue
@@ -82,11 +80,8 @@ function HostVenues() {
                                     <button
                                         className={styles.host_venue_section_delete}
                                         onClick={() => {
-                                            setDialogType("delete");
                                             setDeleteId(venue.id);
-                                            setTimeout(() => {
-                                                openDialog("delete");
-                                            }, 500);
+                                            deleteModal.current.showModal();
                                         }}
                                     >
                                         Stop hosting
@@ -95,10 +90,9 @@ function HostVenues() {
                                         className={styles.host_venue_section_update}
                                         onClick={() => {
                                             setUpdateId(venue.id);
-                                            setDialogType("update");
-                                            setTimeout(() => {
-                                                openDialog("update");
-                                            }, 500);
+                                            // setDialogType("update");
+                                            setPageHasRendered(true);
+                                            updateModal.current.showModal();
                                         }}
                                     >
                                         Update
@@ -109,13 +103,7 @@ function HostVenues() {
                             <div className={styles.host_venue_section_div}>
                                 {venue?.bookings?.length > 0 ? (
                                     venue.bookings.map((info) => {
-                                        return (
-                                            <HostedVenueBookings
-                                                info={info}
-                                                key={info.id}
-                                                setDialogType={setDialogType}
-                                            />
-                                        );
+                                        return <HostedVenueBookings info={info} key={info.id} />;
                                     })
                                 ) : (
                                     <div>No bookings</div>
@@ -124,14 +112,44 @@ function HostVenues() {
                         </div>
                     );
                 })}
-            <HtmlDialog type={dialogType}>
-                {dialogType === "register" && <RegisterVenue />}
-                {dialogType === "contactInfo" && <ContactInfo />}
-                {dialogType === "delete" && <Delete />}
-                {dialogType === "update" && <UpdateVenue id={updateId} />}
-            </HtmlDialog>
+            <dialog
+                ref={registerModal}
+                className={styles.host_venue_register_modal}
+                onClick={closeFunctionality}
+            >
+                <DialogHeader />
+                <RegisterVenue />
+            </dialog>
+            <dialog
+                ref={deleteModal}
+                className={styles.host_venue_delete_modal}
+                onClick={closeFunctionality}
+            >
+                <DialogHeader />
+                <Delete />
+            </dialog>
+            <dialog
+                ref={updateModal}
+                className={styles.host_venue_register_modal}
+                onClick={closeFunctionality}
+            >
+                <DialogHeader />
+                {pageHasRendered && <UpdateVenue id={updateId} />}
+            </dialog>
+            <dialog
+                ref={contactInfoModal}
+                className={styles.host_venue_register_modal}
+                onClick={closeFunctionality}
+            >
+                <DialogHeader />
+                {pageHasRendered && <ContactInfo />}
+            </dialog>
         </main>
     );
 }
 
 export default HostVenues;
+
+{
+    /* {dialogType === "contactInfo" && <ContactInfo />} */
+}

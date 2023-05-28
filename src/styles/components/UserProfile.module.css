@@ -1,0 +1,110 @@
+@import url("../index.css");
+
+.profile_h1 {
+    width: 100%;
+    text-align: center;
+    margin: 1rem auto;
+}
+
+.profile_card {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem 1rem;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--color-2);
+    border-radius: 4px;
+    flex-wrap: wrap;
+}
+
+.profile_image_div {
+    margin-top: 2rem;
+}
+.profile_image {
+    height: 300px;
+}
+.profile_info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+.profile_name {
+}
+.profile_email {
+    text-decoration: underline;
+    margin: auto;
+}
+
+.profile_venueManager {
+    display: flex;
+    width: 100%;
+    place-content: center;
+    padding: 1rem 0;
+}
+
+.profile_venueManager_icon {
+    color: var(--color-green);
+    font-size: larger;
+    margin: 0 1rem;
+}
+
+.profile_venueManager_signUp {
+    border: none;
+    background-color: transparent;
+    text-decoration: underline;
+    margin: 0 0.5rem;
+    font-size: 1rem;
+}
+
+.profile_signUp_modal {
+    max-width: 600px;
+    margin: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    min-height: 350px;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+}
+.profile_signUp_modal_div {
+    display: flex;
+    flex-direction: column;
+}
+.profile_signUp_modal_h3 {
+    width: 100%;
+    text-align: center;
+    margin: 2rem 0;
+}
+.profile_signUp_modal_h4 {
+    width: 100%;
+    text-align: center;
+    margin: 2rem 0;
+}
+.profile_signUp_confirm {
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    font-size: larger;
+    padding: 1rem;
+    margin: auto;
+    background-color: var(--color-backgroundSuccess);
+    align-self: center;
+}
+@media (max-width: 650px) {
+    .profile_card {
+        border: none;
+        margin: 2rem 0;
+    }
+    .profile_image_div {
+        margin-top: 2rem;
+        height: 300px;
+        text-align: center;
+        height: auto;
+        max-height: 300px;
+    }
+    .profile_image {
+        width: 80%;
+        height: auto;
+        max-height: 100%;
+        object-fit: cover;
+    }
+}

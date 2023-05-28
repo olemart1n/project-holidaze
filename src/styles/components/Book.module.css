@@ -75,7 +75,7 @@
     display: flex;
     place-content: center;
     flex-wrap: wrap;
-    border: 1px solid var(--color-black);
+    border: 1px solid var(--color-border);
     padding: 0.3rem;
     margin: 0.3rem;
 }
@@ -90,7 +90,7 @@
 .dialog_book_venue_state_summary_guests_state {
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     border-top: 1px solid var(--color-black);
 }
 

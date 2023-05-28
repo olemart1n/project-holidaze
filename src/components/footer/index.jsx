@@ -1,5 +1,11 @@
+import styles from "../../styles/components/Footer.module.css";
 function Footer() {
-    return <div>This is the footer</div>;
+    return (
+        <footer className={styles.footer_heading}>
+            <h3>HOLIDAZE</h3>
+            <p>2023</p>
+        </footer>
+    );
 }
 
 export default Footer;

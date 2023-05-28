@@ -16,11 +16,11 @@ function UserLinks({ toggleNav }) {
     };
     return (
         <>
-            <Link className={styles.user_link} to="bookings" onClick={toggleNav}>
-                Your Bookings
+            <Link className={styles.user_link} to="/" onClick={toggleNav}>
+                Find venues
             </Link>
-            <Link className={styles.user_link} to="/user" onClick={toggleNav}>
-                Profile
+            <Link className={styles.user_link} to="/bookings" onClick={toggleNav}>
+                Bookings
             </Link>
             <button className={styles.header_button} onClick={logOut}>
                 Log out

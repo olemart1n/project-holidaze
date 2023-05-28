@@ -1,12 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 import { setUser, setHostUser, setHostedVenues, setBookedByUser } from "./states/state-functions";
 import React, { useEffect } from "react";
-import Home from "./pages/home";
+import Home from "./pages/Home";
 import Venue from "./pages/Venue";
-import Profile from "./pages/profile";
-import HostVenues from "./pages/hostVenues";
+import HostVenues from "./pages/HostVenues";
+import Bookings from "./pages/Bookings";
 import UserWrapper from "./wrappers";
-import Register from "./pages/register";
+import Register from "./pages/Register";
+import UserProfile from "./pages/UserProfile";
 
 import * as storage from "./features/storage";
 
@@ -28,8 +29,8 @@ function App() {
                 <Route index element={<Home />} />
                 <Route path="venue/:id" element={<Venue />} />
                 <Route path="register" element={<Register />} />
-                <Route path="host" element={<Profile />} />
-                {/* <Route path="user" element={<Profile />} /> */}
+                <Route path="profile" element={<UserProfile />} />
+                <Route path="bookings" element={<Bookings />} />
                 <Route path="host/venue" element={<HostVenues />} />
             </Route>
         </Routes>

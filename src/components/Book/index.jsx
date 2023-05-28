@@ -5,15 +5,24 @@ import Loader from "../Loader";
 import { useEffect, useRef, useState } from "react";
 import DialogHeader from "../DialogHeader";
 import { useParams } from "react-router-dom";
-import { setIsLoading, specificVenue, user, hostUser } from "../../states/state-functions";
+import { specificVenue, user, hostUser, setBookedByUser } from "../../states/state-functions";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar } from "@hassanmojab/react-modern-calendar-datepicker";
+import setBookingsByUser from "../../api/setBookingsByUser";
+import { useNavigate } from "react-router-dom";
 import bookVenue from "../../api/bookVenue";
 function Book() {
-    let auth;
+    const [bookingDone, setBookingDone] = useState(false);
+    const navigate = useNavigate();
+    const setBookedVenues = setBookedByUser();
+    let authedUser;
     const host = hostUser();
     const notHost = user();
-    host?.accessToken ? (auth = host.accessToken) : (auth = notHost.accessToken);
+    if (host?.accessToken) {
+        authedUser = host;
+    } else {
+        authedUser = notHost;
+    }
     const { id } = useParams();
     const bookDialog = useRef(null);
     const venue = specificVenue();
@@ -35,6 +44,7 @@ function Book() {
     const [fromStateHelper, setFromStateHelper] = useState(htmlInputValue);
     const [toStateHelper, setToStateHelper] = useState(fromStateHelper);
     const [priceSummary, setPriceSummary] = useState(0);
+
     useEffect(() => {
         let xDays;
         if (selectedDayRange.to?.day) {
@@ -98,7 +108,6 @@ function Book() {
         if (selectedDayRange.to === null) {
             return;
         }
-        setViewCalendar(false);
         const dateFrom = new Date(
             selectedDayRange.from.year,
             selectedDayRange.from.month - 1,
@@ -112,16 +121,21 @@ function Book() {
         const data = {
             dateFrom: dateFrom,
             dateTo: dateTo,
-            guests: guests,
+            guests: Number(guests),
             venueId: id,
         };
 
-        bookVenue(data, setViewCalendar);
-
-        setTimeout(() => {
-            window.location.reload();
-        }, 2500);
+        bookVenue(data, setViewCalendar, authedUser.accessToken);
     };
+
+    useEffect(() => {
+        if (viewCalendar === false) {
+            setTimeout(() => {
+                setBookingsByUser(authedUser.name, authedUser.accessToken, setBookedVenues);
+                navigate("/bookings");
+            }, 2500);
+        }
+    }, [viewCalendar]);
 
     return (
         <div>
@@ -139,7 +153,11 @@ function Book() {
                     <h5>{venue.location.city}</h5>
                     <p>Room for {venue.maxGuests}</p>
                 </div>
-                <form onSubmit={handleSubmit}>
+                <form
+                    onSubmit={(e) => {
+                        handleSubmit(e);
+                    }}
+                >
                     <div className={styles.dialog_book_venue_date_input}>
                         <input
                             type="date"
@@ -188,7 +206,6 @@ function Book() {
                                 <p>How many will you book for</p>
                                 <select
                                     name="maxGuests"
-                                    defaultValue="1"
                                     value={guests}
                                     onChange={(e) => setGuests(e.currentTarget.value)}
                                 >

@@ -1,9 +1,10 @@
 import url from "../url";
 
-const bookVenue = async (data, setFalseState) => {
+const bookVenue = async (data, setFalseState, token) => {
     const header = url.postMethod;
+    header.headers.Authorization = "Bearer " + token;
     header.body = JSON.stringify(data);
-    fetch(url.bookings, header)
+    fetch(url.bookings, url.postMethod)
         .then((data) => data.json())
         .then((data) => {
             if (data.errors) {

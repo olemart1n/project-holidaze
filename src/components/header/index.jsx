@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { user, hostUser, isLoading } from "../../states/state-functions";
-import NavUser from "./NavUser";
-import NavHost from "./NavHost";
+import GuestNav from "./GuestNav";
+import AuthedNav from "./AuthedNav";
 
 function Header() {
     const authedHost = hostUser();
@@ -17,14 +17,14 @@ function Header() {
     };
     return (
         <header>
-            {authedHost?.venueManager && !loading ? (
-                <NavHost
+            {(authedHost?.venueManager || authed?.name) && !loading ? (
+                <AuthedNav
                     toggleMobileNav={toggleMobileNav}
                     mobileNav={mobileNav}
-                    user={authedHost}
+                    user={authedHost?.avatar ? authedHost : authed}
                 />
             ) : (
-                <NavUser toggleMobileNav={toggleMobileNav} mobileNav={mobileNav} user={authed} />
+                <GuestNav />
             )}
         </header>
     );

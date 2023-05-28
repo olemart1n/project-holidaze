@@ -5,9 +5,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import "./styles/index.css";
 
-function Fallback({ error, resetErrorBoundary }) {
-    // Call resetErrorBoundary() to reset the error boundary and retry the render.
-
+function Fallback({ error }) {
     return (
         <div role="alert">
             <p>Something went wrong:</p>

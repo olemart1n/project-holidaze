@@ -35,7 +35,7 @@ function Login() {
     useEffect(() => {
         if (success) {
             setTimeout(() => {
-                loggedInHost?.name && navigate("/host");
+                loggedInHost?.name && navigate("/profile");
                 loggedInUser?.name && navigate("/");
                 setLoading(false);
             }, 2500);

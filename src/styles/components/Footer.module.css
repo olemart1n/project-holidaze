@@ -1,0 +1,10 @@
+@import url("../index.css");
+
+.footer_heading {
+    width: 100%;
+    background-color: var(--color-logoTheme2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}

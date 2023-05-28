@@ -3,9 +3,11 @@ import styles from "../../styles/components/HostedVenueBookings.module.css";
 import fetchCustomer from "../../api/setCustomer";
 import { load } from "../../features/storage";
 import { setCustomer } from "../../states/state-functions";
-import { openDialog } from "../../features/dialogs";
 import { timeGap, returnDate, returnDay, returnMonth } from "../../features/dateAndTime";
+import { useState } from "react";
+import ContactInfo from "../ContactInfo";
 function HostedVenueBookings({ info, setDialogType }) {
+    const [showInfo, setShowInfo] = useState(false);
     const setBookingId = setCustomer();
     let style;
     const isStillActive = () => {
@@ -36,15 +38,21 @@ function HostedVenueBookings({ info, setDialogType }) {
                 className={styles.host_venue_section_contact}
                 onClick={(e) => {
                     fetchCustomer(info.id, load("hostUser").accessToken, setBookingId);
-                    setDialogType("contactInfo");
-                    setTimeout(() => {
-                        openDialog("contactInfo");
-                    }, 500);
+                    if (showInfo === true) {
+                        setShowInfo(false);
+                    } else {
+                        setShowInfo(true);
+                    }
                 }}
             >
                 <i>info</i>
                 <BsFilePerson />
             </div>
+            {showInfo && (
+                <div className={styles.host_venue_section_contact_bool}>
+                    <ContactInfo />
+                </div>
+            )}
         </div>
     );
 }

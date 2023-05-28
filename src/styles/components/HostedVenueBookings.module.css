@@ -49,3 +49,11 @@
     align-items: center;
     padding: 5px;
 }
+
+.host_venue_section_contact_bool {
+    position: absolute;
+    transform: translate(-20%);
+    background-color: white;
+    padding: 2rem;
+    z-index: 2;
+}

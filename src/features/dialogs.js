@@ -33,3 +33,16 @@ export const preventDialogClose = (e) => {
     // e.preventDefault();
     e.stopPropagation();
 };
+
+export const closeFunctionality = (e) => {
+    const dialogModal = e.currentTarget;
+    const dialog = dialogModal.getBoundingClientRect();
+    if (
+        e.clientX < dialog.left ||
+        e.clientX > dialog.right ||
+        e.clientY < dialog.top ||
+        e.clientY > dialog.bottom
+    ) {
+        dialogModal.close();
+    }
+};
