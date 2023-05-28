@@ -1,10 +1,10 @@
-import url from "../url";
+import { url } from "../url";
 
-const bookVenue = async (data, setFalseState, token) => {
-    const header = url.postMethod;
-    header.headers.Authorization = "Bearer " + token;
-    header.body = JSON.stringify(data);
-    fetch(url.bookings, url.postMethod)
+export const bookVenue = async (data, setFalseState, token) => {
+    url.post.headers.authorization = "Bearer " + token;
+    url.post.body = JSON.stringify(data);
+
+    fetch(url.bookings, url.post)
         .then((data) => data.json())
         .then((data) => {
             if (data.errors) {
@@ -18,5 +18,3 @@ const bookVenue = async (data, setFalseState, token) => {
             console.log(error);
         });
 };
-
-export default bookVenue;

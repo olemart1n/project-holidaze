@@ -6,11 +6,10 @@ import VenueDescription from "../../components/VenueDescription";
 import VenueMeta from "../../components/VenueMeta";
 import VenueMap from "../../components/VenueMap";
 import { useParams } from "react-router-dom";
-import { fetchSetState } from "../../api/fetchSetState";
+import { fetchSetState, url } from "../../api";
 import { specificVenue, setSpecificVenue } from "../../states/state-functions";
 import { BiArrowBack } from "react-icons/bi";
 import Loader from "../../components/Loader";
-import url from "../../api/url";
 
 function Venue() {
     const navigate = useNavigate();

@@ -1,8 +1,7 @@
 import styles from "../../styles/components/HostVenues.module.css";
 import React from "react";
 import RegisterVenue from "../../components/RegisterVenue";
-import { deleteItem } from "../../api/deleteItem";
-import url from "../../api/url";
+import { deleteItem, url } from "../../api";
 import { hostedVenues, setHostedVenues } from "../../states/state-functions";
 import VenueCards from "../../components/VenueCards";
 import HostedVenueBookings from "../../components/HostedVenueBookings";

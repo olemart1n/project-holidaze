@@ -7,7 +7,7 @@ import { FaDog } from "react-icons/fa";
 import { AiOutlineWifi } from "react-icons/ai";
 import { MdOutlineBreakfastDining } from "react-icons/md";
 import { FaParking } from "react-icons/fa";
-import { updateVenue } from "../../api/updateVenue";
+import { updateVenue } from "../../api";
 import Loader from "../Loader";
 
 function UpdateVenue({ id }) {

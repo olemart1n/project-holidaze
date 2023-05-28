@@ -1,16 +1,9 @@
-import url from "../url";
+import { url } from "../url";
 
 import { save } from "../../features/storage";
-import setBookingsByUser from "../setBookingsByUser";
-import ifHostSetVenues from "../setHostedVenues";
+import { setBookingsByUser } from "../setBookingsByUser";
+import { ifHostSetVenues } from "../setHostedVenues";
 
-const header = {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-    },
-    body: {},
-};
 export const login = async (
     data,
     setErr,
@@ -22,8 +15,9 @@ export const login = async (
     setUserBookings
 ) => {
     setLoading(true);
-    header.body = JSON.stringify(data);
-    fetch(url.login, header)
+    url.post.headers = { "Content-Type": "application/json" };
+    url.post.body = JSON.stringify(data);
+    fetch(url.login, url.post)
         .then((data) => data.json())
         .then((data) => {
             if (data.errors) {

@@ -1,4 +1,4 @@
-const fetchCustomer = async (bookingId, token, setState) => {
+export const fetchCustomer = async (bookingId, token, setState) => {
     const req = await fetch(
         `https://api.noroff.dev/api/v1/holidaze/bookings/${bookingId}?_customer=true`,
         {
@@ -12,5 +12,3 @@ const fetchCustomer = async (bookingId, token, setState) => {
 
     setState(res.customer);
 };
-
-export default fetchCustomer;

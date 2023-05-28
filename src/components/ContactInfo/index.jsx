@@ -1,4 +1,4 @@
-import { setCustomer, customer } from "../../states/state-functions";
+import { customer } from "../../states/state-functions";
 import styles from "../../styles/components/ContactInfo.module.css";
 import Loader from "../Loader";
 function ContactInfo() {

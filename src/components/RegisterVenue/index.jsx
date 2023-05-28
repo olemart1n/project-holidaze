@@ -1,7 +1,7 @@
 import styles from "../../styles/components/RegisterVenue.module.css";
 import { useState } from "react";
 import LocationSearchInput from "../LocationSearchInput";
-import { registerVenue } from "../../api/registerVenue";
+import { registerVenue } from "../../api";
 import { hostUser, setHostedVenues, hostedVenues } from "../../states/state-functions";
 import { save } from "../../features/storage";
 import { useForm } from "react-hook-form";

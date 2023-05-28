@@ -96,6 +96,8 @@
 
 .dialog_book_venue_submit {
     background-color: var(--color-logoTheme2);
+    color: var(--color-black);
+    font-size: larger;
     border: 1px solid var(--color-border);
     padding: 0.3rem 0.5rem;
     border-radius: 4px;

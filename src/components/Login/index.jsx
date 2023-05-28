@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import loginSchema from "../../features/schema/loginschema";
-import { login } from "../../api/login";
+import { login } from "../../api";
 import { Link } from "react-router-dom";
 import Loader from "../Loader";
 import { closeDialog, preventDialogClose } from "../../features/dialogs";

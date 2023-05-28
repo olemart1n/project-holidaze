@@ -5,8 +5,7 @@ import VenueMeta from "../VenueMeta";
 import { bookedByUser, setBookedByUser } from "../../states/state-functions";
 import { timeGap, returnDate, returnDay, returnMonth } from "../../features/dateAndTime/index";
 import { Link } from "react-router-dom";
-import { deleteItem } from "../../api/deleteItem";
-import url from "../../api/url";
+import { deleteItem, url } from "../../api";
 function UserMadeBookings() {
     const bookings = bookedByUser();
     const setBookings = setBookedByUser();

@@ -2,8 +2,7 @@ import React from "react";
 import styles from "../../styles/components/Home.module.css";
 import VenueCards from "../../components/VenueCards";
 import { venues, setVenues } from "../../states/state-functions";
-import { fetchSetState } from "../../api/fetchSetState";
-import url from "../../api/url";
+import { fetchSetState, url } from "../../api";
 
 function Home() {
     const setInitial = setVenues();

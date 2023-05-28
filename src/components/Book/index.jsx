@@ -8,9 +8,9 @@ import { useParams } from "react-router-dom";
 import { specificVenue, user, hostUser, setBookedByUser } from "../../states/state-functions";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar } from "@hassanmojab/react-modern-calendar-datepicker";
-import setBookingsByUser from "../../api/setBookingsByUser";
 import { useNavigate } from "react-router-dom";
-import bookVenue from "../../api/bookVenue";
+import { bookVenue, setBookingsByUser } from "../../api";
+import Login from "../Login";
 function Book() {
     const [bookingDone, setBookingDone] = useState(false);
     const navigate = useNavigate();
@@ -25,6 +25,7 @@ function Book() {
     }
     const { id } = useParams();
     const bookDialog = useRef(null);
+    const loginDialog = useRef(null);
     const venue = specificVenue();
     const nowDate = new Date();
     const year = nowDate.getFullYear();
@@ -136,6 +137,24 @@ function Book() {
             }, 2500);
         }
     }, [viewCalendar]);
+
+    if (!authedUser?.accessToken) {
+        return (
+            <div>
+                <div
+                    className={styles.booking_container}
+                    onClick={() => loginDialog.current.showModal()}
+                >
+                    <p>Book this venue</p>
+                    <GoCalendar className={styles.calendar_icon} />
+                </div>
+                <dialog ref={loginDialog} className={styles.dialog_book}>
+                    <DialogHeader />
+                    <Login />
+                </dialog>
+            </div>
+        );
+    }
 
     return (
         <div>

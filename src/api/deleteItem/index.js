@@ -1,4 +1,4 @@
-import url from "../url";
+import { url } from "../url";
 import * as storage from "../../features/storage";
 export const deleteItem = (urlFromComponent, stateToUpdate, id, updateState, storageName) => {
     const itemToDelete = stateToUpdate.find((item) => item.id === id);

@@ -1,13 +1,6 @@
-import url from "../url";
+import { url } from "../url";
 import { save } from "../../features/storage";
-const header = {
-    method: "PUT",
-    headers: {
-        "Content-Type": "application/json",
-        Authorization: "",
-    },
-    body: {},
-};
+
 export const updateVenue = async (data, id, token, setError, setSuccess, venues, setVenues) => {
     const { name, description, location, meta, price, maxGuests, media } = data;
     const { wifi, pets, breakfast, parking } = meta;
@@ -37,9 +30,9 @@ export const updateVenue = async (data, id, token, setError, setSuccess, venues,
         console.log(error);
     }
     try {
-        header.body = JSON.stringify(data);
-        header.headers.Authorization = "Bearer " + token;
-        fetch(url.venues + id, header)
+        url.put.body = JSON.stringify(data);
+        url.put.headers.authorization = "Bearer " + token;
+        fetch(url.venues + id, url.put)
             .then((data) => data.json())
             .then((data) => {
                 if (data.errors) {

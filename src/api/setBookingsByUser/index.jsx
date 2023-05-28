@@ -13,5 +13,3 @@ export const setBookingsByUser = async (name, token, setState) => {
     setState(res);
     storage.save("bookedByUser", res);
 };
-
-export default setBookingsByUser;

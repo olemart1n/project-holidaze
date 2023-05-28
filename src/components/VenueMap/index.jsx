@@ -1,9 +1,7 @@
 import styles from "../../styles/components/VenueMap.module.css";
 import { FaLocationArrow } from "react-icons/fa";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
-import { specificVenue, setSpecificVenue } from "../../states/state-functions";
-import { FaMapMarkerAlt } from "react-icons/fa";
-import Loader from "../Loader";
+import { specificVenue } from "../../states/state-functions";
 import { useMemo, useRef } from "react";
 import { VscChromeClose } from "react-icons/vsc";
 function VenueMap({ location }) {

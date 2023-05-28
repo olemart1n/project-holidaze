@@ -1,6 +1,6 @@
 import { BsFilePerson } from "react-icons/bs";
 import styles from "../../styles/components/HostedVenueBookings.module.css";
-import fetchCustomer from "../../api/setCustomer";
+import { fetchCustomer } from "../../api";
 import { load } from "../../features/storage";
 import { setCustomer } from "../../states/state-functions";
 import { timeGap, returnDate, returnDay, returnMonth } from "../../features/dateAndTime";

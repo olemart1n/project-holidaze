@@ -11,7 +11,6 @@ function UserLinks({ toggleNav }) {
         localStorage.clear();
         setTimeout(() => {
             navigate("/");
-            document.location.reload();
         }, 500);
     };
     return (

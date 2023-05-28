@@ -26,15 +26,31 @@ const deleteFetchHeader = {
 const getMethod = {
     method: "GET",
 };
-const postMethod = {
+let postMethod = {
     method: "POST",
     headers: {
         "Content-Type": "application/json",
-        Authorization: "",
+        authorization: "",
     },
     body: {},
 };
-const url = {
+let put = {
+    method: "PUT",
+    headers: {
+        "Content-Type": "application/json",
+        authorization: "",
+    },
+    body: {},
+};
+let post = {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        authorization: "",
+    },
+    body: {},
+};
+export const url = {
     venues,
     bookings,
     ownerAndBookings,
@@ -46,5 +62,6 @@ const url = {
     deleteFetchHeader,
     authorization,
     profile,
+    put,
+    post,
 };
-export default url;

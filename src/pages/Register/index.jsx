@@ -1,7 +1,7 @@
 import styles from "../../styles/components/Register.module.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { registerUser } from "../../api/registerUser";
+import { registerUser } from "../../api";
 import { user, setUser } from "../../states/state-functions";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";

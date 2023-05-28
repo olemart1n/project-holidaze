@@ -43,6 +43,7 @@
     height: 100vh;
     display: grid;
     font-family: "Coda", cursive;
+    position: relative;
     grid-template-rows:
         auto
         1fr
