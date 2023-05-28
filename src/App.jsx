@@ -1,15 +1,27 @@
 import { Routes, Route } from "react-router-dom";
 import { setUser, setHostUser, setHostedVenues, setBookedByUser } from "./states/state-functions";
+import { Outlet } from "react-router-dom";
 import React, { useEffect } from "react";
 import Home from "./components/Home";
 import Venue from "./components/Venue";
 import HostVenues from "./components/HostVenues";
 import Bookings from "./components/Bookings";
-import Wrapper from "./components/wrapper";
 import Register from "./components/Register";
 import UserProfile from "./components/UserProfile";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
 import * as storage from "./features/storage";
 
+function Wrapper() {
+    return (
+        <div className="wrapper">
+            <Header />
+            <Outlet />
+            <Footer />
+        </div>
+    );
+}
 function App() {
     const setNoHost = setUser();
     const setHost = setHostUser();
