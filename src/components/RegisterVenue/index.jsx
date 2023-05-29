@@ -11,7 +11,7 @@ import YupInput from "../YupInput";
 import venueSchema from "../../features/schema/venueschema";
 import ImageRegister from "../ImageRegister";
 import InformationRegister from "../InformationRegister";
-function RegisterVenue() {
+function RegisterVenue({ setRegActive }) {
     const navigate = useNavigate();
     const venues = hostedVenues();
     const setVenue = setHostedVenues();
@@ -58,16 +58,18 @@ function RegisterVenue() {
                 lng: latLng.lng,
             },
         };
-
+        let test = venues;
+        test.push(submitData);
         registerVenue(submitData, host.accessToken, setError, setSuccess);
-        setVenue((data) => [...data, submitData]);
-        save("hostedVenues", [...venues, submitData]);
+        setVenue(test);
+        save("hostedVenues", test);
     };
 
     useEffect(() => {
         if (success) {
             setTimeout(() => {
-                navigate("/host/venue");
+                // navigate("/host/venue");
+                setRegActive(true);
             }, 2500);
         }
     }, [success]);

@@ -5,14 +5,17 @@ export const deleteItem = (urlFromComponent, stateToUpdate, id, updateState, sto
     const indexOfItem = stateToUpdate.indexOf(itemToDelete);
     const clone = [...stateToUpdate];
     const newValue = clone.splice(indexOfItem, 1);
-    console.log(newValue);
     storage.save(storageName, clone);
     updateState(clone);
 
-    fetch(urlFromComponent + id, {
-        method: "DELETE",
-        headers: {
-            Authorization: url.authorization,
-        },
-    }).then((res) => res.json());
+    try {
+        fetch(urlFromComponent + id, {
+            method: "DELETE",
+            headers: {
+                Authorization: url.authorization,
+            },
+        });
+    } catch (error) {
+        console.log(error);
+    }
 };

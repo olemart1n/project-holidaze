@@ -11,6 +11,7 @@ export const registerVenue = async (data, token, setError, setSuccess) => {
                 console.log(data.errors[0].message);
                 return;
             }
+
             setSuccess(true);
         })
         .catch((error) => console.log(error));

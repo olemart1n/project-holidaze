@@ -1,5 +1,5 @@
 import styles from "../../styles/components/HostVenues.module.css";
-import React from "react";
+import React, { useEffect } from "react";
 import RegisterVenue from "../../components/RegisterVenue";
 import { deleteItem, url } from "../../api";
 import { hostedVenues, setHostedVenues } from "../../states/state-functions";
@@ -22,6 +22,7 @@ function HostVenues() {
     const [updateId, setUpdateId] = useState();
     const [pageHasRendered, setPageHasRendered] = useState(false);
     const [deleteId, setDeleteId] = useState("");
+    const [regActive, setRegActive] = useState(false);
     function Delete() {
         const style = {
             textAlign: "center",
@@ -55,6 +56,11 @@ function HostVenues() {
 
         return count;
     };
+    useEffect(() => {
+        if (regActive) {
+            registerModal.current.close();
+        }
+    }, [regActive]);
     return (
         <main className={styles.host_venue_wrapper}>
             <h1 className={styles.host_venue_h1}>Your Venues</h1>
@@ -118,7 +124,7 @@ function HostVenues() {
                 onClick={closeFunctionality}
             >
                 <DialogHeader />
-                <RegisterVenue />
+                <RegisterVenue setRegActive={setRegActive} />
             </dialog>
             <dialog
                 ref={deleteModal}

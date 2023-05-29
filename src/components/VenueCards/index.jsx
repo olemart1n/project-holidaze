@@ -16,6 +16,7 @@ const VenueCards = ({ data }) => {
     let img = media[0];
     if (media[0] === undefined) {
         img = png;
+    } else {
     }
     return (
         <Link to={`/venue/${id}`} key={id} className={styles.venue_card}>
