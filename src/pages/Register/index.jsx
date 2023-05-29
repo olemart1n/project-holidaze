@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import registerSchema from "../../features/schema/registershema";
 import Loader from "../../components/Loader";
+import { Helmet } from "react-helmet-async";
 
 function Register() {
     const navigateUser = useNavigate();
@@ -43,6 +44,10 @@ function Register() {
                 registerUser(data, setIsError, setLoggedInUser, navigateUser)
             )}
         >
+            <Helmet>
+                <title>Holidaze | Register</title>
+                <meta name="description" content="create an account at holidaze" />
+            </Helmet>
             <h1 className={styles.form_register_h1}>Create a Holidaze account</h1>
             <div className={styles.form_register_section}>
                 <label className={styles.form_register_label} htmlFor="name">

@@ -11,6 +11,7 @@ import { useState, useRef } from "react";
 import { closeFunctionality } from "../../features/dialogs";
 import ContactInfo from "../../components/ContactInfo";
 import DialogHeader from "../../components/DialogHeader";
+import { Helmet } from "react-helmet-async";
 
 function HostVenues() {
     const registerModal = useRef(null);
@@ -63,6 +64,10 @@ function HostVenues() {
     }, [regActive]);
     return (
         <main className={styles.host_venue_wrapper}>
+            <Helmet>
+                <title>Your Venues</title>
+                <meta name="description" content="Venues you are hosting" />
+            </Helmet>
             <h1 className={styles.host_venue_h1}>Your Venues</h1>
             <button
                 className={styles.host_venue_addButton}
@@ -72,6 +77,7 @@ function HostVenues() {
             >
                 Host new venue
             </button>
+
             {venues &&
                 venues?.map((venue, i) => {
                     return (

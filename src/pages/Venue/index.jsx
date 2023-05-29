@@ -10,6 +10,7 @@ import { fetchSetState, url } from "../../api";
 import { specificVenue, setSpecificVenue } from "../../states/state-functions";
 import { BiArrowBack } from "react-icons/bi";
 import Loader from "../../components/Loader";
+import { Helmet } from "react-helmet-async";
 
 function Venue() {
     const navigate = useNavigate();
@@ -24,6 +25,10 @@ function Venue() {
         </main>
     ) : (
         <main className={styles.venue_wrapper}>
+            <Helmet>
+                <title>{venue.name}</title>
+                <meta name="description" content={venue.description} />
+            </Helmet>
             <BiArrowBack onClick={() => navigate(-1)} className={styles.back_arrow} />
 
             <h1 className={styles.venue_heading}>{venue.name}</h1>

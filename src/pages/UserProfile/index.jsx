@@ -9,6 +9,7 @@ import { getHostStatus, editAvatar } from "../../api";
 import { useNavigate } from "react-router-dom";
 import { save, remove } from "../../features/storage";
 import { FaUserEdit } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 function UserProfile() {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
@@ -74,6 +75,10 @@ function UserProfile() {
     };
     return (
         <main>
+            <Helmet>
+                <title>Holidaze | Profile</title>
+                <meta name="description" content="Profile" />
+            </Helmet>
             <h1 className={styles.profile_h1}>Your profile</h1>
             <div className={styles.profile_card}>
                 <div className={styles.profile_image_div}>
