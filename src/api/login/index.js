@@ -12,7 +12,8 @@ export const login = async (
     setUser,
     setHostUser,
     setHostVenues,
-    setUserBookings
+    setUserBookings,
+    setAvatar
 ) => {
     setLoading(true);
     url.post.headers = { "Content-Type": "application/json" };
@@ -31,6 +32,7 @@ export const login = async (
                 setBookingsByUser(data.name, data.accessToken, setUserBookings);
                 setSuccess(true);
                 setErr(false);
+                setAvatar(data.avatar);
             } else {
                 setErr(false);
                 save("user", data);
@@ -38,6 +40,7 @@ export const login = async (
                 setBookingsByUser(data.name, data.accessToken, setUserBookings);
                 setSuccess(true);
                 setErr(false);
+                setAvatar(data.avatar);
             }
         })
         .catch((error) => console.log(error));

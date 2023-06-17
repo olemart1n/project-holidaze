@@ -15,19 +15,19 @@ import {
     setHostUser,
     setHostedVenues,
     setBookedByUser,
-    isLoading,
+    setAvatar,
     setIsLoading,
 } from "../../states/state-functions";
 import YupInput from "../YupInput";
 
 function Login() {
     const navigate = useNavigate();
-    const loading = isLoading();
     const setLoading = setIsLoading();
     const setHost = setHostUser();
     const setLoggedInUser = setUser();
     const setHostVenues = setHostedVenues();
     const setUserBookings = setBookedByUser();
+    const setUserAvatar = setAvatar();
     const loggedInUser = user();
     const loggedInHost = hostUser();
     const [isError, setIsError] = useState("");
@@ -61,7 +61,8 @@ function Login() {
                     setLoggedInUser,
                     setHost,
                     setHostVenues,
-                    setUserBookings
+                    setUserBookings,
+                    setUserAvatar
                 )
             )}
         >

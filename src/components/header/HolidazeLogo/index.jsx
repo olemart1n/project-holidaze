@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "./index.module.css";
+import styles from "../../../styles/header/HolidazeLogo.module.css";
 
 function HolidazeLogo() {
     return (

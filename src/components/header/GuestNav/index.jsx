@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import Login from "../../Login";
-import styles from "./index.module.css";
+import styles from "../../../styles/header/GuestNav.module.css";
 import { closeFunctionality } from "../../../features/dialogs";
 import DialogHeader from "../../DialogHeader";
 import HolidazeLogo from "../HolidazeLogo";

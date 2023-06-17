@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import styles from "./index.module.css";
-import { setUser, user, setHostUser } from "../../../states/state-functions";
+import styles from "../../../styles/header/HostLinks.module.css";
+import { setUser, user, setHostUser, avatar } from "../../../states/state-functions";
 import { useNavigate } from "react-router-dom";
 function HostLinks({ toggleNav }) {
+    const userAvatar = avatar();
     const navigate = useNavigate();
     const hostUser = setHostUser();
     const notHostUser = setUser();
@@ -26,7 +27,7 @@ function HostLinks({ toggleNav }) {
                 Bookings
             </Link>
             <Link to="/profile" className={styles.logo_link}>
-                <img className={styles.host_header_avatar} src={user?.avatar} id="hello" />
+                <img className={styles.host_header_avatar} src={userAvatar} />
             </Link>
 
             <button className={styles.header_button} onClick={logOut}>
