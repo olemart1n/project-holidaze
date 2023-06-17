@@ -1,4 +1,4 @@
-@import url("../index.css");
+@import url("../../../styles/index.css");
 
 nav {
     width: 100%;
@@ -25,11 +25,6 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-around;
-}
-.host_header_avatar {
-    height: 50px;
-    border-radius: 4px;
-    margin: 1rem;
 }
 
 .host_header_nav_button {

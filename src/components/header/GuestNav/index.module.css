@@ -1,4 +1,4 @@
-@import url("../index.css");
+@import url("../../../styles/index.css");
 
 .logo_link {
     fill: var(--color-logo);

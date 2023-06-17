@@ -1,18 +1,17 @@
-import styles from "../../../styles/components/AuthedNav.module.css";
+import styles from "./index.module.css";
 import { Link } from "react-router-dom";
 import UserLinks from "../UserLinks";
 import HostLinks from "../HostLinks";
 import { MdOtherHouses } from "react-icons/md";
 import { hostUser } from "../../../states/state-functions";
 import { FaBars } from "react-icons/fa";
+import HolidazeLogo from "../HolidazeLogo";
 
 function AuthedNav({ toggleMobileNav, mobileNav, user }) {
     const authedHost = hostUser();
     return (
         <nav>
-            <Link to="/profile" className={styles.logo_link}>
-                <img className={styles.host_header_avatar} src={user?.avatar} />
-            </Link>
+            <HolidazeLogo />
             <div className={styles.host_header_links_desktop}>
                 {authedHost?.name ? <HostLinks /> : <UserLinks />}
             </div>

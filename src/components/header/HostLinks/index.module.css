@@ -1,4 +1,4 @@
-@import url("../index.css");
+@import url("../../../styles/index.css");
 
 .header_link {
     text-decoration: none;
@@ -14,8 +14,19 @@
     box-shadow: var(--shadow-1);
 }
 
+.host_header_avatar {
+    height: 50px;
+    border-radius: 4px;
+    margin: 1rem;
+}
+
 @media (max-width: 650px) {
     .header_link {
         margin: 5px auto;
+    }
+    .host_header_avatar {
+        height: 50px;
+        border-radius: 4px;
+        margin: 0.5rem 1rem;
     }
 }
