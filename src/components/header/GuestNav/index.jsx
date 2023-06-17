@@ -20,7 +20,6 @@ function GuestNav() {
 
             <button
                 className={styles.userNav_auth}
-                id="hello"
                 onClick={() => {
                     loginModal.current.showModal();
                 }}
