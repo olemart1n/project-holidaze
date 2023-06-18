@@ -14,7 +14,7 @@ import Bookings from "./pages/Bookings";
 import Register from "./pages/Register";
 import UserProfile from "./pages/UserProfile";
 import * as storage from "./features/storage";
-import Wrapper from "./components/wrapper";
+import Wrapper from "./components/Wrapper";
 function App() {
     const setUserAvatar = setAvatar();
     const setNoHost = setUser();
