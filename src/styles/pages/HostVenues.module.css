@@ -1,0 +1,73 @@
+@import url("../index.css");
+.host_venue_wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+}
+.host_venue_h1 {
+    margin: 10px auto;
+}
+
+.host_venue_top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid grey;
+}
+/* ---------- */
+.host_venue_section {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.5rem;
+    margin: 1rem;
+}
+.host_venue_section h4 {
+    text-align: center;
+    width: 100%;
+}
+.host_venue_section_div_first {
+    display: flex;
+    flex-direction: column;
+}
+.host_venue_section_div_buttons {
+    display: flex;
+}
+.host_venue_section_delete_button:hover {
+    border: 1px solid var(--color-black);
+    cursor: pointer;
+}
+.host_venue_section_delete {
+    text-align: center;
+}
+.host_venue_section_update {
+    background-color: var(--color-logoTheme2);
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+    color: var(--color-black);
+    box-shadow: var(--shadow-1);
+    margin: 3rem auto;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+@media (max-width: 650px) {
+    .host_venue_section_div_first {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .host_venue_section {
+        flex-direction: column;
+    }
+    .host_venue_section_div {
+        width: 100%;
+    }
+    .host_venue_top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

@@ -1,5 +1,5 @@
 import UserMadeBookings from "../../components/UserMadeBookings";
-import styles from "../../styles/components/Bookings.module.css";
+import styles from "../../styles/pages/Bookings.module.css";
 import { Helmet } from "react-helmet-async";
 
 function Bookings() {

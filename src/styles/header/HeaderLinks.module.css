@@ -1,0 +1,42 @@
+@import url("../index.css");
+
+.header_link {
+    text-decoration: none;
+    color: var(--color-black);
+}
+.header_link:hover {
+    text-decoration: underline;
+}
+.header_link:active {
+    background-color: var(--color-logoTheme2);
+}
+.header_link_active {
+    color: var(--color-black);
+    background-color: var(--color-logoTheme2);
+}
+.header_button {
+    background-color: var(--color-logoTheme2);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    padding: 5px;
+    box-shadow: var(--shadow-1);
+    cursor: pointer;
+}
+
+.host_header_avatar {
+    height: 50px;
+    border-radius: 4px;
+    margin: 1rem;
+}
+
+@media (max-width: 650px) {
+    .header_link {
+        margin: 5px auto;
+    }
+    .host_header_avatar {
+        height: 50px;
+        border-radius: 4px;
+        margin: 0.5rem 1rem;
+    }
+}

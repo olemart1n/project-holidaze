@@ -21,3 +21,5 @@ export const customer = () => useHolidaze((state) => state.customer);
 export const setCustomer = () => useHolidaze((state) => state.setCustomer);
 export const filteredVenues = () => useHolidaze((state) => state.filteredVenues);
 export const setFilteredVenues = () => useHolidaze((state) => state.setFilteredVenues);
+export const avatar = () => useHolidaze((state) => state.avatar);
+export const setAvatar = () => useHolidaze((state) => state.setAvatar);

@@ -1,4 +1,4 @@
-import styles from "../../styles/components/Venue.module.css";
+import styles from "../../styles/pages/Venue.module.css";
 import { useNavigate } from "react-router-dom";
 import ImageSlide from "../../components/ImageSlide";
 import Book from "../../components/Book";

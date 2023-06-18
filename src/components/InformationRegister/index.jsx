@@ -2,11 +2,6 @@ import styles from "../../styles/components/InformationRegister.module.css";
 import { TbCurrencyKroneSwedish } from "react-icons/tb";
 
 function InformationRegister({ register }) {
-    // if (!register) {
-    //     register = (arg) => {
-    //         arg = false;
-    //     };
-    // }
     return (
         <div className={styles.register_venue_information}>
             <h4 className={styles.register_venue_information_boolean_header}>Information</h4>

@@ -1,6 +1,5 @@
 import { hostedVenues, hostUser, setHostedVenues } from "../../states/state-functions";
 import styles from "../../styles/components/UpdateVenue.module.css";
-import YupInput from "../YupInput";
 import { useEffect, useState, useRef } from "react";
 import ImageRegister from "../ImageRegister";
 import { FaDog } from "react-icons/fa";
@@ -148,41 +147,49 @@ function UpdateVenue({ id }) {
     };
     return (
         <form ref={form} onSubmit={handleSubmit} className={styles.update_venue_form}>
-            <div className={styles.update_venue_location_div}>
-                <label htmlFor="name">Name</label>
-                <input
-                    className={styles.update_venue_input}
-                    placeholder={update.name}
-                    name="name"
+            <div className={styles.update_venue_section_one}>
+                <div className="yup_section">
+                    <label htmlFor="name">Name</label>
+                    <input
+                        className="yup_input"
+                        placeholder={update.name}
+                        name="name"
+                        onClick={inputClick}
+                        onFocus={inputClick}
+                    ></input>
+                </div>
+                <textarea
+                    placeholder={update.description}
                     onClick={inputClick}
+                    name="description"
                     onFocus={inputClick}
-                ></input>
+                ></textarea>
+
+                <div className="yup_section">
+                    <input
+                        placeholder="paste url"
+                        id="register_venue_images_error_message"
+                        name="media"
+                        onChange={(e) => setHiddenImage(e.currentTarget.value)}
+                        className="yup_input"
+                    />
+                </div>
             </div>
-            <YupInput
-                name="media"
-                onChange={(e) => setHiddenImage(e.currentTarget.value)}
-                inputId="register_venue_input_image"
-                id="register_venue_images_error_message"
-                placeholder="paste url"
-            />
+
             {imageArray && (
-                <ImageRegister
-                    imageArray={imageArray}
-                    setImageArray={setImageArray}
-                    hiddenImage={hiddenImage}
-                />
+                <div className={styles.update_venue_section_two}>
+                    <ImageRegister
+                        imageArray={imageArray}
+                        setImageArray={setImageArray}
+                        hiddenImage={hiddenImage}
+                    />
+                </div>
             )}
-            <textarea
-                placeholder={update.description}
-                onClick={inputClick}
-                name="description"
-                onFocus={inputClick}
-            ></textarea>
             <div className={styles.update_venue_location}>
                 <div className={styles.update_venue_location_div}>
                     <label htmlFor="street">Street</label>
                     <input
-                        className={styles.update_venue_input}
+                        className="yup_input"
                         placeholder={update.location.address}
                         name={"street"}
                         onClick={inputClick}
@@ -192,7 +199,7 @@ function UpdateVenue({ id }) {
                 <div className={styles.update_venue_location_div}>
                     <label htmlFor="city">City</label>
                     <input
-                        className={styles.update_venue_input}
+                        className="yup_input"
                         placeholder={update.location.city}
                         name={"city"}
                         onClick={inputClick}
@@ -202,7 +209,7 @@ function UpdateVenue({ id }) {
                 <div className={styles.update_venue_location_div}>
                     <label htmlFor="zip">zip</label>
                     <input
-                        className={styles.update_venue_input}
+                        className="yup_input"
                         placeholder={update.location.zip}
                         name={"zip"}
                         onClick={inputClick}
@@ -210,17 +217,19 @@ function UpdateVenue({ id }) {
                     />
                 </div>
             </div>
-            <label className={styles.update_venue_price_label} htmlFor="price">
-                Price pr day/night
-            </label>
-            <input
-                className={styles.update_venue_input}
-                type="number"
-                placeholder={update.price}
-                onClick={inputClick}
-                onFocus={inputClick}
-                name="price"
-            ></input>
+            <div className={styles.update_venue_price_div}>
+                <label className={styles.update_venue_price_label} htmlFor="price">
+                    Price pr day/night
+                </label>
+                <input
+                    className="yup_input"
+                    type="number"
+                    placeholder={update.price}
+                    onClick={inputClick}
+                    onFocus={inputClick}
+                    name="price"
+                ></input>
+            </div>
             {/* ---------------    -- - - - - - -- - -- - -- --------------------------------------- */}
             <div className={styles.update_venue_boolean}>
                 <button

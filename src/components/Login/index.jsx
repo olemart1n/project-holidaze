@@ -15,19 +15,18 @@ import {
     setHostUser,
     setHostedVenues,
     setBookedByUser,
-    isLoading,
+    setAvatar,
     setIsLoading,
 } from "../../states/state-functions";
-import YupInput from "../YupInput";
 
 function Login() {
     const navigate = useNavigate();
-    const loading = isLoading();
     const setLoading = setIsLoading();
     const setHost = setHostUser();
     const setLoggedInUser = setUser();
     const setHostVenues = setHostedVenues();
     const setUserBookings = setBookedByUser();
+    const setUserAvatar = setAvatar();
     const loggedInUser = user();
     const loggedInHost = hostUser();
     const [isError, setIsError] = useState("");
@@ -61,19 +60,38 @@ function Login() {
                     setLoggedInUser,
                     setHost,
                     setHostVenues,
-                    setUserBookings
+                    setUserBookings,
+                    setUserAvatar
                 )
             )}
         >
             <h2 className={styles.form_login_h2}>Login</h2>
-            <YupInput errors={errors} register={register} inputName={"email"} type={"email"} />
-            <YupInput
-                errors={errors}
-                register={register}
-                inputName={"password"}
-                type={"password"}
-            />
-            <p className={styles.form_login_error}>{isError}</p>
+            <div className="yup_section">
+                <label className="yup_label" htmlFor="email">
+                    Email
+                </label>
+                <input
+                    errors={errors}
+                    {...register("email")}
+                    type={"email"}
+                    className="yup_input"
+                ></input>
+                <p className="yup_input_error">{errors["email"]?.message}</p>
+            </div>
+            <div className="yup_section">
+                <label className="yup_label" htmlFor="password">
+                    Password
+                </label>
+                <input
+                    errors={errors}
+                    {...register("password")}
+                    type={"password"}
+                    className="yup_input"
+                />
+                <p className="yup_input_error">{errors["password"]?.message}</p>
+                <p className={styles.form_login_error}>{isError}</p>
+            </div>
+
             {success && (
                 <div>
                     <Loader />

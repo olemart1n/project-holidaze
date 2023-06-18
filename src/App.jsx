@@ -1,6 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import { setUser, setHostUser, setHostedVenues, setBookedByUser } from "./states/state-functions";
-import { Outlet } from "react-router-dom";
+import {
+    setUser,
+    setHostUser,
+    setHostedVenues,
+    setBookedByUser,
+    setAvatar,
+} from "./states/state-functions";
 import React, { useEffect } from "react";
 import StartPage from "./pages/StartPage";
 import Venue from "./pages/Venue";
@@ -11,6 +16,7 @@ import UserProfile from "./pages/UserProfile";
 import * as storage from "./features/storage";
 import Wrapper from "./components/wrapper";
 function App() {
+    const setUserAvatar = setAvatar();
     const setNoHost = setUser();
     const setHost = setHostUser();
     const setHostVenues = setHostedVenues();
@@ -20,6 +26,7 @@ function App() {
         storage.load("user") && setNoHost(storage.load("user"));
         storage.load("hostUser") && setHost(storage.load("hostUser"));
         storage.load("hostedVenues") && setHostVenues(storage.load("hostedVenues"));
+        storage.load("avatar") && setUserAvatar(storage.load("avatar"));
     }, []);
 
     return (

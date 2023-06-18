@@ -39,7 +39,7 @@ function UserMadeBookings() {
                             </div>
                         ) : (
                             <div className={styles.madeBookings_priceDiv}>
-                                <Link>Book again</Link>
+                                <h4>Finished</h4>
                             </div>
                         )}
 

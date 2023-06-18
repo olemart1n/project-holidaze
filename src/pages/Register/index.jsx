@@ -1,4 +1,4 @@
-import styles from "../../styles/components/Register.module.css";
+import styles from "../../styles/pages/Register.module.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerUser } from "../../api";

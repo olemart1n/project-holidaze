@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { mountStoreDevtool } from "simple-zustand-devtools";
 const useHolidaze = create((set) => ({
     user: {},
-    error: [],
+    avatar: "",
     isLoading: false,
     hostUser: {},
     venues: [],
@@ -12,6 +12,7 @@ const useHolidaze = create((set) => ({
     bookedByUser: [],
     customer: {},
     setCustomer: (data) => set((state) => ({ customer: (state.customer = data) })),
+    setAvatar: (data) => set((state) => ({ avatar: (state.avatar = data) })),
     setHostedVenues: (data) => set((state) => ({ hostedVenues: (state.hostedVenues = data) })),
     setBookedByUser: (data) => set((state) => ({ bookedByUser: (state.bookedByUser = data) })),
     setHostUser: (data) => set((state) => ({ hostUser: (state.hostUser = data) })),

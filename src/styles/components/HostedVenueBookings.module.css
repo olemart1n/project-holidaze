@@ -10,15 +10,17 @@
     background-color: var(--color-logoTheme2);
     position: relative;
     flex-wrap: wrap;
+    max-width: 500px;
 }
 .host_venue_section_disabled {
+    max-width: 500px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     border-radius: 15px;
     border: 1px solid var(--color-border);
     height: fit-content;
-    background-color: var(--color-background);
+    background-color: fff;
     position: relative;
 }
 .host_venue_section_div_item {
