@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-      branches: ['fix']
+      branches: ['main']
 
 
    workflow_dispatch:
