@@ -1,13 +1,13 @@
 import { hostedVenues, hostUser, setHostedVenues } from "../../states/state-functions";
 import styles from "../../styles/components/UpdateVenue.module.css";
 import { useEffect, useState, useRef } from "react";
-import ImageRegister from "../ImageRegister";
+import ImageRegister from "../imageRegister";
 import { FaDog } from "react-icons/fa";
 import { AiOutlineWifi } from "react-icons/ai";
 import { MdOutlineBreakfastDining } from "react-icons/md";
 import { FaParking } from "react-icons/fa";
 import { updateVenue } from "../../api";
-import Loader from "../Loader";
+import Loader from "../loader";
 
 function UpdateVenue({ id }) {
     const venues = hostedVenues();

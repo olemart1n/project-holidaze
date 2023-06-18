@@ -7,14 +7,14 @@ import {
     setAvatar,
 } from "./states/state-functions";
 import React, { useEffect } from "react";
-import StartPage from "./pages/StartPage";
-import Venue from "./pages/Venue";
-import HostVenues from "./pages/HostVenues";
-import Bookings from "./pages/Bookings";
-import Register from "./pages/Register";
-import UserProfile from "./pages/UserProfile";
+import StartPage from "./pages/startPage";
+import Venue from "./pages/venue";
+import HostVenues from "./pages/hostVenues";
+import Bookings from "./pages/bookings";
+import Register from "./pages/register";
+import UserProfile from "./pages/userProfile";
 import * as storage from "./features/storage";
-import Wrapper from "./components/Wrapper";
+import Wrapper from "./components/wrapper";
 function App() {
     const setUserAvatar = setAvatar();
     const setNoHost = setUser();

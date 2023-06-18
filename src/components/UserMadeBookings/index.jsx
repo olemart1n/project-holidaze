@@ -1,7 +1,7 @@
 import styles from "../../styles/components/UserMadeBookings.module.css";
-import Loader from "../Loader";
-import ImageSlide from "../ImageSlide";
-import VenueMeta from "../VenueMeta";
+import Loader from "../loader";
+import ImageSlide from "../imageSlide";
+import VenueMeta from "../venueMeta";
 import { bookedByUser, setBookedByUser } from "../../states/state-functions";
 import { timeGap, returnDate, returnDay, returnMonth } from "../../features/dateAndTime/index";
 import { Link } from "react-router-dom";

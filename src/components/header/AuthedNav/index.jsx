@@ -1,9 +1,9 @@
 import styles from "../../../styles/header/AuthedNav.module.css";
-import UserLinks from "../UserLinks";
-import HostLinks from "../HostLinks";
+import UserLinks from "../userLinks";
+import HostLinks from "../hostLinks";
 import { hostUser } from "../../../states/state-functions";
 import { FaBars } from "react-icons/fa";
-import HolidazeLogo from "../HolidazeLogo";
+import HolidazeLogo from "../holidazeLogo";
 
 function AuthedNav({ toggleMobileNav, mobileNav, user }) {
     const authedHost = hostUser();

@@ -1,6 +1,6 @@
-import Loader from "../../components/Loader";
+import Loader from "../../components/loader";
 import styles from "../../styles/pages/UserProfile.module.css";
-import DialogHeader from "../../components/DialogHeader";
+import DialogHeader from "../../components/dialogHeader";
 import { user, hostUser, setUser, setHostUser } from "../../states/state-functions";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { closeFunctionality } from "../../features/dialogs";

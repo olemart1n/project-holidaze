@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { user, hostUser, isLoading } from "../../states/state-functions";
-import GuestNav from "./GuestNav";
-import AuthedNav from "./AuthedNav";
+import GuestNav from "./guestNav";
+import AuthedNav from "./authedNav";
 
 function Header() {
     const authedHost = hostUser();

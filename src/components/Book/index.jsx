@@ -1,18 +1,17 @@
 import styles from "../../styles/components/Book.module.css";
 import { GoCalendar } from "react-icons/go";
 import { months, returnDoubleIntDay } from "../../features/dateAndTime";
-import Loader from "../Loader";
+import Loader from "../loader";
 import { useEffect, useRef, useState } from "react";
-import DialogHeader from "../DialogHeader";
+import DialogHeader from "../dialogHeader";
 import { useParams } from "react-router-dom";
 import { specificVenue, user, hostUser, setBookedByUser } from "../../states/state-functions";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar } from "@hassanmojab/react-modern-calendar-datepicker";
 import { useNavigate } from "react-router-dom";
 import { bookVenue, setBookingsByUser } from "../../api";
-import Login from "../Login";
+import Login from "../login";
 function Book() {
-    const [bookingDone, setBookingDone] = useState(false);
     const navigate = useNavigate();
     const setBookedVenues = setBookedByUser();
     let authedUser;

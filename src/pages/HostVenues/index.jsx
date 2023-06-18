@@ -1,15 +1,15 @@
 import styles from "../../styles/pages/HostVenues.module.css";
 import React, { useEffect } from "react";
-import RegisterVenue from "../../components/RegisterVenue";
+import RegisterVenue from "../../components/registerVenue";
 import { deleteItem, url } from "../../api";
 import { hostedVenues, setHostedVenues } from "../../states/state-functions";
-import VenueCards from "../../components/VenueCards";
-import HostedVenueBookings from "../../components/HostedVenueBookings";
+import VenueCards from "../../components/venueCards";
+import HostedVenueBookings from "../../components/hostedVenueBookings";
 import { timeGap } from "../../features/dateAndTime";
-import UpdateVenue from "../../components/UpdateVenue";
+import UpdateVenue from "../../components/updateVenue";
 import { useState, useRef } from "react";
 import { closeFunctionality } from "../../features/dialogs";
-import DialogHeader from "../../components/DialogHeader";
+import DialogHeader from "../../components/dialogHeader";
 import { Helmet } from "react-helmet-async";
 
 function HostVenues() {

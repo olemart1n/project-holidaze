@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import loginSchema from "../../features/schema/loginschema";
 import { login } from "../../api";
 import { Link } from "react-router-dom";
-import Loader from "../Loader";
+import Loader from "../loader";
 import { closeDialog, preventDialogClose } from "../../features/dialogs";
 import {
     user,

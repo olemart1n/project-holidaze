@@ -4,8 +4,8 @@ import { fetchCustomer } from "../../api";
 import { load } from "../../features/storage";
 import { setCustomer } from "../../states/state-functions";
 import { timeGap, returnDate, returnMonth } from "../../features/dateAndTime";
-import ContactInfo from "../ContactInfo";
-import DialogHeader from "../DialogHeader";
+import ContactInfo from "../contactInfo";
+import DialogHeader from "../dialogHeader";
 import { useRef } from "react";
 import { closeFunctionality } from "../../features/dialogs";
 

@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
-import Login from "../../Login";
+import Login from "../../login";
 import styles from "../../../styles/header/GuestNav.module.css";
 import { closeFunctionality } from "../../../features/dialogs";
-import DialogHeader from "../../DialogHeader";
-import HolidazeLogo from "../HolidazeLogo";
+import DialogHeader from "../../dialogHeader";
+import HolidazeLogo from "../holidazeLogo";
 
 function GuestNav() {
     const loginModal = useRef(null);

@@ -1,4 +1,4 @@
-import UserMadeBookings from "../../components/UserMadeBookings";
+import UserMadeBookings from "../../components/userMadeBookings";
 import styles from "../../styles/pages/Bookings.module.css";
 import { Helmet } from "react-helmet-async";
 

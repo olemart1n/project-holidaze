@@ -6,7 +6,7 @@ import { user, setUser } from "../../states/state-functions";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import registerSchema from "../../features/schema/registershema";
-import Loader from "../../components/Loader";
+import Loader from "../../components/loader";
 import { Helmet } from "react-helmet-async";
 
 function Register() {

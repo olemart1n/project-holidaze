@@ -1,6 +1,6 @@
 import styles from "../../styles/components/RegisterVenue.module.css";
 import { useEffect, useState } from "react";
-import LocationSearchInput from "../LocationSearchInput";
+import LocationSearchInput from "../locationSearchInput";
 import { registerVenue } from "../../api";
 import { hostUser, setHostedVenues, hostedVenues } from "../../states/state-functions";
 import { save } from "../../features/storage";
@@ -8,8 +8,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import venueSchema from "../../features/schema/venueschema";
-import ImageRegister from "../ImageRegister";
-import InformationRegister from "../InformationRegister";
+import ImageRegister from "../imageRegister";
+import InformationRegister from "../informationRegister";
 import { preventDialogClose } from "../../features/dialogs";
 function RegisterVenue({ setRegActive }) {
     const navigate = useNavigate();

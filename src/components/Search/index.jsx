@@ -4,7 +4,7 @@ import { GoSearch } from "react-icons/go";
 import { RxCross1 } from "react-icons/rx";
 import { useEffect, useState, useRef } from "react";
 import { filterVenuesByName } from "../../features/search";
-import FilteredVenue from "../FilteredVenue";
+import FilteredVenue from "../filteredVenue";
 function Search() {
     const buttonRef = useRef(null);
     const initialVenues = venues();

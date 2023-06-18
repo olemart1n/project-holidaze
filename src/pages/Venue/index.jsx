@@ -1,15 +1,15 @@
 import styles from "../../styles/pages/Venue.module.css";
 import { useNavigate } from "react-router-dom";
-import ImageSlide from "../../components/ImageSlide";
-import Book from "../../components/Book";
-import VenueDescription from "../../components/VenueDescription";
-import VenueMeta from "../../components/VenueMeta";
-import VenueMap from "../../components/VenueMap";
+import ImageSlide from "../../components/imageSlide";
+import Book from "../../components/book";
+import VenueDescription from "../../components/venueDescription";
+import VenueMeta from "../../components/venueMeta";
+import VenueMap from "../../components/venueMap";
 import { useParams } from "react-router-dom";
 import { fetchSetState, url } from "../../api";
 import { specificVenue, setSpecificVenue } from "../../states/state-functions";
 import { BiArrowBack } from "react-icons/bi";
-import Loader from "../../components/Loader";
+import Loader from "../../components/loader";
 import { Helmet } from "react-helmet-async";
 
 function Venue() {

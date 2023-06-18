@@ -1,8 +1,8 @@
 import styles from "../../styles/pages/StartPage.module.css";
-import VenueCards from "../../components/VenueCards";
+import VenueCards from "../../components/venueCards";
 import { venues, setVenues } from "../../states/state-functions";
 import { fetchSetState, url } from "../../api";
-import Search from "../../components/Search";
+import Search from "../../components/search";
 import { Helmet } from "react-helmet-async";
 
 function StartPage() {
