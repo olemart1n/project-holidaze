@@ -3,36 +3,37 @@
 .update_venue_form {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    place-content: center;
 }
 
-.update_venue_location {
+.update_section_one {
     display: flex;
-    flex-direction: column;
+    padding: 1rem;
     align-items: center;
-    width: 100%;
-    display: flex;
     justify-content: space-evenly;
 }
 
-.update_venue_location_div {
-    width: 80%;
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
+.update_section_two {
+    margin-top: 1rem;
+    padding: 1rem;
 }
-.update_div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.update_location {
+}
+.update_location_div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.update_div_name {
+    max-width: 200px;
 }
 
-.update_venue_section_one {
-    max-width: 400px;
+.update_div_textarea {
+    min-height: 100px;
     margin: auto;
 }
 
-.update_venue_section_two {
-    max-width: 1000px;
+.update_price_div {
     margin: auto;
 }
 
@@ -41,6 +42,7 @@
     justify-content: space-evenly;
     width: 100%;
     margin: auto;
+    margin-top: 1rem;
 }
 
 .update_venue_boolean_true {
@@ -67,43 +69,13 @@
     box-shadow: var(--shadow-1);
     cursor: pointer;
 }
-.update_venue_price_div {
-    max-width: 200px;
-    margin: auto;
-}
-.update_venue_price_label {
-    margin: auto;
-}
-
-.update_venue_select_div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.update_venue_select_div select {
-    width: fit-content;
-}
-
-.update_venue_submit_button {
-    background-color: var(--color-logoTheme);
-    padding: 5px;
-    border-radius: 4px;
-    border: 1px solid var(--color-border);
-    box-shadow: var(--shadow-1);
-    font-size: 1rem;
-    margin: 3rem auto;
-    width: 100%;
-    max-width: 150px;
-}
-
-@media (min-width: 650px) {
-    .update_venue_location {
-        width: 100%;
+@media (max-width: 650px) {
+    .update_section_one {
         display: flex;
-        margin: 2rem;
+        padding: 1rem;
+        align-items: center;
         justify-content: space-evenly;
-    }
-    .update_venue_boolean {
-        margin: 2rem;
+        flex-direction: column;
+        flex-wrap: wrap;
     }
 }

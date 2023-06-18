@@ -147,24 +147,60 @@ function UpdateVenue({ id }) {
     };
     return (
         <form ref={form} onSubmit={handleSubmit} className={styles.update_venue_form}>
-            <div className={styles.update_venue_section_one}>
-                <div className="yup_section">
-                    <label htmlFor="name">Name</label>
-                    <input
-                        className="yup_input"
-                        placeholder={update.name}
-                        name="name"
+            <section className={styles.update_section_one}>
+                <div className={styles.update_div_name}>
+                    <div className="yup_section">
+                        <label htmlFor="name">Name</label>
+                        <input
+                            className="yup_input"
+                            placeholder={update.name}
+                            name="name"
+                            onClick={inputClick}
+                            onFocus={inputClick}
+                        ></input>
+                    </div>
+                    <textarea
+                        className={styles.update_div_textarea}
+                        placeholder={update.description}
                         onClick={inputClick}
+                        name="description"
                         onFocus={inputClick}
-                    ></input>
+                    ></textarea>
                 </div>
-                <textarea
-                    placeholder={update.description}
-                    onClick={inputClick}
-                    name="description"
-                    onFocus={inputClick}
-                ></textarea>
-
+                <div className={styles.update_location}>
+                    <div className={styles.update_location_div}>
+                        <label htmlFor="street">Street</label>
+                        <input
+                            className="yup_input"
+                            placeholder={update.location.address}
+                            name={"street"}
+                            onClick={inputClick}
+                            onFocus={inputClick}
+                        />
+                    </div>
+                    <div className={styles.update_location_div}>
+                        <label htmlFor="city">City</label>
+                        <input
+                            className="yup_input"
+                            placeholder={update.location.city}
+                            name={"city"}
+                            onClick={inputClick}
+                            onFocus={inputClick}
+                        />
+                    </div>
+                    <div className={styles.update_location_div}>
+                        <label htmlFor="zip">zip</label>
+                        <input
+                            className="yup_input"
+                            placeholder={update.location.zip}
+                            name={"zip"}
+                            onClick={inputClick}
+                            onFocus={inputClick}
+                        />
+                    </div>
+                </div>
+            </section>
+            <section className={styles.update_section_two}>
                 <div className="yup_section">
                     <input
                         placeholder="paste url"
@@ -174,50 +210,18 @@ function UpdateVenue({ id }) {
                         className="yup_input"
                     />
                 </div>
-            </div>
+                {imageArray && (
+                    <div className={styles.update_venue_section_two}>
+                        <ImageRegister
+                            imageArray={imageArray}
+                            setImageArray={setImageArray}
+                            hiddenImage={hiddenImage}
+                        />
+                    </div>
+                )}
+            </section>
 
-            {imageArray && (
-                <div className={styles.update_venue_section_two}>
-                    <ImageRegister
-                        imageArray={imageArray}
-                        setImageArray={setImageArray}
-                        hiddenImage={hiddenImage}
-                    />
-                </div>
-            )}
-            <div className={styles.update_venue_location}>
-                <div className={styles.update_venue_location_div}>
-                    <label htmlFor="street">Street</label>
-                    <input
-                        className="yup_input"
-                        placeholder={update.location.address}
-                        name={"street"}
-                        onClick={inputClick}
-                        onFocus={inputClick}
-                    />
-                </div>
-                <div className={styles.update_venue_location_div}>
-                    <label htmlFor="city">City</label>
-                    <input
-                        className="yup_input"
-                        placeholder={update.location.city}
-                        name={"city"}
-                        onClick={inputClick}
-                        onFocus={inputClick}
-                    />
-                </div>
-                <div className={styles.update_venue_location_div}>
-                    <label htmlFor="zip">zip</label>
-                    <input
-                        className="yup_input"
-                        placeholder={update.location.zip}
-                        name={"zip"}
-                        onClick={inputClick}
-                        onFocus={inputClick}
-                    />
-                </div>
-            </div>
-            <div className={styles.update_venue_price_div}>
+            <div className={styles.update_price_div}>
                 <label className={styles.update_venue_price_label} htmlFor="price">
                     Price pr day/night
                 </label>
@@ -296,7 +300,7 @@ function UpdateVenue({ id }) {
                     </div>
                 ) : (
                     <button
-                        className={styles.update_venue_submit_button}
+                        className="lightblue_button"
                         onClick={(e) => {
                             e.stopPropagation();
                         }}
