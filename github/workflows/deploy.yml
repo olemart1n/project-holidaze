@@ -3,7 +3,17 @@ name: Deploy
 on:
   push:
     branches:
-      - fix
+      branches: ['fix']
+
+
+   workflow_dispatch:
+
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 
 jobs:
   build:
@@ -53,12 +63,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-
-
-
-          steps:
-  - name: Sample Azure action
-    with: # Set Azure credentials secret as an input
-      credentials: ${{ secrets.AZURE_CREDENTIALS }}
-    env: # Or as an environment variable
-      credentials: ${{ secrets.AZURE_CREDENTIALS }}
