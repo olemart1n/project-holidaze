@@ -2,11 +2,9 @@ name: Deploy
 
 on:
   push:
-    branches:
       branches: -main
 
-
-   workflow_dispatch:
+  workflow_dispatch:
 
 
 permissions:
@@ -27,10 +25,10 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 16
 
       - name: Install dependencies
-        uses: npm install
+        run: npm install
 
       - name: Build project
         run: npm run build
