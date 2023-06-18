@@ -1,4 +1,4 @@
-import styles from "../../styles/components/StartPage.module.css";
+import styles from "../../styles/pages/StartPage.module.css";
 import VenueCards from "../../components/VenueCards";
 import { venues, setVenues } from "../../states/state-functions";
 import { fetchSetState, url } from "../../api";

@@ -11,6 +11,8 @@
 .host_venue_top {
     display: flex;
     align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid grey;
 }
 /* ---------- */
 .host_venue_section {

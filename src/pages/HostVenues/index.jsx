@@ -15,7 +15,6 @@ import { Helmet } from "react-helmet-async";
 function HostVenues() {
     const registerModal = useRef(null);
     const updateModal = useRef(null);
-    const contactInfoModal = useRef(null);
     const deleteModal = useRef(null);
     const venues = hostedVenues();
     const setVenues = setHostedVenues();

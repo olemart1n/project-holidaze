@@ -27,18 +27,20 @@
     border-radius: 20px;
     padding: 1rem;
     box-shadow: var(--shadow-1);
-    background-color: var(--color-background);
+    background-color: fff;
     margin-right: 1rem;
     position: relative;
 }
 
 .search_div_div_active {
+    border-radius: 20px;
     width: 30%;
     height: 2rem;
     display: flex;
     align-items: center;
     padding: 1rem;
     position: relative;
+    background-color: white;
 }
 
 .search_input {
@@ -48,7 +50,7 @@
     font-size: 1.2rem;
     color: var(--color-black);
     cursor: pointer;
-    background-color: transparent;
+    background-color: fff;
     width: 100%;
 }
 .search_input :focus {
