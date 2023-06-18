@@ -6,7 +6,6 @@ import {
     setBookedByUser,
     setAvatar,
 } from "./states/state-functions";
-import { Outlet } from "react-router-dom";
 import React, { useEffect } from "react";
 import StartPage from "./pages/StartPage";
 import Venue from "./pages/Venue";

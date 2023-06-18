@@ -5,8 +5,12 @@
     margin: 0.5rem;
 }
 .host_venue_h1 {
-    text-align: center;
     margin: 10px auto;
+}
+
+.host_venue_top {
+    display: flex;
+    align-items: center;
 }
 
 .host_venue_addButton {
@@ -44,8 +48,10 @@
 .host_venue_section_div_buttons {
     width: 100%;
 }
-
 .host_venue_section_delete {
+    text-align: center;
+}
+.host_venue_section_delete_button {
     background-color: var(--color-backgroundWarning);
     color: var(--color-black);
     padding: 5px;
@@ -65,24 +71,6 @@
     margin: 3rem auto;
     font-size: 1.2rem;
 }
-.host_venue_register_modal {
-    max-width: 1400px;
-    margin: auto;
-    width: 98%;
-    height: 95%;
-    min-height: 350px;
-    border: 1px solid var(--color-border);
-    border-radius: 10px;
-}
-.host_venue_delete_modal {
-    max-width: 600px;
-    margin: auto;
-    width: 98%;
-    height: 50%;
-    min-height: 350px;
-    border: 1px solid var(--color-border);
-    border-radius: 10px;
-}
 
 @media (max-width: 650px) {
     .host_venue_section {
@@ -90,5 +78,10 @@
     }
     .host_venue_section_div {
         width: 100%;
+    }
+    .host_venue_top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }

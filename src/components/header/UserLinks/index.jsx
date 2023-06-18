@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import styles from "../../../styles/components/UserLinks.module.css";
-import { setUser, user, avatar } from "../../../states/state-functions";
+import styles from "../../../styles/header/HeaderLinks.module.css";
+import { setUser, avatar } from "../../../states/state-functions";
 import { useNavigate } from "react-router-dom";
 function UserLinks({ toggleNav }) {
     const userAvatar = avatar();
@@ -13,12 +13,13 @@ function UserLinks({ toggleNav }) {
             navigate("/");
         }, 500);
     };
+
     return (
         <>
-            <Link className={styles.user_link} to="/" onClick={toggleNav}>
+            <Link className={styles.header_link} to="/" onClick={toggleNav}>
                 Find venues
             </Link>
-            <Link className={styles.user_link} to="/bookings" onClick={toggleNav}>
+            <Link className={styles.header_link} to="/bookings" onClick={toggleNav}>
                 Bookings
             </Link>
             <Link to="/profile" className={styles.logo_link}>

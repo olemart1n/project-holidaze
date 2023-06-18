@@ -16,15 +16,3 @@
     box-shadow: var(--shadow-2);
     border: 1px solid var(--color-black);
 }
-
-.login_dialog {
-    max-width: 750px;
-    margin: auto;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    min-height: 350px;
-    border: 1px solid var(--color-border);
-    border-radius: 10px;
-}

@@ -19,7 +19,7 @@ function GuestNav() {
             >
                 <p>Login</p>
             </button>
-            <dialog ref={loginModal} className={styles.login_dialog} onClick={closeFunctionality}>
+            <dialog ref={loginModal} className="small_dialog" onClick={closeFunctionality}>
                 <DialogHeader />
                 <Login />
             </dialog>

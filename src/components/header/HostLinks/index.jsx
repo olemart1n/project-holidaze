@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styles from "../../../styles/header/HostLinks.module.css";
+import styles from "../../../styles/header/HeaderLinks.module.css";
 import { setUser, user, setHostUser, avatar } from "../../../states/state-functions";
 import { useNavigate } from "react-router-dom";
 function HostLinks({ toggleNav }) {
