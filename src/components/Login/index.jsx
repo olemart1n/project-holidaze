@@ -18,7 +18,6 @@ import {
     setAvatar,
     setIsLoading,
 } from "../../states/state-functions";
-import YupInput from "../YupInput";
 
 function Login() {
     const navigate = useNavigate();

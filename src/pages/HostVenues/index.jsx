@@ -9,7 +9,6 @@ import { timeGap } from "../../features/dateAndTime";
 import UpdateVenue from "../../components/UpdateVenue";
 import { useState, useRef } from "react";
 import { closeFunctionality } from "../../features/dialogs";
-import ContactInfo from "../../components/ContactInfo";
 import DialogHeader from "../../components/DialogHeader";
 import { Helmet } from "react-helmet-async";
 
@@ -68,7 +67,7 @@ function HostVenues() {
             <div className={styles.host_venue_top}>
                 <h1 className={styles.host_venue_h1}>Your Venues</h1>
                 <button
-                    className={styles.host_venue_addButton}
+                    className="lightblue_button"
                     onClick={() => {
                         setPageHasRendered(false);
                         registerModal.current.showModal();
@@ -82,15 +81,11 @@ function HostVenues() {
                 venues?.map((venue, i) => {
                     return (
                         <div key={i} className={styles.host_venue_section}>
-                            <div className={styles.host_venue_section_div}>
-                                <h4>
-                                    You have {countActiveBookings(venue?.bookings)} upcoming
-                                    bookings for this venue
-                                </h4>
+                            <div className={styles.host_venue_section_div_first}>
                                 <VenueCards data={venue} />
                                 <div className={styles.host_venue_section_div_buttons}>
                                     <button
-                                        className={styles.host_venue_section_delete_button}
+                                        className="delete_button"
                                         onClick={() => {
                                             setDeleteId(venue.id);
                                             deleteModal.current.showModal();
@@ -112,6 +107,10 @@ function HostVenues() {
                             </div>
 
                             <div className={styles.host_venue_section_div}>
+                                <h4>
+                                    You have {countActiveBookings(venue?.bookings)} upcoming
+                                    bookings for this venue
+                                </h4>
                                 {venue?.bookings?.length > 0 ? (
                                     venue.bookings.map((info) => {
                                         return <HostedVenueBookings info={info} key={info.id} />;
@@ -134,10 +133,6 @@ function HostVenues() {
             <dialog ref={updateModal} className="full_dialog" onClick={closeFunctionality}>
                 <DialogHeader />
                 {pageHasRendered && <UpdateVenue id={updateId} />}
-            </dialog>
-            <dialog ref={contactInfoModal} className="full_dialog" onClick={closeFunctionality}>
-                <DialogHeader />
-                {pageHasRendered && <ContactInfo />}
             </dialog>
         </main>
     );

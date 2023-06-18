@@ -84,6 +84,32 @@ header {
     border-radius: 10px;
 }
 
+.lightblue_button {
+    background-color: var(--color-logoTheme2);
+    color: var(--color-black);
+    font-size: 1.3rem;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-1);
+    margin: 2rem auto;
+    cursor: pointer;
+}
+.lightblue_button:active {
+    box-shadow: var(--shadow-2);
+}
+.delete_button {
+    background-color: var(--color-backgroundWarning);
+    color: var(--color-black);
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-1);
+    font-size: 1.1rem;
+    margin: 3rem 1rem;
+    cursor: pointer;
+}
+
 .yup_section {
     display: flex;
     flex-direction: column;

@@ -3,12 +3,15 @@ import styles from "../../styles/components/HostedVenueBookings.module.css";
 import { fetchCustomer } from "../../api";
 import { load } from "../../features/storage";
 import { setCustomer } from "../../states/state-functions";
-import { timeGap, returnDate, returnDay, returnMonth } from "../../features/dateAndTime";
-import { useState } from "react";
+import { timeGap, returnDate, returnMonth } from "../../features/dateAndTime";
 import ContactInfo from "../ContactInfo";
-function HostedVenueBookings({ info, setDialogType }) {
-    const [showInfo, setShowInfo] = useState(false);
+import DialogHeader from "../DialogHeader";
+import { useRef } from "react";
+import { closeFunctionality } from "../../features/dialogs";
+
+function HostedVenueBookings({ info }) {
     const setBookingId = setCustomer();
+    const contactInfoModal = useRef(null);
     let style;
     const isStillActive = () => {
         let endsAt = info.dateTo;
@@ -38,21 +41,16 @@ function HostedVenueBookings({ info, setDialogType }) {
                 className={styles.host_venue_section_contact}
                 onClick={(e) => {
                     fetchCustomer(info.id, load("hostUser").accessToken, setBookingId);
-                    if (showInfo === true) {
-                        setShowInfo(false);
-                    } else {
-                        setShowInfo(true);
-                    }
+                    contactInfoModal.current.showModal();
                 }}
             >
-                <i>info</i>
+                <i>Show info</i>
                 <BsFilePerson />
             </div>
-            {showInfo && (
-                <div className={styles.host_venue_section_contact_bool}>
-                    <ContactInfo />
-                </div>
-            )}
+            <dialog ref={contactInfoModal} className="small_dialog" onClick={closeFunctionality}>
+                <DialogHeader />
+                <ContactInfo />
+            </dialog>
         </div>
     );
 }

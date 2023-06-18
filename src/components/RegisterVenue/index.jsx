@@ -7,10 +7,10 @@ import { save } from "../../features/storage";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
-import YupInput from "../YupInput";
 import venueSchema from "../../features/schema/venueschema";
 import ImageRegister from "../ImageRegister";
 import InformationRegister from "../InformationRegister";
+import { preventDialogClose } from "../../features/dialogs";
 function RegisterVenue({ setRegActive }) {
     const navigate = useNavigate();
     const venues = hostedVenues();
@@ -34,7 +34,7 @@ function RegisterVenue({ setRegActive }) {
         resolver: yupResolver(venueSchema),
     });
 
-    const onSubmit = (data) => {
+    const submitVenue = (data) => {
         const submitData = {
             name: data.name,
             description: data.description,
@@ -76,27 +76,40 @@ function RegisterVenue({ setRegActive }) {
 
     return (
         <form
-            onSubmit={handleSubmit((data) => onSubmit(data))}
+            onSubmit={handleSubmit((data) => submitVenue(data))}
             autoComplete="off"
             className={styles.register_venue_form}
         >
             <div className={styles.register_venue_section_one}>
-                <YupInput
-                    placeholder="give your venue a name"
-                    errors={errors}
-                    register={register}
-                    inputName="name"
-                />
-                <YupInput
-                    errors={errors}
-                    register={register}
-                    inputName={"media"}
-                    onChange={(e) => setHiddenImage(e.currentTarget.value)}
-                    type="url"
-                    id="register_venue_images_error_message"
-                    placeholder="paste in url"
-                    inputId="register_venue_input_image"
-                />
+                <div className="yup_section">
+                    <label className="yup_label" htmlFor="name">
+                        Name
+                    </label>
+                    <input
+                        placeholder="give your venue a name"
+                        errors={errors}
+                        {...register("name")}
+                        type="name"
+                        name="name"
+                        className="yup_input"
+                    ></input>
+                    <p className="yup_input_error">{errors["name"]?.message}</p>
+                </div>
+                <div className="yup_section">
+                    <label className="yup_label" htmlFor="media">
+                        Media
+                    </label>
+                    <input
+                        placeholder="paste in url"
+                        errors={errors}
+                        {...register("media")}
+                        name="media"
+                        onChange={(e) => setHiddenImage(e.currentTarget.value)}
+                        type="url"
+                        className="yup_input"
+                    ></input>
+                    <p className="yup_input_error">{errors["media"]?.message}</p>
+                </div>
                 <ImageRegister
                     imageArray={imageArray}
                     setImageArray={setImageArray}
@@ -127,46 +140,76 @@ function RegisterVenue({ setRegActive }) {
                         setContinent={setContinent}
                     />
                 </div>
-                <YupInput
-                    errors={errors}
-                    register={register}
-                    inputName={"street"}
-                    onChange={(e) => setStreet(e.currentTarget.value)}
-                    value={street}
-                    required={true}
-                />
-                <YupInput
-                    errors={errors}
-                    register={register}
-                    inputName={"city"}
-                    onChange={(e) => setCity(e.currentTarget.value)}
-                    value={city}
-                    required={true}
-                />
-                <YupInput
-                    errors={errors}
-                    register={register}
-                    inputName={"zip"}
-                    onChange={(e) => setZip(e.currentTarget.value)}
-                    value={zip}
-                    required={true}
-                />
-
-                <YupInput
-                    errors={errors}
-                    register={register}
-                    inputName={"country"}
-                    onChange={(e) => setCountry(e.currentTarget.value)}
-                    value={country}
-                    required={true}
-                />
-                <YupInput
-                    errors={errors}
-                    register={register}
-                    inputName={"continent"}
-                    onChange={(e) => setContinent(e.currentTarget.value)}
-                    value={continent}
-                />
+                <div className="yup_section">
+                    <label className="yup_label" htmlFor="street">
+                        Street
+                    </label>
+                    <input
+                        errors={errors}
+                        {...register("street")}
+                        type={"text"}
+                        name="street"
+                        className="yup_input"
+                        value={street}
+                    ></input>
+                    <p className="yup_input_error">{errors["street"]?.message}</p>
+                </div>
+                <div className="yup_section">
+                    <label className="yup_label" htmlFor="city">
+                        City
+                    </label>
+                    <input
+                        errors={errors}
+                        {...register("city")}
+                        type={"text"}
+                        name="street"
+                        className="yup_input"
+                        value={city}
+                    ></input>
+                    <p className="yup_input_error">{errors["city"]?.message}</p>
+                </div>
+                <div className="yup_section">
+                    <label className="yup_label" htmlFor="zip">
+                        Zip
+                    </label>
+                    <input
+                        errors={errors}
+                        {...register("zip")}
+                        type={"text"}
+                        name="zip"
+                        className="yup_input"
+                        value={zip}
+                    ></input>
+                    <p className="yup_input_error">{errors["zip"]?.message}</p>
+                </div>
+                <div className="yup_section">
+                    <label className="yup_label" htmlFor="country">
+                        Country
+                    </label>
+                    <input
+                        errors={errors}
+                        {...register("country")}
+                        type={"text"}
+                        name="country"
+                        className="yup_input"
+                        value={zip}
+                    ></input>
+                    <p className="yup_input_error">{errors["country"]?.message}</p>
+                </div>
+                <div className="yup_section">
+                    <label className="yup_label" htmlFor="country">
+                        Continent
+                    </label>
+                    <input
+                        errors={errors}
+                        {...register("continent")}
+                        type={"text"}
+                        name="continent"
+                        className="yup_input"
+                        value={continent}
+                    ></input>
+                    <p className="yup_input_error">{errors["continent"]?.message}</p>
+                </div>
             </div>
             <InformationRegister register={register} />
             <div className={styles.register_venue_div_submit}>
@@ -175,7 +218,12 @@ function RegisterVenue({ setRegActive }) {
                         You have setSuccessfully submitted a venue
                     </p>
                 ) : (
-                    <button className={styles.register_venue_submit_button}>submit</button>
+                    <button
+                        onClick={(e) => preventDialogClose(e)}
+                        className={styles.register_venue_submit_button}
+                    >
+                        submit
+                    </button>
                 )}
                 {error && !success && (
                     <p className={styles.register_venue_div_submit_error}>{error}</p>

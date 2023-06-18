@@ -1,6 +1,5 @@
 import { hostedVenues, hostUser, setHostedVenues } from "../../states/state-functions";
 import styles from "../../styles/components/UpdateVenue.module.css";
-import YupInput from "../YupInput";
 import { useEffect, useState, useRef } from "react";
 import ImageRegister from "../ImageRegister";
 import { FaDog } from "react-icons/fa";
@@ -158,13 +157,17 @@ function UpdateVenue({ id }) {
                     onFocus={inputClick}
                 ></input>
             </div>
-            <YupInput
-                name="media"
-                onChange={(e) => setHiddenImage(e.currentTarget.value)}
-                inputId="register_venue_input_image"
-                id="register_venue_images_error_message"
-                placeholder="paste url"
-            />
+
+            <div className="yup_section">
+                <input
+                    placeholder="paste url"
+                    id="register_venue_images_error_message"
+                    name="media"
+                    onChange={(e) => setHiddenImage(e.currentTarget.value)}
+                    className="yup_input"
+                />
+            </div>
+
             {imageArray && (
                 <ImageRegister
                     imageArray={imageArray}

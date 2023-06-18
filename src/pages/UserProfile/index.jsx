@@ -117,11 +117,7 @@ function UserProfile() {
                     </button>
                 </div>
             </div>
-            <dialog
-                ref={signUpModal}
-                className={styles.profile_signUp_modal}
-                onClick={closeFunctionality}
-            >
+            <dialog ref={signUpModal} className="small_modal" onClick={closeFunctionality}>
                 <DialogHeader />
 
                 {!isLoading ? (
