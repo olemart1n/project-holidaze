@@ -33,6 +33,7 @@ export const login = async (
                 setSuccess(true);
                 setErr(false);
                 setAvatar(data.avatar);
+                save("avatar", data.avatar);
             } else {
                 setErr(false);
                 save("user", data);
@@ -41,6 +42,7 @@ export const login = async (
                 setSuccess(true);
                 setErr(false);
                 setAvatar(data.avatar);
+                save("avatar", data.avatar);
             }
         })
         .catch((error) => console.log(error));
