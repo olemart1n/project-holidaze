@@ -10,6 +10,7 @@ import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar } from "@hassanmojab/react-modern-calendar-datepicker";
 import { useNavigate } from "react-router-dom";
 import { bookVenue, setBookingsByUser } from "../../api";
+import { closeFunctionality } from "../../features/dialogs";
 import Login from "../login";
 function Book() {
     const navigate = useNavigate();
@@ -125,7 +126,7 @@ function Book() {
             venueId: id,
         };
 
-        bookVenue(data, setViewCalendar, authedUser.accessToken);
+        bookVenue(data, setViewCalendar);
     };
 
     useEffect(() => {
@@ -147,7 +148,7 @@ function Book() {
                     <p>Book this venue</p>
                     <GoCalendar className={styles.calendar_icon} />
                 </div>
-                <dialog ref={loginDialog} className={styles.dialog_book}>
+                <dialog ref={loginDialog} className="small_dialog" onClick={closeFunctionality}>
                     <DialogHeader />
                     <Login />
                 </dialog>
@@ -164,7 +165,7 @@ function Book() {
                 <p>Book this venue</p>
                 <GoCalendar className={styles.calendar_icon} />
             </div>
-            <dialog ref={bookDialog} className={styles.dialog_book}>
+            <dialog ref={bookDialog} className="full_dialog">
                 <DialogHeader />
                 <div className={styles.dialog_book_venue_info}>
                     <h4>{venue.name}</h4>

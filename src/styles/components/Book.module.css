@@ -10,6 +10,7 @@
     margin: 10px auto 10px;
     border-radius: 10px;
     padding: 4px 0px;
+    cursor: pointer;
 }
 
 .calendar_icon {
@@ -17,23 +18,10 @@
     font-size: 1.5rem;
 }
 
-.dialog_book {
-    /*
-    margin: auto;
-    position: fixed; */
-    max-width: 1400px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    min-height: 350px;
-    border: 1px solid var(--color-border);
-    border-radius: 10px;
-    overflow: scroll;
-}
-
 .dialog_book_venue_info {
     padding: 1rem;
+    margin: auto;
+    text-align: center;
 }
 .dialog_book_venue_date_input {
     display: flex;
@@ -102,7 +90,12 @@
     padding: 0.3rem 0.5rem;
     border-radius: 4px;
     margin: 1rem auto;
-    width: 100%;
+    display: block;
+    width: 40%;
+    cursor: pointer;
+}
+.dialog_book_venue_submit:hover {
+    background-color: var(--color-logoTheme);
 }
 
 @media (min-width: 650px) {

@@ -1,7 +1,7 @@
 import { url } from "../url";
 
-export const bookVenue = async (data, setFalseState, token) => {
-    url.post.headers.authorization = "Bearer " + token;
+export const bookVenue = async (data, setFalseState) => {
+    url.post.headers.authorization = url.authorization;
     url.post.body = JSON.stringify(data);
 
     fetch(url.bookings, url.post)
