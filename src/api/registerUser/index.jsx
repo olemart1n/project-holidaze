@@ -19,7 +19,7 @@ export const registerUser = (data, setErr, setUser, navigate) => {
         .finally(() => {
             setTimeout(() => {
                 if (data.venueManager) {
-                    navigate("/host");
+                    navigate("/profile");
                 } else {
                     navigate("/");
                 }
